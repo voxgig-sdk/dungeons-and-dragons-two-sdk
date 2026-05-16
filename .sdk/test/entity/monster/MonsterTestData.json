@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "monster": {
+      "MONSTER00": {
+        "alignment": "sb4",
+        "armor_class": [],
+        "challenge_rating": 182,
+        "charisma": "sb7",
+        "constitution": "sb8",
+        "dexterity": "sb9",
+        "hit_dice": "sba",
+        "hit_point": "sbb",
+        "index": "sbc",
+        "intelligence": "sbd",
+        "name": "sbe",
+        "size": "sbf",
+        "speed": {},
+        "strength": "sc1",
+        "type": "sc2",
+        "url": "sc3",
+        "wisdom": "sc4",
+        "xp": "sc5",
+        "id": "MONSTER00"
+      },
+      "MONSTER01": {
+        "alignment": "s168",
+        "armor_class": [],
+        "challenge_rating": 362,
+        "charisma": "s16b",
+        "constitution": "s16c",
+        "dexterity": "s16d",
+        "hit_dice": "s16e",
+        "hit_point": "s16f",
+        "index": "s170",
+        "intelligence": "s171",
+        "name": "s172",
+        "size": "s173",
+        "speed": {},
+        "strength": "s175",
+        "type": "s176",
+        "url": "s177",
+        "wisdom": "s178",
+        "xp": "s179",
+        "id": "MONSTER01"
+      },
+      "MONSTER02": {
+        "alignment": "s21c",
+        "armor_class": [],
+        "challenge_rating": 542,
+        "charisma": "s21f",
+        "constitution": "s220",
+        "dexterity": "s221",
+        "hit_dice": "s222",
+        "hit_point": "s223",
+        "index": "s224",
+        "intelligence": "s225",
+        "name": "s226",
+        "size": "s227",
+        "speed": {},
+        "strength": "s229",
+        "type": "s22a",
+        "url": "s22b",
+        "wisdom": "s22c",
+        "xp": "s22d",
+        "id": "MONSTER02"
+      }
+    }
+  },
+  "new": {
+    "monster": {
+      "monster_ref01": {
+        "alignment": "s2d0",
+        "armor_class": [],
+        "challenge_rating": 722,
+        "charisma": "s2d3",
+        "constitution": "s2d4",
+        "dexterity": "s2d5",
+        "hit_dice": "s2d6",
+        "hit_point": "s2d7",
+        "index": "s2d8",
+        "intelligence": "s2d9",
+        "name": "s2da",
+        "size": "s2db",
+        "speed": {},
+        "strength": "s2dd",
+        "type": "s2de",
+        "url": "s2df",
+        "wisdom": "s2e0",
+        "xp": "s2e1"
+      }
+    }
+  }
+}

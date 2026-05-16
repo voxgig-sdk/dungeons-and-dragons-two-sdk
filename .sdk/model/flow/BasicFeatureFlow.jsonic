@@ -1,0 +1,44 @@
+# BasicFeatureFlow
+
+main: kit: flow: BasicFeatureFlow:
+{
+  entity: "feature",
+  kind: "basic",
+  name: "BasicFeatureFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "feature_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "feature_ref01",
+        srcdatavar: "feature_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "feature01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-feature_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFeatureFlow"
+}

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "feature": {
+      "FEATURE00": {
+        "class": {},
+        "desc": [],
+        "index": "s3e",
+        "level": "s3f",
+        "name": "s40",
+        "url": "s41",
+        "id": "FEATURE00"
+      },
+      "FEATURE01": {
+        "class": {},
+        "desc": [],
+        "index": "s7a",
+        "level": "s7b",
+        "name": "s7c",
+        "url": "s7d",
+        "id": "FEATURE01"
+      },
+      "FEATURE02": {
+        "class": {},
+        "desc": [],
+        "index": "sb6",
+        "level": "sb7",
+        "name": "sb8",
+        "url": "sb9",
+        "id": "FEATURE02"
+      }
+    }
+  },
+  "new": {
+    "feature": {
+      "feature_ref01": {
+        "class": {},
+        "desc": [],
+        "index": "sf2",
+        "level": "sf3",
+        "name": "sf4",
+        "url": "sf5"
+      }
+    }
+  }
+}

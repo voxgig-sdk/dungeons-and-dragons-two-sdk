@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "spell": {
+      "SPELL00": {
+        "casting_time": "s6e",
+        "class": [],
+        "component": [],
+        "desc": [],
+        "duration": "s72",
+        "index": "s73",
+        "level": "s74",
+        "name": "s75",
+        "range": "s76",
+        "school": {},
+        "url": "s78",
+        "id": "SPELL00"
+      },
+      "SPELL01": {
+        "casting_time": "sdc",
+        "class": [],
+        "component": [],
+        "desc": [],
+        "duration": "se0",
+        "index": "se1",
+        "level": "se2",
+        "name": "se3",
+        "range": "se4",
+        "school": {},
+        "url": "se6",
+        "id": "SPELL01"
+      },
+      "SPELL02": {
+        "casting_time": "s14a",
+        "class": [],
+        "component": [],
+        "desc": [],
+        "duration": "s14e",
+        "index": "s14f",
+        "level": "s150",
+        "name": "s151",
+        "range": "s152",
+        "school": {},
+        "url": "s154",
+        "id": "SPELL02"
+      }
+    }
+  },
+  "new": {
+    "spell": {
+      "spell_ref01": {
+        "casting_time": "s1b8",
+        "class": [],
+        "component": [],
+        "desc": [],
+        "duration": "s1bc",
+        "index": "s1bd",
+        "level": "s1be",
+        "name": "s1bf",
+        "range": "s1c0",
+        "school": {},
+        "url": "s1c2"
+      }
+    }
+  }
+}

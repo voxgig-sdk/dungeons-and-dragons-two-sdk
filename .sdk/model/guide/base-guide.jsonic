@@ -1,0 +1,48 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 8
+  metrics: count: method: 8
+
+  entity: class: {
+    path: "/classes": {
+      op: list: method: *GET
+    }
+    path: "/classes/{index}": {
+      rename: param: "index": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: feature: {
+    path: "/features": {
+      op: list: method: *GET
+    }
+    path: "/features/{index}": {
+      rename: param: "index": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: monster: {
+    path: "/monsters": {
+      op: list: method: *GET
+    }
+    path: "/monsters/{index}": {
+      rename: param: "index": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: spell: {
+    path: "/spells": {
+      op: list: method: *GET
+    }
+    path: "/spells/{index}": {
+      rename: param: "index": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

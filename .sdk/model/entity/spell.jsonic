@@ -1,0 +1,142 @@
+# Entity: spell
+
+main: kit: entity: spell: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "casting_time"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "class"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "component"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "desc"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "duration"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "index"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "level"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "range"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "school"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "spell"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Acid Arrow"
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/spells"
+          parts: [
+            "spells"
+          ]
+          select: {
+            exist: [
+              "name"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "index"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/spells/{index}"
+          parts: [
+            "spells"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              index: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

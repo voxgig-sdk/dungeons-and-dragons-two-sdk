@@ -1,0 +1,100 @@
+# Entity: class
+
+main: kit: entity: class: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "hit_die"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "index"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "proficiency"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "saving_throw"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "class"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/classes"
+          parts: [
+            "classes"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "index"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/classes/{index}"
+          parts: [
+            "classes"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              index: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

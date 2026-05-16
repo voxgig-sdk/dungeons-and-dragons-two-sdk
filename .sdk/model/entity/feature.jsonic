@@ -1,0 +1,100 @@
+# Entity: feature
+
+main: kit: entity: feature: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "class"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "desc"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "index"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "level"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "feature"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/features"
+          parts: [
+            "features"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "index"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/features/{index}"
+          parts: [
+            "features"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              index: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

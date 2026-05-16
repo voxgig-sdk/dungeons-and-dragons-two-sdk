@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.dnd5eapi.co/"
+      }
+      description: "This API provides access to the 5th Edition Dungeons and Dragons System Reference Document (SRD). It allows developers to retrieve information about spells, classes, monsters, and other game elements through a modern RESTful interface."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.dnd5eapi.co/api"
+        }
+      ]
+      title: "Dungeons and Dragons API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

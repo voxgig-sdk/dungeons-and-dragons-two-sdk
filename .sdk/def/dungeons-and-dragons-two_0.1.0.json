@@ -1,0 +1,538 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Dungeons and Dragons API",
+    "description": "This API provides access to the 5th Edition Dungeons and Dragons System Reference Document (SRD). It allows developers to retrieve information about spells, classes, monsters, and other game elements through a modern RESTful interface.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.dnd5eapi.co/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.dnd5eapi.co/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/classes": {
+      "get": {
+        "summary": "Get all classes",
+        "description": "Retrieves a list of all D&D 5e classes available in the SRD",
+        "operationId": "getClasses",
+        "tags": [
+          "Classes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of classes returned"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "string",
+                            "description": "Resource index for the class"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the class"
+                          },
+                          "url": {
+                            "type": "string",
+                            "description": "URL to the class resource"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/classes/{index}": {
+      "get": {
+        "summary": "Get a specific class",
+        "description": "Retrieves detailed information about a specific D&D 5e class",
+        "operationId": "getClassByIndex",
+        "tags": [
+          "Classes"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "required": true,
+            "description": "The index of the class to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "hit_die": {
+                      "type": "integer"
+                    },
+                    "proficiencies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "saving_throws": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Class not found"
+          }
+        }
+      }
+    },
+    "/features": {
+      "get": {
+        "summary": "Get all features",
+        "description": "Retrieves a list of all D&D 5e features available in the SRD",
+        "operationId": "getFeatures",
+        "tags": [
+          "Features"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of features returned"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "string",
+                            "description": "Resource index for the feature"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the feature"
+                          },
+                          "url": {
+                            "type": "string",
+                            "description": "URL to the feature resource"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/features/{index}": {
+      "get": {
+        "summary": "Get a specific feature",
+        "description": "Retrieves detailed information about a specific D&D 5e feature",
+        "operationId": "getFeatureByIndex",
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "required": true,
+            "description": "The index of the feature to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "type": "integer"
+                    },
+                    "class": {
+                      "type": "object"
+                    },
+                    "desc": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Feature not found"
+          }
+        }
+      }
+    },
+    "/monsters": {
+      "get": {
+        "summary": "Get all monsters",
+        "description": "Retrieves a list of all D&D 5e monsters available in the SRD",
+        "operationId": "getMonsters",
+        "tags": [
+          "Monsters"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of monsters returned"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "string",
+                            "description": "Resource index for the monster"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the monster"
+                          },
+                          "url": {
+                            "type": "string",
+                            "description": "URL to the monster resource"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/monsters/{index}": {
+      "get": {
+        "summary": "Get a specific monster",
+        "description": "Retrieves detailed information about a specific D&D 5e monster",
+        "operationId": "getMonsterByIndex",
+        "tags": [
+          "Monsters"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "required": true,
+            "description": "The index of the monster to retrieve (e.g., 'adult-black-dragon')",
+            "schema": {
+              "type": "string"
+            },
+            "example": "adult-black-dragon"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string"
+                    },
+                    "armor_class": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "hit_points": {
+                      "type": "integer"
+                    },
+                    "hit_dice": {
+                      "type": "string"
+                    },
+                    "speed": {
+                      "type": "object"
+                    },
+                    "strength": {
+                      "type": "integer"
+                    },
+                    "dexterity": {
+                      "type": "integer"
+                    },
+                    "constitution": {
+                      "type": "integer"
+                    },
+                    "intelligence": {
+                      "type": "integer"
+                    },
+                    "wisdom": {
+                      "type": "integer"
+                    },
+                    "charisma": {
+                      "type": "integer"
+                    },
+                    "challenge_rating": {
+                      "type": "number"
+                    },
+                    "xp": {
+                      "type": "integer"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Monster not found"
+          }
+        }
+      }
+    },
+    "/spells": {
+      "get": {
+        "summary": "Get all spells",
+        "description": "Retrieves a list of all D&D 5e spells available in the SRD. Can be filtered by name.",
+        "operationId": "getSpells",
+        "tags": [
+          "Spells"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Filter spells by name (e.g., 'Acid Arrow')",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Acid Arrow"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of spells returned"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "string",
+                            "description": "Resource index for the spell"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the spell"
+                          },
+                          "url": {
+                            "type": "string",
+                            "description": "URL to the spell resource"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spells/{index}": {
+      "get": {
+        "summary": "Get a specific spell",
+        "description": "Retrieves detailed information about a specific D&D 5e spell",
+        "operationId": "getSpellByIndex",
+        "tags": [
+          "Spells"
+        ],
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "required": true,
+            "description": "The index of the spell to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "type": "integer"
+                    },
+                    "school": {
+                      "type": "object"
+                    },
+                    "casting_time": {
+                      "type": "string"
+                    },
+                    "range": {
+                      "type": "string"
+                    },
+                    "components": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "duration": {
+                      "type": "string"
+                    },
+                    "desc": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Spell not found"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Classes",
+      "description": "Operations related to D&D 5e classes"
+    },
+    {
+      "name": "Features",
+      "description": "Operations related to D&D 5e features"
+    },
+    {
+      "name": "Monsters",
+      "description": "Operations related to D&D 5e monsters"
+    },
+    {
+      "name": "Spells",
+      "description": "Operations related to D&D 5e spells"
+    }
+  ]
+}

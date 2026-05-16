@@ -1,0 +1,161 @@
+# Entity: monster
+
+main: kit: entity: monster: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "alignment"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "armor_class"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "challenge_rating"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "charisma"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "constitution"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "dexterity"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "hit_dice"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "hit_point"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "index"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "intelligence"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "size"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "speed"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "strength"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "wisdom"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "xp"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "monster"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/monsters"
+          parts: [
+            "monsters"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "adult-black-dragon"
+                kind: "param"
+                name: "id"
+                orig: "index"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/monsters/{index}"
+          parts: [
+            "monsters"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              index: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
