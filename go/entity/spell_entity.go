@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/core"
+	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go/utility/struct"
 )
 
 type SpellEntity struct {

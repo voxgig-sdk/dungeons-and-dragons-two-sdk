@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/core"
+	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go/core"
 )
 
 type BaseFeature struct {

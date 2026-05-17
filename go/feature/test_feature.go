@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"math/rand"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/core"
+	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go/core"
 )
 
 type TestFeature struct {

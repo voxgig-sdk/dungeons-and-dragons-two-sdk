@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/dungeons-and-dragons-two-sdk"
-	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/core"
+	sdk "github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go"
+	"github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go/core"
 )
 
 func TestMonsterDirect(t *testing.T) {
