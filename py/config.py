@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://www.dnd5eapi.co/api",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

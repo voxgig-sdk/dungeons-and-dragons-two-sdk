@@ -89,7 +89,6 @@ def feature_basic_setup(extra)
     "DUNGEONSANDDRAGONSTWO_TEST_FEATURE_ENTID" => idmap,
     "DUNGEONSANDDRAGONSTWO_TEST_LIVE" => "FALSE",
     "DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN" => "FALSE",
-    "DUNGEONSANDDRAGONSTWO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +100,6 @@ def feature_basic_setup(extra)
   if env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["DUNGEONSANDDRAGONSTWO_APIKEY"],
       },
       extra || {},
     ])

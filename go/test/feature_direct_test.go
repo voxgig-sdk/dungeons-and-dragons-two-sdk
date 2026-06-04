@@ -194,14 +194,12 @@ func featureDirectSetup(mockres any) *featureDirectSetupResult {
 	env := envOverride(map[string]any{
 		"DUNGEONSANDDRAGONSTWO_TEST_FEATURE_ENTID": map[string]any{},
 		"DUNGEONSANDDRAGONSTWO_TEST_LIVE":    "FALSE",
-		"DUNGEONSANDDRAGONSTWO_APIKEY":       "NONE",
 	})
 
 	live := env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["DUNGEONSANDDRAGONSTWO_APIKEY"],
 		}
 		client := sdk.NewDungeonsAndDragonsTwoSDK(mergedOpts)
 
