@@ -1,23 +1,8 @@
 # DungeonsAndDragonsTwo SDK
 
-Query 5th Edition D&D System Reference Document data — classes, features, monsters, and spells — via a public REST API
+Dungeons and Dragons API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Dungeons and Dragons API
-
-The [D&D 5e API](https://www.dnd5eapi.co/) exposes the 5th Edition Dungeons & Dragons System Reference Document (SRD) as a REST API. It is maintained by the [5e-bits](https://5e-bits.github.io/docs/introduction) open-source contributors.
-
-This slice of the API focuses on a subset of the SRD's resource categories. From the served data you can fetch:
-
-- Character **classes** and their progression details
-- Class and racial **features**
-- **Monsters** with stat blocks and lore
-- **Spells** with casting rules and effects
-
-The service is publicly reachable at `https://www.dnd5eapi.co/api` with CORS enabled, and community monitoring reports consistent availability. Full documentation, including the schema for each resource, lives at the [5e-bits docs site](https://5e-bits.github.io/docs/introduction).
-
-This is the same upstream API as the `dungeons-and-dragons` SDK, packaged here with a different entity slicing.
 
 ## Try it
 
@@ -51,29 +36,31 @@ gem install dungeons-and-dragons-two-sdk
 luarocks install dungeons-and-dragons-two-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { DungeonsAndDragonsTwoSDK } from 'dungeons-and-dragons-two'
 
-const client = new DungeonsAndDragonsTwoSDK({})
+const client = new DungeonsAndDragonsTwoSDK({
+  apikey: process.env.DUNGEONS-AND-DRAGONS-TWO_APIKEY,
+})
 
 // List all classs
 const classs = await client.Class().list()
+console.log(classs.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -103,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Class** | A D&D 5e character class (e.g. wizard, fighter), available under `/api/classes`. | `/classes` |
-| **Feature** | A class or racial feature granted at specific levels, available under `/api/features`. | `/features` |
-| **Monster** | A creature stat block from the SRD bestiary, available under `/api/monsters` (e.g. `/api/monsters/adult-black-dragon`). | `/monsters` |
-| **Spell** | A spell definition with school, level, and casting details, available under `/api/spells`. | `/spells` |
+| **Class** |  | `/classes` |
+| **Feature** |  | `/features` |
+| **Monster** |  | `/monsters` |
+| **Spell** |  | `/spells` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -116,17 +103,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from dungeonsanddragonstwo_sdk import DungeonsAndDragonsTwoSDK
 
-client = DungeonsAndDragonsTwoSDK({})
+client = DungeonsAndDragonsTwoSDK({
+    "apikey": os.environ.get("DUNGEONS-AND-DRAGONS-TWO_APIKEY"),
+})
 
 # List all classs
-classs, err = client.Class(None).list(None, None)
+classs, err = client.Class().list()
+print(classs)
 
 # Load a specific class
-class, err = client.Class(None).load(
-    {"id": "example_id"}, None
-)
+class, err = client.Class().load({"id": "example_id"})
+print(class)
 ```
 
 ### PHP
@@ -135,15 +125,17 @@ class, err = client.Class(None).load(
 <?php
 require_once 'dungeonsanddragonstwo_sdk.php';
 
-$client = new DungeonsAndDragonsTwoSDK([]);
+$client = new DungeonsAndDragonsTwoSDK([
+    "apikey" => getenv("DUNGEONS-AND-DRAGONS-TWO_APIKEY"),
+]);
 
 // List all classs
-[$classs, $err] = $client->Class(null)->list(null, null);
+[$classs, $err] = $client->Class()->list();
+print_r($classs);
 
 // Load a specific class
-[$class, $err] = $client->Class(null)->load(
-    ["id" => "example_id"], null
-);
+[$class, $err] = $client->Class()->load(["id" => "example_id"]);
+print_r($class);
 ```
 
 ### Golang
@@ -151,10 +143,13 @@ $client = new DungeonsAndDragonsTwoSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go"
 
-client := sdk.NewDungeonsAndDragonsTwoSDK(map[string]any{})
+client := sdk.NewDungeonsAndDragonsTwoSDK(map[string]any{
+    "apikey": os.Getenv("DUNGEONS-AND-DRAGONS-TWO_APIKEY"),
+})
 
 // List all classs
 classs, err := client.Class(nil).List(nil, nil)
+fmt.Println(classs)
 ```
 
 ### Ruby
@@ -162,15 +157,17 @@ classs, err := client.Class(nil).List(nil, nil)
 ```ruby
 require_relative "DungeonsAndDragonsTwo_sdk"
 
-client = DungeonsAndDragonsTwoSDK.new({})
+client = DungeonsAndDragonsTwoSDK.new({
+  "apikey" => ENV["DUNGEONS-AND-DRAGONS-TWO_APIKEY"],
+})
 
 # List all classs
-classs, err = client.Class(nil).list(nil, nil)
+classs, err = client.Class().list
+puts classs
 
 # Load a specific class
-class, err = client.Class(nil).load(
-  { "id" => "example_id" }, nil
-)
+class, err = client.Class().load({ "id" => "example_id" })
+puts class
 ```
 
 ### Lua
@@ -178,15 +175,17 @@ class, err = client.Class(nil).load(
 ```lua
 local sdk = require("dungeons-and-dragons-two_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("DUNGEONS-AND-DRAGONS-TWO_APIKEY"),
+})
 
 -- List all classs
-local classs, err = client:Class(nil):list(nil, nil)
+local classs, err = client:Class():list()
+print(classs)
 
 -- Load a specific class
-local class, err = client:Class(nil):load(
-  { id = "example_id" }, nil
-)
+local class, err = client:Class():load({ id = "example_id" })
+print(class)
 ```
 
 ## Unit testing in offline mode
@@ -205,25 +204,21 @@ const result = await client.Class().load({ id: 'test01' })
 ### Python
 
 ```python
-client = DungeonsAndDragonsTwoSDK.test(None, None)
-result, err = client.Class(None).load(
-    {"id": "test01"}, None
-)
+client = DungeonsAndDragonsTwoSDK.test()
+result, err = client.Class().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = DungeonsAndDragonsTwoSDK::test(null, null);
-[$result, $err] = $client->Class(null)->load(
-    ["id" => "test01"], null
-);
+$client = DungeonsAndDragonsTwoSDK::test();
+[$result, $err] = $client->Class()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Class(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -232,19 +227,15 @@ result, err := client.Class(nil).Load(
 ### Ruby
 
 ```ruby
-client = DungeonsAndDragonsTwoSDK.test(nil, nil)
-result, err = client.Class(nil).load(
-  { "id" => "test01" }, nil
-)
+client = DungeonsAndDragonsTwoSDK.test
+result, err = client.Class().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Class(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Class():load({ id = "test01" })
 ```
 
 ## How it works
@@ -348,16 +339,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Dungeons and Dragons API
-
-- Upstream: [https://www.dnd5eapi.co/](https://www.dnd5eapi.co/)
-- API docs: [https://5e-bits.github.io/docs/introduction](https://5e-bits.github.io/docs/introduction)
-
-- API content is sourced from the D&D 5th Edition System Reference Document (SRD).
-- Users should respect the SRD's open licensing terms when redistributing data.
-- The API project is maintained by the 5e-bits contributors on GitHub.
-- No explicit licence statement is published on the API landing page; consult the upstream project for details.
 
 ---
 

@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -117,7 +117,7 @@ local class = client:Class(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Class(nil):list(nil, nil)
+local results, err = client:Class():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -125,7 +125,7 @@ local results, err = client:Class(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Class(nil):load({ id = "class_id" }, nil)
+local result, err = client:Class():load({ id = "class_id" })
 ```
 
 ### Common Methods
@@ -182,7 +182,7 @@ local feature = client:Feature(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Feature(nil):list(nil, nil)
+local results, err = client:Feature():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -190,7 +190,7 @@ local results, err = client:Feature(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Feature(nil):load({ id = "feature_id" }, nil)
+local result, err = client:Feature():load({ id = "feature_id" })
 ```
 
 ### Common Methods
@@ -259,7 +259,7 @@ local monster = client:Monster(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Monster(nil):list(nil, nil)
+local results, err = client:Monster():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -267,7 +267,7 @@ local results, err = client:Monster(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Monster(nil):load({ id = "monster_id" }, nil)
+local result, err = client:Monster():load({ id = "monster_id" })
 ```
 
 ### Common Methods
@@ -329,7 +329,7 @@ local spell = client:Spell(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Spell(nil):list(nil, nil)
+local results, err = client:Spell():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -337,7 +337,7 @@ local results, err = client:Spell(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Spell(nil):load({ id = "spell_id" }, nil)
+local result, err = client:Spell():load({ id = "spell_id" })
 ```
 
 ### Common Methods

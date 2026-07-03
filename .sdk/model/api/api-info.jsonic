@@ -16,33 +16,7 @@ main: {
       ]
       title: "Dungeons and Dragons API"
       version: "1.0.0"
-      tagline: "Query 5th Edition D&D System Reference Document data — classes, features, monsters, and spells — via a public REST API"
-      homepage: "https://www.dnd5eapi.co/"
-      docs_url: "https://5e-bits.github.io/docs/introduction"
-      license_short: "Built on the D&D 5e System Reference Document (SRD); follow the SRD's open licensing terms."
-      license_md: `- API content is sourced from the D&D 5th Edition System Reference Document (SRD).
-- Users should respect the SRD's open licensing terms when redistributing data.
-- The API project is maintained by the 5e-bits contributors on GitHub.
-- No explicit licence statement is published on the API landing page; consult the upstream project for details.`
-      about_md: `The [D&D 5e API](https://www.dnd5eapi.co/) exposes the 5th Edition Dungeons & Dragons System Reference Document (SRD) as a REST API. It is maintained by the [5e-bits](https://5e-bits.github.io/docs/introduction) open-source contributors.
-
-This slice of the API focuses on a subset of the SRD's resource categories. From the served data you can fetch:
-
-- Character **classes** and their progression details
-- Class and racial **features**
-- **Monsters** with stat blocks and lore
-- **Spells** with casting rules and effects
-
-The service is publicly reachable at \`https://www.dnd5eapi.co/api\` with CORS enabled, and community monitoring reports consistent availability. Full documentation, including the schema for each resource, lives at the [5e-bits docs site](https://5e-bits.github.io/docs/introduction).
-
-This is the same upstream API as the \`dungeons-and-dragons\` SDK, packaged here with a different entity slicing.`
-      entity_desc: {
-        class: "A D&D 5e character class (e.g. wizard, fighter), available under `/api/classes`."
-        feature: "A class or racial feature granted at specific levels, available under `/api/features`."
-        monster: "A creature stat block from the SRD bestiary, available under `/api/monsters` (e.g. `/api/monsters/adult-black-dragon`)."
-        spell: "A spell definition with school, level, and casting details, available under `/api/spells`."
-      }
-      auth: false
     }
   }
 }
+

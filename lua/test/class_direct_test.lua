@@ -117,12 +117,14 @@ function class_direct_setup(mockres)
   local env = runner.env_override({
     ["DUNGEONSANDDRAGONSTWO_TEST_CLASS_ENTID"] = {},
     ["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] = "FALSE",
+    ["DUNGEONSANDDRAGONSTWO_APIKEY"] = "NONE",
   })
 
   local live = env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["DUNGEONSANDDRAGONSTWO_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

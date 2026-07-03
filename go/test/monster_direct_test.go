@@ -175,12 +175,14 @@ func monsterDirectSetup(mockres any) *monsterDirectSetupResult {
 	env := envOverride(map[string]any{
 		"DUNGEONSANDDRAGONSTWO_TEST_MONSTER_ENTID": map[string]any{},
 		"DUNGEONSANDDRAGONSTWO_TEST_LIVE":    "FALSE",
+		"DUNGEONSANDDRAGONSTWO_APIKEY":       "NONE",
 	})
 
 	live := env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["DUNGEONSANDDRAGONSTWO_APIKEY"],
 		}
 		client := sdk.NewDungeonsAndDragonsTwoSDK(mergedOpts)
 

@@ -98,6 +98,7 @@ def _spell_basic_setup(extra):
         "DUNGEONSANDDRAGONSTWO_TEST_SPELL_ENTID": idmap,
         "DUNGEONSANDDRAGONSTWO_TEST_LIVE": "FALSE",
         "DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN": "FALSE",
+        "DUNGEONSANDDRAGONSTWO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -108,6 +109,7 @@ def _spell_basic_setup(extra):
     if env.get("DUNGEONSANDDRAGONSTWO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("DUNGEONSANDDRAGONSTWO_APIKEY"),
             },
             extra or {},
         ])

@@ -98,6 +98,7 @@ function monster_basic_setup(extra)
     ["DUNGEONSANDDRAGONSTWO_TEST_MONSTER_ENTID"] = idmap,
     ["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] = "FALSE",
     ["DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN"] = "FALSE",
+    ["DUNGEONSANDDRAGONSTWO_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -109,6 +110,7 @@ function monster_basic_setup(extra)
   if env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["DUNGEONSANDDRAGONSTWO_APIKEY"],
       },
       extra or {},
     })

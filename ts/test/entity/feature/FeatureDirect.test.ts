@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'DUNGEONSANDDRAGONSTWO_TEST_FEATURE_ENTID': {},
     'DUNGEONSANDDRAGONSTWO_TEST_LIVE': 'FALSE',
+    'DUNGEONSANDDRAGONSTWO_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.DUNGEONSANDDRAGONSTWO_TEST_LIVE
 
   if (live) {
     const client = new DungeonsAndDragonsTwoSDK({
+      apikey: env.DUNGEONSANDDRAGONSTWO_APIKEY,
     })
 
     let idmap: any = env['DUNGEONSANDDRAGONSTWO_TEST_FEATURE_ENTID']

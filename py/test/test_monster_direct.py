@@ -106,12 +106,14 @@ def _monster_direct_setup(mockres):
     env = runner.env_override({
         "DUNGEONSANDDRAGONSTWO_TEST_MONSTER_ENTID": {},
         "DUNGEONSANDDRAGONSTWO_TEST_LIVE": "FALSE",
+        "DUNGEONSANDDRAGONSTWO_APIKEY": "NONE",
     })
 
     live = env.get("DUNGEONSANDDRAGONSTWO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("DUNGEONSANDDRAGONSTWO_APIKEY"),
         }
         client = DungeonsAndDragonsTwoSDK(merged_opts)
         return {

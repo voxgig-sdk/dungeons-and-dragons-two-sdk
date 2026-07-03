@@ -194,12 +194,14 @@ func spellDirectSetup(mockres any) *spellDirectSetupResult {
 	env := envOverride(map[string]any{
 		"DUNGEONSANDDRAGONSTWO_TEST_SPELL_ENTID": map[string]any{},
 		"DUNGEONSANDDRAGONSTWO_TEST_LIVE":    "FALSE",
+		"DUNGEONSANDDRAGONSTWO_APIKEY":       "NONE",
 	})
 
 	live := env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["DUNGEONSANDDRAGONSTWO_APIKEY"],
 		}
 		client := sdk.NewDungeonsAndDragonsTwoSDK(mergedOpts)
 

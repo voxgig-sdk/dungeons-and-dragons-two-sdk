@@ -1,6 +1,11 @@
 # DungeonsAndDragonsTwo Python SDK
 
-The Python SDK for the DungeonsAndDragonsTwo API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the DungeonsAndDragonsTwo API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from dungeonsanddragonstwo_sdk import DungeonsAndDragonsTwoSDK
 
-client = DungeonsAndDragonsTwoSDK({})
+client = DungeonsAndDragonsTwoSDK({
+    "apikey": os.environ.get("DUNGEONS-AND-DRAGONS-TWO_APIKEY"),
+})
 ```
 
 ### 2. List classs
 
 ```python
-result, err = client.Class(None).list(None, None)
+result, err = client.Class().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a class
 
 ```python
-result, err = client.Class(None).load({"id": "example_id"}, None)
+result, err = client.Class().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = DungeonsAndDragonsTwoSDK.test(None, None)
+client = DungeonsAndDragonsTwoSDK.test()
 
-result, err = client.DungeonsAndDragonsTwo(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.DungeonsAndDragonsTwo().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 DUNGEONS-AND-DRAGONS-TWO_TEST_LIVE=TRUE
+DUNGEONS-AND-DRAGONS-TWO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
