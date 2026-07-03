@@ -10,13 +10,13 @@ The Ruby SDK for the DungeonsAndDragonsTwo API — an entity-oriented client usi
 
 ## Install
 ```bash
-gem install dungeons-and-dragons-two-sdk
+gem install voxgig-sdk-dungeons-and-dragons-two
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "dungeons-and-dragons-two-sdk"
+gem "voxgig-sdk-dungeons-and-dragons-two"
 ```
 
 Then run:

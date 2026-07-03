@@ -10,7 +10,7 @@ The Python SDK for the DungeonsAndDragonsTwo API — an entity-oriented client f
 
 ## Install
 ```bash
-pip install dungeons-and-dragons-two-sdk
+pip install voxgig-sdk-dungeons-and-dragons-two
 ```
 
 Or install from source:

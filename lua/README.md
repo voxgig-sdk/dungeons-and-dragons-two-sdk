@@ -10,7 +10,7 @@ The Lua SDK for the DungeonsAndDragonsTwo API — an entity-oriented client usin
 
 ## Install
 ```bash
-luarocks install dungeons-and-dragons-two-sdk
+luarocks install voxgig-sdk-dungeons-and-dragons-two
 ```
 
 If the module is not yet published, add the source directory to
