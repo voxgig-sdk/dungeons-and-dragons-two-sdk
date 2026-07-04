@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## ClassEntity
 
 ```ruby
-class = client.class
+class = client.Class
 ```
 
 ### Fields
@@ -119,7 +119,7 @@ class = client.class
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.class.list(nil)
+results = client.Class.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -127,7 +127,7 @@ results = client.class.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.class.load({ "id" => "class_id" })
+result = client.Class.load({ "id" => "class_id" })
 ```
 
 ### Common Methods
@@ -163,7 +163,7 @@ Return the entity name.
 ## FeatureEntity
 
 ```ruby
-feature = client.feature
+feature = client.Feature
 ```
 
 ### Fields
@@ -184,7 +184,7 @@ feature = client.feature
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.feature.list(nil)
+results = client.Feature.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -192,7 +192,7 @@ results = client.feature.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.feature.load({ "id" => "feature_id" })
+result = client.Feature.load({ "id" => "feature_id" })
 ```
 
 ### Common Methods
@@ -228,7 +228,7 @@ Return the entity name.
 ## MonsterEntity
 
 ```ruby
-monster = client.monster
+monster = client.Monster
 ```
 
 ### Fields
@@ -261,7 +261,7 @@ monster = client.monster
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.monster.list(nil)
+results = client.Monster.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -269,7 +269,7 @@ results = client.monster.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.monster.load({ "id" => "monster_id" })
+result = client.Monster.load({ "id" => "monster_id" })
 ```
 
 ### Common Methods
@@ -305,7 +305,7 @@ Return the entity name.
 ## SpellEntity
 
 ```ruby
-spell = client.spell
+spell = client.Spell
 ```
 
 ### Fields
@@ -331,7 +331,7 @@ spell = client.spell
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.spell.list(nil)
+results = client.Spell.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -339,7 +339,7 @@ results = client.spell.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.spell.load({ "id" => "spell_id" })
+result = client.Spell.load({ "id" => "spell_id" })
 ```
 
 ### Common Methods

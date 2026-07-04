@@ -220,73 +220,33 @@ class DungeonsAndDragonsTwoSDK:
         }
 
 
-    @property
-    def class(self):
-        """Idiomatic facade: client.class.list() / client.class.load({"id": ...})."""
-        from entity.class_entity import ClassEntity
-        cached = getattr(self, "_class", None)
-        if cached is None:
-            cached = ClassEntity(self, None)
-            self._class = cached
-        return cached
-
-    def Class(self, data=None):
-        # Deprecated: use client.class instead.
+    def Class(self, data=None) -> "ClassEntity":
+        """Entity factory: client.Class().list({}) / client.Class().load({"id": ...})."""
         from entity.class_entity import ClassEntity
         return ClassEntity(self, data)
 
 
-    @property
-    def feature(self):
-        """Idiomatic facade: client.feature.list() / client.feature.load({"id": ...})."""
-        from entity.feature_entity import FeatureEntity
-        cached = getattr(self, "_feature", None)
-        if cached is None:
-            cached = FeatureEntity(self, None)
-            self._feature = cached
-        return cached
-
-    def Feature(self, data=None):
-        # Deprecated: use client.feature instead.
+    def Feature(self, data=None) -> "FeatureEntity":
+        """Entity factory: client.Feature().list({}) / client.Feature().load({"id": ...})."""
         from entity.feature_entity import FeatureEntity
         return FeatureEntity(self, data)
 
 
-    @property
-    def monster(self):
-        """Idiomatic facade: client.monster.list() / client.monster.load({"id": ...})."""
-        from entity.monster_entity import MonsterEntity
-        cached = getattr(self, "_monster", None)
-        if cached is None:
-            cached = MonsterEntity(self, None)
-            self._monster = cached
-        return cached
-
-    def Monster(self, data=None):
-        # Deprecated: use client.monster instead.
+    def Monster(self, data=None) -> "MonsterEntity":
+        """Entity factory: client.Monster().list({}) / client.Monster().load({"id": ...})."""
         from entity.monster_entity import MonsterEntity
         return MonsterEntity(self, data)
 
 
-    @property
-    def spell(self):
-        """Idiomatic facade: client.spell.list() / client.spell.load({"id": ...})."""
-        from entity.spell_entity import SpellEntity
-        cached = getattr(self, "_spell", None)
-        if cached is None:
-            cached = SpellEntity(self, None)
-            self._spell = cached
-        return cached
-
-    def Spell(self, data=None):
-        # Deprecated: use client.spell instead.
+    def Spell(self, data=None) -> "SpellEntity":
+        """Entity factory: client.Spell().list({}) / client.Spell().load({"id": ...})."""
         from entity.spell_entity import SpellEntity
         return SpellEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "DungeonsAndDragonsTwoSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class DungeonsAndDragonsTwoSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.class_entity import ClassEntity
+    from entity.feature_entity import FeatureEntity
+    from entity.monster_entity import MonsterEntity
+    from entity.spell_entity import SpellEntity

@@ -233,10 +233,10 @@ class DungeonsAndDragonsTwoSDK
 
     private $_class = null;
 
-    // Idiomatic facade: $client->class()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Class() (PHP method
-    // names are case-insensitive).
-    public function class($data = null)
+    // Canonical facade: $client->Class()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->class()
+    // resolves here too.
+    public function Class($data = null)
     {
         require_once __DIR__ . '/entity/class_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class DungeonsAndDragonsTwoSDK
 
     private $_feature = null;
 
-    // Idiomatic facade: $client->feature()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Feature() (PHP method
-    // names are case-insensitive).
-    public function feature($data = null)
+    // Canonical facade: $client->Feature()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->feature()
+    // resolves here too.
+    public function Feature($data = null)
     {
         require_once __DIR__ . '/entity/feature_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class DungeonsAndDragonsTwoSDK
 
     private $_monster = null;
 
-    // Idiomatic facade: $client->monster()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Monster() (PHP method
-    // names are case-insensitive).
-    public function monster($data = null)
+    // Canonical facade: $client->Monster()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->monster()
+    // resolves here too.
+    public function Monster($data = null)
     {
         require_once __DIR__ . '/entity/monster_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class DungeonsAndDragonsTwoSDK
 
     private $_spell = null;
 
-    // Idiomatic facade: $client->spell()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Spell() (PHP method
-    // names are case-insensitive).
-    public function spell($data = null)
+    // Canonical facade: $client->Spell()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->spell()
+    // resolves here too.
+    public function Spell($data = null)
     {
         require_once __DIR__ . '/entity/spell_entity.php';
         if ($data === null) {

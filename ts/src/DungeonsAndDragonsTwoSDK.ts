@@ -207,56 +207,28 @@ class DungeonsAndDragonsTwoSDK {
 
 
 
-  _class?: ClassEntity
-
-  // Idiomatic facade: `client.class.list()` / `client.class.load({ id })`.
-  get class(): ClassEntity {
-    return (this._class ??= new ClassEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.class` instead. */
+  // Entity access: `client.Class().list()` / `client.Class().load({ id })`.
   Class(data?: any) {
     const self = this
     return new ClassEntity(self,data)
   }
 
 
-  _feature?: FeatureEntity
-
-  // Idiomatic facade: `client.feature.list()` / `client.feature.load({ id })`.
-  get feature(): FeatureEntity {
-    return (this._feature ??= new FeatureEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.feature` instead. */
+  // Entity access: `client.Feature().list()` / `client.Feature().load({ id })`.
   Feature(data?: any) {
     const self = this
     return new FeatureEntity(self,data)
   }
 
 
-  _monster?: MonsterEntity
-
-  // Idiomatic facade: `client.monster.list()` / `client.monster.load({ id })`.
-  get monster(): MonsterEntity {
-    return (this._monster ??= new MonsterEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.monster` instead. */
+  // Entity access: `client.Monster().list()` / `client.Monster().load({ id })`.
   Monster(data?: any) {
     const self = this
     return new MonsterEntity(self,data)
   }
 
 
-  _spell?: SpellEntity
-
-  // Idiomatic facade: `client.spell.list()` / `client.spell.load({ id })`.
-  get spell(): SpellEntity {
-    return (this._spell ??= new SpellEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.spell` instead. */
+  // Entity access: `client.Spell().list()` / `client.Spell().load({ id })`.
   Spell(data?: any) {
     const self = this
     return new SpellEntity(self,data)

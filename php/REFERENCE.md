@@ -97,7 +97,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ClassEntity
 
 ```php
-$class = $client->class();
+$class = $client->Class();
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ $class = $client->class();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->class()->list([]);
+$results = $client->Class()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -126,7 +126,7 @@ $results = $client->class()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->class()->load(["id" => "class_id"]);
+$result = $client->Class()->load(["id" => "class_id"]);
 ```
 
 ### Common Methods
@@ -162,7 +162,7 @@ Return the entity name.
 ## FeatureEntity
 
 ```php
-$feature = $client->feature();
+$feature = $client->Feature();
 ```
 
 ### Fields
@@ -183,7 +183,7 @@ $feature = $client->feature();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->feature()->list([]);
+$results = $client->Feature()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -191,7 +191,7 @@ $results = $client->feature()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->feature()->load(["id" => "feature_id"]);
+$result = $client->Feature()->load(["id" => "feature_id"]);
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ Return the entity name.
 ## MonsterEntity
 
 ```php
-$monster = $client->monster();
+$monster = $client->Monster();
 ```
 
 ### Fields
@@ -260,7 +260,7 @@ $monster = $client->monster();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->monster()->list([]);
+$results = $client->Monster()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -268,7 +268,7 @@ $results = $client->monster()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->monster()->load(["id" => "monster_id"]);
+$result = $client->Monster()->load(["id" => "monster_id"]);
 ```
 
 ### Common Methods
@@ -304,7 +304,7 @@ Return the entity name.
 ## SpellEntity
 
 ```php
-$spell = $client->spell();
+$spell = $client->Spell();
 ```
 
 ### Fields
@@ -330,7 +330,7 @@ $spell = $client->spell();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->spell()->list([]);
+$results = $client->Spell()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -338,7 +338,7 @@ $results = $client->spell()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->spell()->load(["id" => "spell_id"]);
+$result = $client->Spell()->load(["id" => "spell_id"]);
 ```
 
 ### Common Methods

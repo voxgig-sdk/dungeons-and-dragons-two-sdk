@@ -4,139 +4,131 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Class:
-    hit_die: Optional[int] = None
-    index: Optional[str] = None
-    name: Optional[str] = None
-    proficiency: Optional[list] = None
-    saving_throw: Optional[list] = None
-    url: Optional[str] = None
+class Class(TypedDict, total=False):
+    hit_die: int
+    index: str
+    name: str
+    proficiency: list
+    saving_throw: list
+    url: str
 
 
-@dataclass
-class ClassLoadMatch:
+class ClassLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class ClassListMatch:
-    hit_die: Optional[int] = None
-    index: Optional[str] = None
-    name: Optional[str] = None
-    proficiency: Optional[list] = None
-    saving_throw: Optional[list] = None
-    url: Optional[str] = None
+class ClassListMatch(TypedDict, total=False):
+    hit_die: int
+    index: str
+    name: str
+    proficiency: list
+    saving_throw: list
+    url: str
 
 
-@dataclass
-class Feature:
-    desc: Optional[list] = None
-    index: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class Feature(TypedDict, total=False):
+    desc: list
+    index: str
+    level: int
+    name: str
+    url: str
 
 
-@dataclass
-class FeatureLoadMatch:
+class FeatureLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class FeatureListMatch:
-    desc: Optional[list] = None
-    index: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class FeatureListMatch(TypedDict, total=False):
+    desc: list
+    index: str
+    level: int
+    name: str
+    url: str
 
 
-@dataclass
-class Monster:
-    alignment: Optional[str] = None
-    armor_class: Optional[list] = None
-    challenge_rating: Optional[float] = None
-    charisma: Optional[int] = None
-    constitution: Optional[int] = None
-    dexterity: Optional[int] = None
-    hit_dice: Optional[str] = None
-    hit_point: Optional[int] = None
-    index: Optional[str] = None
-    intelligence: Optional[int] = None
-    name: Optional[str] = None
-    size: Optional[str] = None
-    speed: Optional[dict] = None
-    strength: Optional[int] = None
-    type: Optional[str] = None
-    url: Optional[str] = None
-    wisdom: Optional[int] = None
-    xp: Optional[int] = None
+class Monster(TypedDict, total=False):
+    alignment: str
+    armor_class: list
+    challenge_rating: float
+    charisma: int
+    constitution: int
+    dexterity: int
+    hit_dice: str
+    hit_point: int
+    index: str
+    intelligence: int
+    name: str
+    size: str
+    speed: dict
+    strength: int
+    type: str
+    url: str
+    wisdom: int
+    xp: int
 
 
-@dataclass
-class MonsterLoadMatch:
+class MonsterLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class MonsterListMatch:
-    alignment: Optional[str] = None
-    armor_class: Optional[list] = None
-    challenge_rating: Optional[float] = None
-    charisma: Optional[int] = None
-    constitution: Optional[int] = None
-    dexterity: Optional[int] = None
-    hit_dice: Optional[str] = None
-    hit_point: Optional[int] = None
-    index: Optional[str] = None
-    intelligence: Optional[int] = None
-    name: Optional[str] = None
-    size: Optional[str] = None
-    speed: Optional[dict] = None
-    strength: Optional[int] = None
-    type: Optional[str] = None
-    url: Optional[str] = None
-    wisdom: Optional[int] = None
-    xp: Optional[int] = None
+class MonsterListMatch(TypedDict, total=False):
+    alignment: str
+    armor_class: list
+    challenge_rating: float
+    charisma: int
+    constitution: int
+    dexterity: int
+    hit_dice: str
+    hit_point: int
+    index: str
+    intelligence: int
+    name: str
+    size: str
+    speed: dict
+    strength: int
+    type: str
+    url: str
+    wisdom: int
+    xp: int
 
 
-@dataclass
-class Spell:
-    casting_time: Optional[str] = None
-    component: Optional[list] = None
-    desc: Optional[list] = None
-    duration: Optional[str] = None
-    index: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
-    range: Optional[str] = None
-    school: Optional[dict] = None
-    url: Optional[str] = None
+class Spell(TypedDict, total=False):
+    casting_time: str
+    component: list
+    desc: list
+    duration: str
+    index: str
+    level: int
+    name: str
+    range: str
+    school: dict
+    url: str
 
 
-@dataclass
-class SpellLoadMatch:
+class SpellLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class SpellListMatch:
-    casting_time: Optional[str] = None
-    component: Optional[list] = None
-    desc: Optional[list] = None
-    duration: Optional[str] = None
-    index: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
-    range: Optional[str] = None
-    school: Optional[dict] = None
-    url: Optional[str] = None
-
+class SpellListMatch(TypedDict, total=False):
+    casting_time: str
+    component: list
+    desc: list
+    duration: str
+    index: str
+    level: int
+    name: str
+    range: str
+    school: dict
+    url: str

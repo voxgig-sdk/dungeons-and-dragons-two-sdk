@@ -26,9 +26,11 @@ import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two'
 
 const client = new DungeonsAndDragonsTwoSDK()
 
-// List all classs
-const classs = await client.class.list()
-console.log(classs.data)
+// List all classs (returns Class[])
+const classs = await client.Class().list()
+for (const class of classs) {
+  console.log(class)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -86,12 +88,13 @@ from dungeonsanddragonstwo_sdk import DungeonsAndDragonsTwoSDK
 
 client = DungeonsAndDragonsTwoSDK()
 
-# List all classs
-classs = client.class.list()
-print(classs)
+# List all classs (returns a list, raises on error)
+classs = client.Class().list({})
+for class in classs:
+    print(class)
 
-# Load a specific class
-class = client.class.load({"id": "example_id"})
+# Load a specific class (returns the record, raises on error)
+class = client.Class().load({"id": "example_id"})
 print(class)
 ```
 
@@ -103,12 +106,12 @@ require_once 'dungeonsanddragonstwo_sdk.php';
 
 $client = new DungeonsAndDragonsTwoSDK();
 
-// List all classs (throws on error)
-$classs = $client->class()->list();
+// List all classs (returns an array; throws on error)
+$classs = $client->Class()->list();
 print_r($classs);
 
-// Load a specific class
-$class = $client->class()->load(["id" => "example_id"]);
+// Load a specific class (returns the bare record; throws on error)
+$class = $client->Class()->load(["id" => "example_id"]);
 print_r($class);
 ```
 
@@ -131,12 +134,12 @@ require_relative "DungeonsAndDragonsTwo_sdk"
 
 client = DungeonsAndDragonsTwoSDK.new
 
-# List all classs
-classs = client.class.list
+# List all classs (returns an Array; raises on error)
+classs = client.Class.list
 puts classs
 
-# Load a specific class
-class = client.class.load({ "id" => "example_id" })
+# Load a specific class (returns the bare record; raises on error)
+class = client.Class.load({ "id" => "example_id" })
 puts class
 ```
 
@@ -148,11 +151,11 @@ local sdk = require("dungeons-and-dragons-two_sdk")
 local client = sdk.new()
 
 -- List all classs
-local classs, err = client:class():list()
+local classs, err = client:Class():list()
 print(classs)
 
 -- Load a specific class
-local class, err = client:class():load({ id = "example_id" })
+local class, err = client:Class():load({ id = "example_id" })
 print(class)
 ```
 
@@ -165,22 +168,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = DungeonsAndDragonsTwoSDK.test()
-const result = await client.class.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const class = await client.Class().load({ id: 'test01' })
+// class is a bare Class populated with mock data
+console.log(class)
 ```
 
 ### Python
 
 ```python
 client = DungeonsAndDragonsTwoSDK.test()
-result = client.class.load({"id": "test01"})
+class = client.Class().load({"id": "test01"})
+print(class)
 ```
 
 ### PHP
 
 ```php
-$client = DungeonsAndDragonsTwoSDK::test();
-$result = $client->class()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = DungeonsAndDragonsTwoSDK::test([
+    "entity" => ["class" => ["test01" => ["id" => "test01"]]],
+]);
+$class = $client->Class()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -195,15 +203,18 @@ result, err := client.Class(nil).Load(
 ### Ruby
 
 ```ruby
-client = DungeonsAndDragonsTwoSDK.test
-result = client.class.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = DungeonsAndDragonsTwoSDK.test({
+  "entity" => { "class" => { "test01" => { "id" => "test01" } } },
+})
+class = client.Class.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:class():load({ id = "test01" })
+local result, err = client:Class():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,6 +262,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

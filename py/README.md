@@ -31,24 +31,28 @@ from dungeonsanddragonstwo_sdk import DungeonsAndDragonsTwoSDK
 client = DungeonsAndDragonsTwoSDK()
 ```
 
-### 2. List classs
+### 2. List class records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.class.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    classs = client.Class().list({})
+    for class in classs:
+        print(class)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a class
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.class.load({"id": "example_id"})
-    print(result)
+    class = client.Class().load({"id": "example_id"})
+    print(class)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DungeonsAndDragonsTwoSDK.test()
 
-result = client.class.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+class = client.Class().load({"id": "test01"})
+# class contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -300,7 +305,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.class`
+Create an instance: `class = client.Class()`
 
 #### Operations
 
@@ -322,20 +327,20 @@ Create an instance: `const class = client.class`
 
 #### Example: Load
 
-```ts
-const class = await client.class.load({ id: 'class_id' })
+```python
+class = client.Class().load({"id": "class_id"})
 ```
 
 #### Example: List
 
-```ts
-const classs = await client.class.list()
+```python
+classs = client.Class().list({})
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `feature = client.Feature()`
 
 #### Operations
 
@@ -357,20 +362,20 @@ Create an instance: `const feature = client.feature`
 
 #### Example: Load
 
-```ts
-const feature = await client.feature.load({ id: 'feature_id' })
+```python
+feature = client.Feature().load({"id": "feature_id"})
 ```
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```python
+features = client.Feature().list({})
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `monster = client.Monster()`
 
 #### Operations
 
@@ -404,20 +409,20 @@ Create an instance: `const monster = client.monster`
 
 #### Example: Load
 
-```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+```python
+monster = client.Monster().load({"id": "monster_id"})
 ```
 
 #### Example: List
 
-```ts
-const monsters = await client.monster.list()
+```python
+monsters = client.Monster().list({})
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.spell`
+Create an instance: `spell = client.Spell()`
 
 #### Operations
 
@@ -444,14 +449,14 @@ Create an instance: `const spell = client.spell`
 
 #### Example: Load
 
-```ts
-const spell = await client.spell.load({ id: 'spell_id' })
+```python
+spell = client.Spell().load({"id": "spell_id"})
 ```
 
 #### Example: List
 
-```ts
-const spells = await client.spell.list()
+```python
+spells = client.Spell().list({})
 ```
 
 
@@ -525,7 +530,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-class = client.class
+class = client.Class()
 class.load({"id": "example_id"})
 
 # class.data_get() now returns the loaded class data

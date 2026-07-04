@@ -28,25 +28,28 @@ import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two'
 const client = new DungeonsAndDragonsTwoSDK()
 ```
 
-### 2. List classs
+### 2. List class records
+
+`list()` resolves to an array of Class objects — iterate it directly:
 
 ```ts
-const result = await client.class.list()
+const classs = await client.Class().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const class of classs) {
+  console.log(class)
 }
 ```
 
 ### 3. Load a class
 
-```ts
-const result = await client.class.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const class = await client.Class().load({ id: 'example_id' })
+  console.log(class)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DungeonsAndDragonsTwoSDK.test()
 
-const result = await client.class.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const class = await client.Class().load({ id: 'test01' })
+// class is a bare entity populated with mock response data
+console.log(class)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.class
+const entity = client.Class()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -207,29 +213,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): DungeonsAndDragonsTwoSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -345,7 +352,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.class`
+Create an instance: `const class = client.Class()`
 
 #### Operations
 
@@ -368,19 +375,19 @@ Create an instance: `const class = client.class`
 #### Example: Load
 
 ```ts
-const class = await client.class.load({ id: 'class_id' })
+const class = await client.Class().load({ id: 'class_id' })
 ```
 
 #### Example: List
 
 ```ts
-const classs = await client.class.list()
+const classs = await client.Class().list()
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `const feature = client.Feature()`
 
 #### Operations
 
@@ -403,19 +410,19 @@ Create an instance: `const feature = client.feature`
 #### Example: Load
 
 ```ts
-const feature = await client.feature.load({ id: 'feature_id' })
+const feature = await client.Feature().load({ id: 'feature_id' })
 ```
 
 #### Example: List
 
 ```ts
-const features = await client.feature.list()
+const features = await client.Feature().list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `const monster = client.Monster()`
 
 #### Operations
 
@@ -450,19 +457,19 @@ Create an instance: `const monster = client.monster`
 #### Example: Load
 
 ```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+const monster = await client.Monster().load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.monster.list()
+const monsters = await client.Monster().list()
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.spell`
+Create an instance: `const spell = client.Spell()`
 
 #### Operations
 
@@ -490,13 +497,13 @@ Create an instance: `const spell = client.spell`
 #### Example: Load
 
 ```ts
-const spell = await client.spell.load({ id: 'spell_id' })
+const spell = await client.Spell().load({ id: 'spell_id' })
 ```
 
 #### Example: List
 
 ```ts
-const spells = await client.spell.list()
+const spells = await client.Spell().list()
 ```
 
 
@@ -567,7 +574,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const class = client.class
+const class = client.Class()
 await class.load({ id: "example_id" })
 
 // class.data() now returns the loaded class data

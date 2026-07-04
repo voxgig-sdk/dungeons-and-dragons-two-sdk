@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ClassEntity
 
 ```python
-class = client.class
+class = client.Class()
 ```
 
 ### Fields
@@ -113,7 +113,9 @@ class = client.class
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.class.list({})
+results = client.Class().list({})
+for class in results:
+    print(class)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -121,7 +123,7 @@ results = client.class.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.class.load({"id": "class_id"})
+result = client.Class().load({"id": "class_id"})
 ```
 
 ### Common Methods
@@ -156,7 +158,7 @@ Return the entity name.
 ## FeatureEntity
 
 ```python
-feature = client.feature
+feature = client.Feature()
 ```
 
 ### Fields
@@ -177,7 +179,9 @@ feature = client.feature
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.feature.list({})
+results = client.Feature().list({})
+for feature in results:
+    print(feature)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -185,7 +189,7 @@ results = client.feature.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.feature.load({"id": "feature_id"})
+result = client.Feature().load({"id": "feature_id"})
 ```
 
 ### Common Methods
@@ -220,7 +224,7 @@ Return the entity name.
 ## MonsterEntity
 
 ```python
-monster = client.monster
+monster = client.Monster()
 ```
 
 ### Fields
@@ -253,7 +257,9 @@ monster = client.monster
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.monster.list({})
+results = client.Monster().list({})
+for monster in results:
+    print(monster)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -261,7 +267,7 @@ results = client.monster.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.monster.load({"id": "monster_id"})
+result = client.Monster().load({"id": "monster_id"})
 ```
 
 ### Common Methods
@@ -296,7 +302,7 @@ Return the entity name.
 ## SpellEntity
 
 ```python
-spell = client.spell
+spell = client.Spell()
 ```
 
 ### Fields
@@ -322,7 +328,9 @@ spell = client.spell
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.spell.list({})
+results = client.Spell().list({})
+for spell in results:
+    print(spell)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -330,7 +338,7 @@ results = client.spell.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.spell.load({"id": "spell_id"})
+result = client.Spell().load({"id": "spell_id"})
 ```
 
 ### Common Methods

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:class():list() / client:class():load({ id = ... })
-function DungeonsAndDragonsTwoSDK:class(data)
+-- Idiomatic facade: client:Class():list() / client:Class():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DungeonsAndDragonsTwoSDK:Class(data)
   local EntityMod = require("entity.class_entity")
   if data == nil then
     if self._class == nil then
@@ -256,15 +257,10 @@ function DungeonsAndDragonsTwoSDK:class(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:class() instead.
-function DungeonsAndDragonsTwoSDK:Class(data)
-  local EntityMod = require("entity.class_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:feature():list() / client:feature():load({ id = ... })
-function DungeonsAndDragonsTwoSDK:feature(data)
+-- Idiomatic facade: client:Feature():list() / client:Feature():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DungeonsAndDragonsTwoSDK:Feature(data)
   local EntityMod = require("entity.feature_entity")
   if data == nil then
     if self._feature == nil then
@@ -275,15 +271,10 @@ function DungeonsAndDragonsTwoSDK:feature(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:feature() instead.
-function DungeonsAndDragonsTwoSDK:Feature(data)
-  local EntityMod = require("entity.feature_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:monster():list() / client:monster():load({ id = ... })
-function DungeonsAndDragonsTwoSDK:monster(data)
+-- Idiomatic facade: client:Monster():list() / client:Monster():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DungeonsAndDragonsTwoSDK:Monster(data)
   local EntityMod = require("entity.monster_entity")
   if data == nil then
     if self._monster == nil then
@@ -294,15 +285,10 @@ function DungeonsAndDragonsTwoSDK:monster(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:monster() instead.
-function DungeonsAndDragonsTwoSDK:Monster(data)
-  local EntityMod = require("entity.monster_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:spell():list() / client:spell():load({ id = ... })
-function DungeonsAndDragonsTwoSDK:spell(data)
+-- Idiomatic facade: client:Spell():list() / client:Spell():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DungeonsAndDragonsTwoSDK:Spell(data)
   local EntityMod = require("entity.spell_entity")
   if data == nil then
     if self._spell == nil then
@@ -310,12 +296,6 @@ function DungeonsAndDragonsTwoSDK:spell(data)
     end
     return self._spell
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:spell() instead.
-function DungeonsAndDragonsTwoSDK:Spell(data)
-  local EntityMod = require("entity.spell_entity")
   return EntityMod.new(self, data)
 end
 

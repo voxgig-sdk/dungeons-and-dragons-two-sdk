@@ -28,16 +28,14 @@ require_relative "DungeonsAndDragonsTwo_sdk"
 client = DungeonsAndDragonsTwoSDK.new
 ```
 
-### 2. List classs
+### 2. List class records
 
 ```ruby
 begin
-  result = client.class.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Class records — iterate directly.
+  classs = client.Class.list
+  classs.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.class.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Class record (raises on error).
+  class = client.Class.load({ "id" => "example_id" })
+  puts class
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = DungeonsAndDragonsTwoSDK.test
+client = DungeonsAndDragonsTwoSDK.test({
+  "entity" => { "class" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.class.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+class = client.Class.load({ "id" => "test01" })
+puts class
 ```
 
 ### Use a custom fetch function
@@ -304,7 +307,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.class`
+Create an instance: `class = client.Class`
 
 #### Operations
 
@@ -326,20 +329,22 @@ Create an instance: `const class = client.class`
 
 #### Example: Load
 
-```ts
-const class = await client.class.load({ id: 'class_id' })
+```ruby
+# load returns the bare Class record (raises on error).
+class = client.Class.load({ "id" => "class_id" })
 ```
 
 #### Example: List
 
-```ts
-const classs = await client.class.list()
+```ruby
+# list returns an Array of Class records (raises on error).
+classs = client.Class.list
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `feature = client.Feature`
 
 #### Operations
 
@@ -361,20 +366,22 @@ Create an instance: `const feature = client.feature`
 
 #### Example: Load
 
-```ts
-const feature = await client.feature.load({ id: 'feature_id' })
+```ruby
+# load returns the bare Feature record (raises on error).
+feature = client.Feature.load({ "id" => "feature_id" })
 ```
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```ruby
+# list returns an Array of Feature records (raises on error).
+features = client.Feature.list
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `monster = client.Monster`
 
 #### Operations
 
@@ -408,20 +415,22 @@ Create an instance: `const monster = client.monster`
 
 #### Example: Load
 
-```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+```ruby
+# load returns the bare Monster record (raises on error).
+monster = client.Monster.load({ "id" => "monster_id" })
 ```
 
 #### Example: List
 
-```ts
-const monsters = await client.monster.list()
+```ruby
+# list returns an Array of Monster records (raises on error).
+monsters = client.Monster.list
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.spell`
+Create an instance: `spell = client.Spell`
 
 #### Operations
 
@@ -448,14 +457,16 @@ Create an instance: `const spell = client.spell`
 
 #### Example: Load
 
-```ts
-const spell = await client.spell.load({ id: 'spell_id' })
+```ruby
+# load returns the bare Spell record (raises on error).
+spell = client.Spell.load({ "id" => "spell_id" })
 ```
 
 #### Example: List
 
-```ts
-const spells = await client.spell.list()
+```ruby
+# list returns an Array of Spell records (raises on error).
+spells = client.Spell.list
 ```
 
 
@@ -530,7 +541,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-class = client.class
+class = client.Class
 class.load({ "id" => "example_id" })
 
 # class.data_get now returns the loaded class data

@@ -208,52 +208,28 @@ class DungeonsAndDragonsTwoSDK
   end
 
 
-  # Idiomatic facade: client.class.list / client.class.load({ "id" => ... })
-  def class
-    require_relative 'entity/class_entity'
-    @class ||= ClassEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.class instead.
+  # Canonical facade: client.Class.list / client.Class.load({ "id" => ... })
   def Class(data = nil)
     require_relative 'entity/class_entity'
     ClassEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.feature.list / client.feature.load({ "id" => ... })
-  def feature
-    require_relative 'entity/feature_entity'
-    @feature ||= FeatureEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.feature instead.
+  # Canonical facade: client.Feature.list / client.Feature.load({ "id" => ... })
   def Feature(data = nil)
     require_relative 'entity/feature_entity'
     FeatureEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.monster.list / client.monster.load({ "id" => ... })
-  def monster
-    require_relative 'entity/monster_entity'
-    @monster ||= MonsterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.monster instead.
+  # Canonical facade: client.Monster.list / client.Monster.load({ "id" => ... })
   def Monster(data = nil)
     require_relative 'entity/monster_entity'
     MonsterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.spell.list / client.spell.load({ "id" => ... })
-  def spell
-    require_relative 'entity/spell_entity'
-    @spell ||= SpellEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.spell instead.
+  # Canonical facade: client.Spell.list / client.Spell.load({ "id" => ... })
   def Spell(data = nil)
     require_relative 'entity/spell_entity'
     SpellEntity.new(self, data)

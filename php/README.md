@@ -29,18 +29,16 @@ require_once 'dungeonsanddragonstwo_sdk.php';
 $client = new DungeonsAndDragonsTwoSDK();
 ```
 
-### 2. List classs
+### 2. List class records
 
 ```php
 try {
-    $result = $client->class()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Class records — iterate directly.
+    $classs = $client->Class()->list();
+    foreach ($classs as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->class()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Class record (throws on error).
+    $class = $client->Class()->load(["id" => "example_id"]);
+    print_r($class);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = DungeonsAndDragonsTwoSDK::test();
+$client = DungeonsAndDragonsTwoSDK::test([
+    "entity" => ["class" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->class()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$class = $client->Class()->load(["id" => "test01"]);
+print_r($class);
 ```
 
 ### Use a custom fetch function
@@ -309,7 +312,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.class`
+Create an instance: `$class = $client->Class();`
 
 #### Operations
 
@@ -331,20 +334,22 @@ Create an instance: `const class = client.class`
 
 #### Example: Load
 
-```ts
-const class = await client.class.load({ id: 'class_id' })
+```php
+// load() returns the bare Class record (throws on error).
+$class = $client->Class()->load(["id" => "class_id"]);
 ```
 
 #### Example: List
 
-```ts
-const classs = await client.class.list()
+```php
+// list() returns an array of Class records (throws on error).
+$classs = $client->Class()->list();
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `$feature = $client->Feature();`
 
 #### Operations
 
@@ -366,20 +371,22 @@ Create an instance: `const feature = client.feature`
 
 #### Example: Load
 
-```ts
-const feature = await client.feature.load({ id: 'feature_id' })
+```php
+// load() returns the bare Feature record (throws on error).
+$feature = $client->Feature()->load(["id" => "feature_id"]);
 ```
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```php
+// list() returns an array of Feature records (throws on error).
+$features = $client->Feature()->list();
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `$monster = $client->Monster();`
 
 #### Operations
 
@@ -413,20 +420,22 @@ Create an instance: `const monster = client.monster`
 
 #### Example: Load
 
-```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+```php
+// load() returns the bare Monster record (throws on error).
+$monster = $client->Monster()->load(["id" => "monster_id"]);
 ```
 
 #### Example: List
 
-```ts
-const monsters = await client.monster.list()
+```php
+// list() returns an array of Monster records (throws on error).
+$monsters = $client->Monster()->list();
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.spell`
+Create an instance: `$spell = $client->Spell();`
 
 #### Operations
 
@@ -453,14 +462,16 @@ Create an instance: `const spell = client.spell`
 
 #### Example: Load
 
-```ts
-const spell = await client.spell.load({ id: 'spell_id' })
+```php
+// load() returns the bare Spell record (throws on error).
+$spell = $client->Spell()->load(["id" => "spell_id"]);
 ```
 
 #### Example: List
 
-```ts
-const spells = await client.spell.list()
+```php
+// list() returns an array of Spell records (throws on error).
+$spells = $client->Spell()->list();
 ```
 
 
@@ -535,7 +546,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$class = $client->class();
+$class = $client->Class();
 $class->load(["id" => "example_id"]);
 
 // $class->dataGet() now returns the loaded class data

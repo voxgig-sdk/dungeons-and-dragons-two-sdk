@@ -31,26 +31,26 @@ local sdk = require("dungeons-and-dragons-two_sdk")
 local client = sdk.new()
 ```
 
-### 2. List classs
+### 2. List class records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:class():list()
+local classs, err = client:Class():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(classs) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a class
 
 ```lua
-local result, err = client:class():load({ id = "example_id" })
+local class, err = client:Class():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(class)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:class():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Class():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -200,17 +200,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local class, err = client:Class():load({ id = "example_id" })
+    if err then error(err) end
+    -- class is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -298,7 +303,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.class`
+Create an instance: `local class = client:Class(nil)`
 
 #### Operations
 
@@ -320,20 +325,20 @@ Create an instance: `const class = client.class`
 
 #### Example: Load
 
-```ts
-const class = await client.class.load({ id: 'class_id' })
+```lua
+local class, err = client:Class():load({ id = "class_id" })
 ```
 
 #### Example: List
 
-```ts
-const classs = await client.class.list()
+```lua
+local classs, err = client:Class():list()
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `local feature = client:Feature(nil)`
 
 #### Operations
 
@@ -355,20 +360,20 @@ Create an instance: `const feature = client.feature`
 
 #### Example: Load
 
-```ts
-const feature = await client.feature.load({ id: 'feature_id' })
+```lua
+local feature, err = client:Feature():load({ id = "feature_id" })
 ```
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```lua
+local features, err = client:Feature():list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `local monster = client:Monster(nil)`
 
 #### Operations
 
@@ -402,20 +407,20 @@ Create an instance: `const monster = client.monster`
 
 #### Example: Load
 
-```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+```lua
+local monster, err = client:Monster():load({ id = "monster_id" })
 ```
 
 #### Example: List
 
-```ts
-const monsters = await client.monster.list()
+```lua
+local monsters, err = client:Monster():list()
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.spell`
+Create an instance: `local spell = client:Spell(nil)`
 
 #### Operations
 
@@ -442,14 +447,14 @@ Create an instance: `const spell = client.spell`
 
 #### Example: Load
 
-```ts
-const spell = await client.spell.load({ id: 'spell_id' })
+```lua
+local spell, err = client:Spell():load({ id = "spell_id" })
 ```
 
 #### Example: List
 
-```ts
-const spells = await client.spell.list()
+```lua
+local spells, err = client:Spell():list()
 ```
 
 
@@ -524,7 +529,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local class = client:class()
+local class = client:Class()
 class:load({ id = "example_id" })
 
 -- class:data_get() now returns the loaded class data
