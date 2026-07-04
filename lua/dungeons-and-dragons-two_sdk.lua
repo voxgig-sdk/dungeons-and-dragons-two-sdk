@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:class():list() / client:class():load({ id = ... })
+function DungeonsAndDragonsTwoSDK:class(data)
+  local EntityMod = require("entity.class_entity")
+  if data == nil then
+    if self._class == nil then
+      self._class = EntityMod.new(self, nil)
+    end
+    return self._class
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:class() instead.
 function DungeonsAndDragonsTwoSDK:Class(data)
   local EntityMod = require("entity.class_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:feature():list() / client:feature():load({ id = ... })
+function DungeonsAndDragonsTwoSDK:feature(data)
+  local EntityMod = require("entity.feature_entity")
+  if data == nil then
+    if self._feature == nil then
+      self._feature = EntityMod.new(self, nil)
+    end
+    return self._feature
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:feature() instead.
 function DungeonsAndDragonsTwoSDK:Feature(data)
   local EntityMod = require("entity.feature_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:monster():list() / client:monster():load({ id = ... })
+function DungeonsAndDragonsTwoSDK:monster(data)
+  local EntityMod = require("entity.monster_entity")
+  if data == nil then
+    if self._monster == nil then
+      self._monster = EntityMod.new(self, nil)
+    end
+    return self._monster
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:monster() instead.
 function DungeonsAndDragonsTwoSDK:Monster(data)
   local EntityMod = require("entity.monster_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:spell():list() / client:spell():load({ id = ... })
+function DungeonsAndDragonsTwoSDK:spell(data)
+  local EntityMod = require("entity.spell_entity")
+  if data == nil then
+    if self._spell == nil then
+      self._spell = EntityMod.new(self, nil)
+    end
+    return self._spell
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:spell() instead.
 function DungeonsAndDragonsTwoSDK:Spell(data)
   local EntityMod = require("entity.spell_entity")
   return EntityMod.new(self, data)

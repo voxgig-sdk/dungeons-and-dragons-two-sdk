@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.dnd5eapi.co/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -148,7 +144,8 @@ class Config {
                     "name": "id",
                     "orig": "index",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -265,7 +262,8 @@ class Config {
                     "name": "id",
                     "orig": "index",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -467,7 +465,8 @@ class Config {
                     "name": "id",
                     "orig": "index",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -635,7 +634,8 @@ class Config {
                     "name": "id",
                     "orig": "index",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

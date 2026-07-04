@@ -15,9 +15,6 @@ module DungeonsAndDragonsTwoConfig
       },
       "options" => {
         "base" => "https://www.dnd5eapi.co/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -113,6 +110,7 @@ module DungeonsAndDragonsTwoConfig
                         "orig" => "index",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -230,6 +228,7 @@ module DungeonsAndDragonsTwoConfig
                         "orig" => "index",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -432,6 +431,7 @@ module DungeonsAndDragonsTwoConfig
                         "orig" => "index",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -600,6 +600,7 @@ module DungeonsAndDragonsTwoConfig
                         "orig" => "index",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

@@ -50,14 +50,12 @@ class TestFeatureEntity:
         feature_ref01_ent = client.Feature(None)
         feature_ref01_match = {}
 
-        feature_ref01_list_result, err = feature_ref01_ent.list(feature_ref01_match, None)
-        assert err is None
+        feature_ref01_list_result = feature_ref01_ent.list(feature_ref01_match, None)
         assert isinstance(feature_ref01_list_result, list)
 
         # LOAD
         feature_ref01_match_dt0 = {}
-        feature_ref01_data_dt0_loaded, err = feature_ref01_ent.load(feature_ref01_match_dt0, None)
-        assert err is None
+        feature_ref01_data_dt0_loaded = feature_ref01_ent.load(feature_ref01_match_dt0, None)
         assert feature_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _feature_basic_setup(extra):
         "DUNGEONSANDDRAGONSTWO_TEST_FEATURE_ENTID": idmap,
         "DUNGEONSANDDRAGONSTWO_TEST_LIVE": "FALSE",
         "DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN": "FALSE",
-        "DUNGEONSANDDRAGONSTWO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _feature_basic_setup(extra):
     if env.get("DUNGEONSANDDRAGONSTWO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DUNGEONSANDDRAGONSTWO_APIKEY"),
             },
             extra or {},
         ])

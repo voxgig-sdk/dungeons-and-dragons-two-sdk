@@ -114,7 +114,6 @@ function basicSetup(extra?: any) {
     'DUNGEONS_AND_DRAGONS_TWO_TEST_SPELL_ENTID': idmap,
     'DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE': 'FALSE',
     'DUNGEONS_AND_DRAGONS_TWO_TEST_EXPLAIN': 'FALSE',
-    'DUNGEONS_AND_DRAGONS_TWO_APIKEY': 'NONE',
   })
 
   idmap = env['DUNGEONS_AND_DRAGONS_TWO_TEST_SPELL_ENTID']
@@ -124,7 +123,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new DungeonsAndDragonsTwoSDK(merge([
       {
-        apikey: env.DUNGEONS_AND_DRAGONS_TWO_APIKEY,
       },
       extra
     ]))

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Feature,
+  FeatureLoadMatch,
+  FeatureListMatch,
+} from '../DungeonsAndDragonsTwoTypes'
 
 // TODO: needs Entity superclass
-class FeatureEntity extends DungeonsAndDragonsTwoEntityBase {
+class FeatureEntity extends DungeonsAndDragonsTwoEntityBase<Feature> {
 
   constructor(client: DungeonsAndDragonsTwoSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class FeatureEntity extends DungeonsAndDragonsTwoEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: FeatureLoadMatch, ctrl?: Control): Promise<Feature> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class FeatureEntity extends DungeonsAndDragonsTwoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Feature> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: FeatureListMatch, ctrl?: Control): Promise<Feature[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class FeatureEntity extends DungeonsAndDragonsTwoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Feature[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

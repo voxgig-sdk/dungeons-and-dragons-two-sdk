@@ -245,21 +245,33 @@ func (sdk *DungeonsAndDragonsTwoSDK) Direct(fetchargs map[string]any) (map[strin
 }
 
 
+// Class returns a Class entity bound to this client.
+// Idiomatic usage: client.Class(nil).List(nil, nil) or
+// client.Class(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DungeonsAndDragonsTwoSDK) Class(data map[string]any) DungeonsAndDragonsTwoEntity {
 	return NewClassEntityFunc(sdk, data)
 }
 
 
+// Feature returns a Feature entity bound to this client.
+// Idiomatic usage: client.Feature(nil).List(nil, nil) or
+// client.Feature(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DungeonsAndDragonsTwoSDK) Feature(data map[string]any) DungeonsAndDragonsTwoEntity {
 	return NewFeatureEntityFunc(sdk, data)
 }
 
 
+// Monster returns a Monster entity bound to this client.
+// Idiomatic usage: client.Monster(nil).List(nil, nil) or
+// client.Monster(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DungeonsAndDragonsTwoSDK) Monster(data map[string]any) DungeonsAndDragonsTwoEntity {
 	return NewMonsterEntityFunc(sdk, data)
 }
 
 
+// Spell returns a Spell entity bound to this client.
+// Idiomatic usage: client.Spell(nil).List(nil, nil) or
+// client.Spell(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DungeonsAndDragonsTwoSDK) Spell(data map[string]any) DungeonsAndDragonsTwoEntity {
 	return NewSpellEntityFunc(sdk, data)
 }

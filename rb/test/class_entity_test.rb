@@ -43,14 +43,12 @@ class ClassEntityTest < Minitest::Test
     class_ref01_ent = client.Class(nil)
     class_ref01_match = {}
 
-    class_ref01_list_result, err = class_ref01_ent.list(class_ref01_match, nil)
-    assert_nil err
+    class_ref01_list_result = class_ref01_ent.list(class_ref01_match, nil)
     assert class_ref01_list_result.is_a?(Array)
 
     # LOAD
     class_ref01_match_dt0 = {}
-    class_ref01_data_dt0_loaded, err = class_ref01_ent.load(class_ref01_match_dt0, nil)
-    assert_nil err
+    class_ref01_data_dt0_loaded = class_ref01_ent.load(class_ref01_match_dt0, nil)
     assert !class_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def class_basic_setup(extra)
     "DUNGEONSANDDRAGONSTWO_TEST_CLASS_ENTID" => idmap,
     "DUNGEONSANDDRAGONSTWO_TEST_LIVE" => "FALSE",
     "DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN" => "FALSE",
-    "DUNGEONSANDDRAGONSTWO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def class_basic_setup(extra)
   if env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["DUNGEONSANDDRAGONSTWO_APIKEY"],
       },
       extra || {},
     ])

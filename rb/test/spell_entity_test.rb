@@ -43,14 +43,12 @@ class SpellEntityTest < Minitest::Test
     spell_ref01_ent = client.Spell(nil)
     spell_ref01_match = {}
 
-    spell_ref01_list_result, err = spell_ref01_ent.list(spell_ref01_match, nil)
-    assert_nil err
+    spell_ref01_list_result = spell_ref01_ent.list(spell_ref01_match, nil)
     assert spell_ref01_list_result.is_a?(Array)
 
     # LOAD
     spell_ref01_match_dt0 = {}
-    spell_ref01_data_dt0_loaded, err = spell_ref01_ent.load(spell_ref01_match_dt0, nil)
-    assert_nil err
+    spell_ref01_data_dt0_loaded = spell_ref01_ent.load(spell_ref01_match_dt0, nil)
     assert !spell_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def spell_basic_setup(extra)
     "DUNGEONSANDDRAGONSTWO_TEST_SPELL_ENTID" => idmap,
     "DUNGEONSANDDRAGONSTWO_TEST_LIVE" => "FALSE",
     "DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN" => "FALSE",
-    "DUNGEONSANDDRAGONSTWO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def spell_basic_setup(extra)
   if env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["DUNGEONSANDDRAGONSTWO_APIKEY"],
       },
       extra || {},
     ])

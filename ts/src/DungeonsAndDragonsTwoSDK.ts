@@ -5,6 +5,8 @@ import { FeatureEntity } from './entity/FeatureEntity'
 import { MonsterEntity } from './entity/MonsterEntity'
 import { SpellEntity } from './entity/SpellEntity'
 
+export type * from './DungeonsAndDragonsTwoTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -205,24 +207,56 @@ class DungeonsAndDragonsTwoSDK {
 
 
 
+  _class?: ClassEntity
+
+  // Idiomatic facade: `client.class.list()` / `client.class.load({ id })`.
+  get class(): ClassEntity {
+    return (this._class ??= new ClassEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.class` instead. */
   Class(data?: any) {
     const self = this
     return new ClassEntity(self,data)
   }
 
 
+  _feature?: FeatureEntity
+
+  // Idiomatic facade: `client.feature.list()` / `client.feature.load({ id })`.
+  get feature(): FeatureEntity {
+    return (this._feature ??= new FeatureEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.feature` instead. */
   Feature(data?: any) {
     const self = this
     return new FeatureEntity(self,data)
   }
 
 
+  _monster?: MonsterEntity
+
+  // Idiomatic facade: `client.monster.list()` / `client.monster.load({ id })`.
+  get monster(): MonsterEntity {
+    return (this._monster ??= new MonsterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.monster` instead. */
   Monster(data?: any) {
     const self = this
     return new MonsterEntity(self,data)
   }
 
 
+  _spell?: SpellEntity
+
+  // Idiomatic facade: `client.spell.list()` / `client.spell.load({ id })`.
+  get spell(): SpellEntity {
+    return (this._spell ??= new SpellEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.spell` instead. */
   Spell(data?: any) {
     const self = this
     return new SpellEntity(self,data)

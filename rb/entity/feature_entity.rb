@@ -45,6 +45,7 @@ class FeatureEntity
     end
   end
 
+  # @return [Feature, Hash] the current Feature data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class FeatureEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Feature fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Feature.
+  #
+  # @param reqmatch [FeatureLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Feature, Hash] the loaded Feature; raises DungeonsAndDragonsTwoError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class FeatureEntity
 
 
   
+  # List Feature items matching the given filter.
+  #
+  # @param reqmatch [FeatureListMatch, Hash, nil] match filter (any subset of Feature fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Feature>, Array] the matching Feature items; raises DungeonsAndDragonsTwoError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

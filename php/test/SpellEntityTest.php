@@ -50,14 +50,12 @@ class SpellEntityTest extends TestCase
         $spell_ref01_ent = $client->Spell(null);
         $spell_ref01_match = [];
 
-        [$spell_ref01_list_result, $err] = $spell_ref01_ent->list($spell_ref01_match, null);
-        $this->assertNull($err);
+        $spell_ref01_list_result = $spell_ref01_ent->list($spell_ref01_match, null);
         $this->assertIsArray($spell_ref01_list_result);
 
         // LOAD
         $spell_ref01_match_dt0 = [];
-        [$spell_ref01_data_dt0_loaded, $err] = $spell_ref01_ent->load($spell_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $spell_ref01_data_dt0_loaded = $spell_ref01_ent->load($spell_ref01_match_dt0, null);
         $this->assertNotNull($spell_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function spell_basic_setup($extra)
         "DUNGEONSANDDRAGONSTWO_TEST_SPELL_ENTID" => $idmap,
         "DUNGEONSANDDRAGONSTWO_TEST_LIVE" => "FALSE",
         "DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN" => "FALSE",
-        "DUNGEONSANDDRAGONSTWO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function spell_basic_setup($extra)
     if ($env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["DUNGEONSANDDRAGONSTWO_APIKEY"],
             ],
             $extra ?? [],
         ]);

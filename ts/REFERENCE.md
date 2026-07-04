@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `DungeonsAndDragonsTwoSDK.test()`.
 ## ClassEntity
 
 ```ts
-const class = client.Class()
+const class = client.class
 ```
 
 ### Fields
@@ -167,7 +166,7 @@ const class = client.Class()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Class().list()
+const results = await client.class.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -175,7 +174,7 @@ const results = await client.Class().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Class().load({ id: 'class_id' })
+const result = await client.class.load({ id: 'class_id' })
 ```
 
 ### Common Methods
@@ -209,7 +208,7 @@ Return a copy of the entity options.
 ## FeatureEntity
 
 ```ts
-const feature = client.Feature()
+const feature = client.feature
 ```
 
 ### Fields
@@ -230,7 +229,7 @@ const feature = client.Feature()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Feature().list()
+const results = await client.feature.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -238,7 +237,7 @@ const results = await client.Feature().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Feature().load({ id: 'feature_id' })
+const result = await client.feature.load({ id: 'feature_id' })
 ```
 
 ### Common Methods
@@ -272,7 +271,7 @@ Return a copy of the entity options.
 ## MonsterEntity
 
 ```ts
-const monster = client.Monster()
+const monster = client.monster
 ```
 
 ### Fields
@@ -305,7 +304,7 @@ const monster = client.Monster()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Monster().list()
+const results = await client.monster.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -313,7 +312,7 @@ const results = await client.Monster().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Monster().load({ id: 'monster_id' })
+const result = await client.monster.load({ id: 'monster_id' })
 ```
 
 ### Common Methods
@@ -347,7 +346,7 @@ Return a copy of the entity options.
 ## SpellEntity
 
 ```ts
-const spell = client.Spell()
+const spell = client.spell
 ```
 
 ### Fields
@@ -373,7 +372,7 @@ const spell = client.Spell()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Spell().list()
+const results = await client.spell.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -381,7 +380,7 @@ const results = await client.Spell().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Spell().load({ id: 'spell_id' })
+const result = await client.spell.load({ id: 'spell_id' })
 ```
 
 ### Common Methods

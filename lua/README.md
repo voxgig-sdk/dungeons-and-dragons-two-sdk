@@ -9,12 +9,9 @@ The Lua SDK for the DungeonsAndDragonsTwo API — an entity-oriented client usin
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-dungeons-and-dragons-two
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("dungeons-and-dragons-two_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("DUNGEONS-AND-DRAGONS-TWO_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List classs
 
 ```lua
-local result, err = client:Class():list()
+local result, err = client:class():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a class
 
 ```lua
-local result, err = client:Class():load({ id = "example_id" })
+local result, err = client:class():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:DungeonsAndDragonsTwo():load({ id = "test01" })
+local result, err = client:class():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-DUNGEONS-AND-DRAGONS-TWO_TEST_LIVE=TRUE
-DUNGEONS-AND-DRAGONS-TWO_APIKEY=<your-key>
+DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -305,7 +298,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.Class()`
+Create an instance: `const class = client.class`
 
 #### Operations
 
@@ -328,19 +321,19 @@ Create an instance: `const class = client.Class()`
 #### Example: Load
 
 ```ts
-const class = await client.Class().load({ id: 'class_id' })
+const class = await client.class.load({ id: 'class_id' })
 ```
 
 #### Example: List
 
 ```ts
-const classs = await client.Class().list()
+const classs = await client.class.list()
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.Feature()`
+Create an instance: `const feature = client.feature`
 
 #### Operations
 
@@ -363,19 +356,19 @@ Create an instance: `const feature = client.Feature()`
 #### Example: Load
 
 ```ts
-const feature = await client.Feature().load({ id: 'feature_id' })
+const feature = await client.feature.load({ id: 'feature_id' })
 ```
 
 #### Example: List
 
 ```ts
-const features = await client.Feature().list()
+const features = await client.feature.list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.Monster()`
+Create an instance: `const monster = client.monster`
 
 #### Operations
 
@@ -410,19 +403,19 @@ Create an instance: `const monster = client.Monster()`
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.monster.load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.Monster().list()
+const monsters = await client.monster.list()
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.Spell()`
+Create an instance: `const spell = client.spell`
 
 #### Operations
 
@@ -450,13 +443,13 @@ Create an instance: `const spell = client.Spell()`
 #### Example: Load
 
 ```ts
-const spell = await client.Spell().load({ id: 'spell_id' })
+const spell = await client.spell.load({ id: 'spell_id' })
 ```
 
 #### Example: List
 
 ```ts
-const spells = await client.Spell().list()
+const spells = await client.spell.list()
 ```
 
 
@@ -531,11 +524,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local class = client:class()
+class:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- class:data_get() now returns the loaded class data
+-- class:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -96,7 +95,7 @@ same parameters as `direct()`.
 ## ClassEntity
 
 ```lua
-local class = client:Class(nil)
+local class = client:class(nil)
 ```
 
 ### Fields
@@ -117,7 +116,7 @@ local class = client:Class(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Class():list()
+local results, err = client:class():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -125,7 +124,7 @@ local results, err = client:Class():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Class():load({ id = "class_id" })
+local result, err = client:class():load({ id = "class_id" })
 ```
 
 ### Common Methods
@@ -161,7 +160,7 @@ Return the entity name.
 ## FeatureEntity
 
 ```lua
-local feature = client:Feature(nil)
+local feature = client:feature(nil)
 ```
 
 ### Fields
@@ -182,7 +181,7 @@ local feature = client:Feature(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Feature():list()
+local results, err = client:feature():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -190,7 +189,7 @@ local results, err = client:Feature():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Feature():load({ id = "feature_id" })
+local result, err = client:feature():load({ id = "feature_id" })
 ```
 
 ### Common Methods
@@ -226,7 +225,7 @@ Return the entity name.
 ## MonsterEntity
 
 ```lua
-local monster = client:Monster(nil)
+local monster = client:monster(nil)
 ```
 
 ### Fields
@@ -259,7 +258,7 @@ local monster = client:Monster(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Monster():list()
+local results, err = client:monster():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -267,7 +266,7 @@ local results, err = client:Monster():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Monster():load({ id = "monster_id" })
+local result, err = client:monster():load({ id = "monster_id" })
 ```
 
 ### Common Methods
@@ -303,7 +302,7 @@ Return the entity name.
 ## SpellEntity
 
 ```lua
-local spell = client:Spell(nil)
+local spell = client:spell(nil)
 ```
 
 ### Fields
@@ -329,7 +328,7 @@ local spell = client:Spell(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Spell():list()
+local results, err = client:spell():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -337,7 +336,7 @@ local results, err = client:Spell():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Spell():load({ id = "spell_id" })
+local result, err = client:spell():load({ id = "spell_id" })
 ```
 
 ### Common Methods

@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://www.dnd5eapi.co/api",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -113,6 +110,7 @@ def make_config():
                       "orig": "index",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -230,6 +228,7 @@ def make_config():
                       "orig": "index",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -432,6 +431,7 @@ def make_config():
                       "orig": "index",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -600,6 +600,7 @@ def make_config():
                       "orig": "index",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

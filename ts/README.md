@@ -9,9 +9,12 @@ The TypeScript SDK for the DungeonsAndDragonsTwo API — a type-safe, entity-ori
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/dungeons-and-dragons-two
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { DungeonsAndDragonsTwoSDK } from 'dungeons-and-dragons-two'
+import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two'
 
-const client = new DungeonsAndDragonsTwoSDK({
-  apikey: process.env.DUNGEONS-AND-DRAGONS-TWO_APIKEY,
-})
+const client = new DungeonsAndDragonsTwoSDK()
 ```
 
 ### 2. List classs
 
 ```ts
-const result = await client.Class().list()
+const result = await client.class.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a class
 
 ```ts
-const result = await client.Class().load({ id: 'example_id' })
+const result = await client.class.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DungeonsAndDragonsTwoSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.class.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new DungeonsAndDragonsTwoSDK({ apikey: '...' })
+const client = new DungeonsAndDragonsTwoSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.class
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new DungeonsAndDragonsTwoSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new DungeonsAndDragonsTwoSDK({
 Create a `.env.local` file at the project root:
 
 ```
-DUNGEONS-AND-DRAGONS-TWO_TEST_LIVE=TRUE
-DUNGEONS-AND-DRAGONS-TWO_APIKEY=<your-key>
+DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new DungeonsAndDragonsTwoSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new DungeonsAndDragonsTwoSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -348,7 +345,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `const class = client.Class()`
+Create an instance: `const class = client.class`
 
 #### Operations
 
@@ -371,19 +368,19 @@ Create an instance: `const class = client.Class()`
 #### Example: Load
 
 ```ts
-const class = await client.Class().load({ id: 'class_id' })
+const class = await client.class.load({ id: 'class_id' })
 ```
 
 #### Example: List
 
 ```ts
-const classs = await client.Class().list()
+const classs = await client.class.list()
 ```
 
 
 ### Feature
 
-Create an instance: `const feature = client.Feature()`
+Create an instance: `const feature = client.feature`
 
 #### Operations
 
@@ -406,19 +403,19 @@ Create an instance: `const feature = client.Feature()`
 #### Example: Load
 
 ```ts
-const feature = await client.Feature().load({ id: 'feature_id' })
+const feature = await client.feature.load({ id: 'feature_id' })
 ```
 
 #### Example: List
 
 ```ts
-const features = await client.Feature().list()
+const features = await client.feature.list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.Monster()`
+Create an instance: `const monster = client.monster`
 
 #### Operations
 
@@ -453,19 +450,19 @@ Create an instance: `const monster = client.Monster()`
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.monster.load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.Monster().list()
+const monsters = await client.monster.list()
 ```
 
 
 ### Spell
 
-Create an instance: `const spell = client.Spell()`
+Create an instance: `const spell = client.spell`
 
 #### Operations
 
@@ -493,13 +490,13 @@ Create an instance: `const spell = client.Spell()`
 #### Example: Load
 
 ```ts
-const spell = await client.Spell().load({ id: 'spell_id' })
+const spell = await client.spell.load({ id: 'spell_id' })
 ```
 
 #### Example: List
 
 ```ts
-const spells = await client.Spell().list()
+const spells = await client.spell.list()
 ```
 
 
@@ -560,7 +557,7 @@ dungeons-and-dragons-two/
 Import the SDK from the package root:
 
 ```ts
-import { DungeonsAndDragonsTwoSDK } from 'dungeons-and-dragons-two'
+import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two'
 ```
 
 ### Entity state
@@ -570,11 +567,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const class = client.class
+await class.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// class.data() now returns the loaded class data
+// class.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration
