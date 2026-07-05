@@ -23,8 +23,7 @@ type ClassLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ClassListMatch mirrors the class fields as an all-optional match
-// filter (Go analog of Partial<Class>).
+// ClassListMatch is the typed request payload for Class.ListTyped.
 type ClassListMatch struct {
 	HitDie *int `json:"hit_die,omitempty"`
 	Index *string `json:"index,omitempty"`
@@ -49,8 +48,7 @@ type FeatureLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// FeatureListMatch mirrors the feature fields as an all-optional match
-// filter (Go analog of Partial<Feature>).
+// FeatureListMatch is the typed request payload for Feature.ListTyped.
 type FeatureListMatch struct {
 	Class *map[string]any `json:"class,omitempty"`
 	Desc *[]any `json:"desc,omitempty"`
@@ -87,8 +85,7 @@ type MonsterLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// MonsterListMatch mirrors the monster fields as an all-optional match
-// filter (Go analog of Partial<Monster>).
+// MonsterListMatch is the typed request payload for Monster.ListTyped.
 type MonsterListMatch struct {
 	Alignment *string `json:"alignment,omitempty"`
 	ArmorClass *[]any `json:"armor_class,omitempty"`
@@ -130,8 +127,7 @@ type SpellLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// SpellListMatch mirrors the spell fields as an all-optional match
-// filter (Go analog of Partial<Spell>).
+// SpellListMatch is the typed request payload for Spell.ListTyped.
 type SpellListMatch struct {
 	CastingTime *string `json:"casting_time,omitempty"`
 	Class *[]any `json:"class,omitempty"`

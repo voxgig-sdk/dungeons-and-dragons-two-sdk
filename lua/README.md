@@ -4,6 +4,8 @@
 
 The Lua SDK for the DungeonsAndDragonsTwo API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Class()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local classs, err = client:Class():list()
 if err then error(err) end
 
 for _, item in ipairs(classs) do
-  print(item["id"], item["name"])
+  print(item["index"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local class, err = client:Class():load({ id = "example_id" })
 if err then error(err) end
 print(class)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local classs, err = client:Class():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Class():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Class():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -188,9 +212,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -205,7 +226,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -316,12 +337,12 @@ Create an instance: `local class = client:Class(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `hit_die` | ``$INTEGER`` |  |
-| `index` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `proficiency` | ``$ARRAY`` |  |
-| `saving_throw` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
+| `hit_die` | `number` |  |
+| `index` | `string` |  |
+| `name` | `string` |  |
+| `proficiency` | `table` |  |
+| `saving_throw` | `table` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -351,12 +372,12 @@ Create an instance: `local feature = client:Feature(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `class` | ``$OBJECT`` |  |
-| `desc` | ``$ARRAY`` |  |
-| `index` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `class` | `table` |  |
+| `desc` | `table` |  |
+| `index` | `string` |  |
+| `level` | `number` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -386,24 +407,24 @@ Create an instance: `local monster = client:Monster(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `alignment` | ``$STRING`` |  |
-| `armor_class` | ``$ARRAY`` |  |
-| `challenge_rating` | ``$NUMBER`` |  |
-| `charisma` | ``$INTEGER`` |  |
-| `constitution` | ``$INTEGER`` |  |
-| `dexterity` | ``$INTEGER`` |  |
-| `hit_dice` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `index` | ``$STRING`` |  |
-| `intelligence` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `size` | ``$STRING`` |  |
-| `speed` | ``$OBJECT`` |  |
-| `strength` | ``$INTEGER`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `wisdom` | ``$INTEGER`` |  |
-| `xp` | ``$INTEGER`` |  |
+| `alignment` | `string` |  |
+| `armor_class` | `table` |  |
+| `challenge_rating` | `number` |  |
+| `charisma` | `number` |  |
+| `constitution` | `number` |  |
+| `dexterity` | `number` |  |
+| `hit_dice` | `string` |  |
+| `hit_point` | `number` |  |
+| `index` | `string` |  |
+| `intelligence` | `number` |  |
+| `name` | `string` |  |
+| `size` | `string` |  |
+| `speed` | `table` |  |
+| `strength` | `number` |  |
+| `type` | `string` |  |
+| `url` | `string` |  |
+| `wisdom` | `number` |  |
+| `xp` | `number` |  |
 
 #### Example: Load
 
@@ -433,17 +454,17 @@ Create an instance: `local spell = client:Spell(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casting_time` | ``$STRING`` |  |
-| `class` | ``$ARRAY`` |  |
-| `component` | ``$ARRAY`` |  |
-| `desc` | ``$ARRAY`` |  |
-| `duration` | ``$STRING`` |  |
-| `index` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `range` | ``$STRING`` |  |
-| `school` | ``$OBJECT`` |  |
-| `url` | ``$STRING`` |  |
+| `casting_time` | `string` |  |
+| `class` | `table` |  |
+| `component` | `table` |  |
+| `desc` | `table` |  |
+| `duration` | `string` |  |
+| `index` | `string` |  |
+| `level` | `number` |  |
+| `name` | `string` |  |
+| `range` | `string` |  |
+| `school` | `table` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -458,12 +479,16 @@ local spells, err = client:Spell():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -480,8 +505,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -525,14 +551,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local class = client:Class()
-class:load({ id = "example_id" })
+class:list()
 
--- class:data_get() now returns the loaded class data
+-- class:data_get() now returns the class data from the last list
 -- class:match_get() returns the last match criteria
 ```
 

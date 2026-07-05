@@ -8,7 +8,7 @@ Complete API reference for the DungeonsAndDragonsTwo Python SDK.
 ### Constructor
 
 ```python
-from dungeons-and-dragons-two_sdk import DungeonsAndDragonsTwoSDK
+from dungeonsanddragonstwo_sdk import DungeonsAndDragonsTwoSDK
 
 client = DungeonsAndDragonsTwoSDK(options)
 ```
@@ -99,21 +99,21 @@ class = client.Class()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `hit_die` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `proficiency` | ``$ARRAY`` | No |  |
-| `saving_throw` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `hit_die` | `int` | No |  |
+| `index` | `str` | No |  |
+| `name` | `str` | No |  |
+| `proficiency` | `list` | No |  |
+| `saving_throw` | `list` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Class().list({})
+results = client.Class().list()
 for class in results:
     print(class)
 ```
@@ -165,21 +165,21 @@ feature = client.Feature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$OBJECT`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `class` | `dict` | No |  |
+| `desc` | `list` | No |  |
+| `index` | `str` | No |  |
+| `level` | `int` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Feature().list({})
+results = client.Feature().list()
 for feature in results:
     print(feature)
 ```
@@ -231,33 +231,33 @@ monster = client.Monster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alignment` | ``$STRING`` | No |  |
-| `armor_class` | ``$ARRAY`` | No |  |
-| `challenge_rating` | ``$NUMBER`` | No |  |
-| `charisma` | ``$INTEGER`` | No |  |
-| `constitution` | ``$INTEGER`` | No |  |
-| `dexterity` | ``$INTEGER`` | No |  |
-| `hit_dice` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `intelligence` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `size` | ``$STRING`` | No |  |
-| `speed` | ``$OBJECT`` | No |  |
-| `strength` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `wisdom` | ``$INTEGER`` | No |  |
-| `xp` | ``$INTEGER`` | No |  |
+| `alignment` | `str` | No |  |
+| `armor_class` | `list` | No |  |
+| `challenge_rating` | `float` | No |  |
+| `charisma` | `int` | No |  |
+| `constitution` | `int` | No |  |
+| `dexterity` | `int` | No |  |
+| `hit_dice` | `str` | No |  |
+| `hit_point` | `int` | No |  |
+| `index` | `str` | No |  |
+| `intelligence` | `int` | No |  |
+| `name` | `str` | No |  |
+| `size` | `str` | No |  |
+| `speed` | `dict` | No |  |
+| `strength` | `int` | No |  |
+| `type` | `str` | No |  |
+| `url` | `str` | No |  |
+| `wisdom` | `int` | No |  |
+| `xp` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Monster().list({})
+results = client.Monster().list()
 for monster in results:
     print(monster)
 ```
@@ -309,26 +309,26 @@ spell = client.Spell()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casting_time` | ``$STRING`` | No |  |
-| `class` | ``$ARRAY`` | No |  |
-| `component` | ``$ARRAY`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `duration` | ``$STRING`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `range` | ``$STRING`` | No |  |
-| `school` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `casting_time` | `str` | No |  |
+| `class` | `list` | No |  |
+| `component` | `list` | No |  |
+| `desc` | `list` | No |  |
+| `duration` | `str` | No |  |
+| `index` | `str` | No |  |
+| `level` | `int` | No |  |
+| `name` | `str` | No |  |
+| `range` | `str` | No |  |
+| `school` | `dict` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Spell().list({})
+results = client.Spell().list()
 for spell in results:
     print(spell)
 ```

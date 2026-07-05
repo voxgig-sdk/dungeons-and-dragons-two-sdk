@@ -46,7 +46,7 @@ ClassLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Class#list (any subset of Class fields).
+# Request payload for Class#list.
 #
 # @!attribute [rw] hit_die
 #   @return [Integer, nil]
@@ -113,7 +113,7 @@ FeatureLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Feature#list (any subset of Feature fields).
+# Request payload for Feature#list.
 #
 # @!attribute [rw] class
 #   @return [Hash, nil]
@@ -228,7 +228,7 @@ MonsterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Monster#list (any subset of Monster fields).
+# Request payload for Monster#list.
 #
 # @!attribute [rw] alignment
 #   @return [String, nil]
@@ -363,7 +363,7 @@ SpellLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Spell#list (any subset of Spell fields).
+# Request payload for Spell#list.
 #
 # @!attribute [rw] casting_time
 #   @return [String, nil]

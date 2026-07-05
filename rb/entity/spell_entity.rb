@@ -67,10 +67,12 @@ class SpellEntity
   
   # Load a single Spell.
   #
-  # @param reqmatch [SpellLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [SpellLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Spell.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Spell, Hash] the loaded Spell; raises DungeonsAndDragonsTwoError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",
@@ -95,10 +97,11 @@ class SpellEntity
   
   # List Spell items matching the given filter.
   #
-  # @param reqmatch [SpellListMatch, Hash, nil] match filter (any subset of Spell fields)
+  # @param reqmatch [SpellListMatch, Hash, nil] match filter (any subset of
+  #   Spell fields); defaults to nil, treated as an empty match that lists all.
   # @param ctrl [Object, nil] optional per-call control
   # @return [Array<Spell>, Array] the matching Spell items; raises DungeonsAndDragonsTwoError on failure
-  def list(reqmatch, ctrl = nil)
+  def list(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "list",
@@ -108,11 +111,23 @@ class SpellEntity
       "reqmatch" => reqmatch,
     }, @_entctx)
 
-    _run_op(ctx) do
+    records = _run_op(ctx) do
       if ctx.result
         @_match = ctx.result.resmatch if ctx.result.resmatch
       end
     end
+
+    # list yields the BARE Array of records — each an accessible Hash — so
+    # callers can index item["id"] directly, matching py/lua/go. make_result
+    # wraps each entry as an Entity instance for internal use; unwrap those
+    # back to their bare record Hashes here (load/create/etc. are unaffected).
+    if records.is_a?(Array)
+      records = records.map do |item|
+        item.respond_to?(:data_get) ? item.data_get : item
+      end
+    end
+
+    records
   end
 
 

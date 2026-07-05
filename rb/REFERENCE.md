@@ -8,7 +8,7 @@ Complete API reference for the DungeonsAndDragonsTwo Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'dungeons-and-dragons-two_sdk'
+require_relative 'DungeonsAndDragonsTwo_sdk'
 
 client = DungeonsAndDragonsTwoSDK.new(options)
 ```
@@ -105,21 +105,21 @@ class = client.Class
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `hit_die` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `proficiency` | ``$ARRAY`` | No |  |
-| `saving_throw` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `hit_die` | `Integer` | No |  |
+| `index` | `String` | No |  |
+| `name` | `String` | No |  |
+| `proficiency` | `Array` | No |  |
+| `saving_throw` | `Array` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Class.list(nil)
+results = client.Class.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -170,21 +170,21 @@ feature = client.Feature
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$OBJECT`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `class` | `Hash` | No |  |
+| `desc` | `Array` | No |  |
+| `index` | `String` | No |  |
+| `level` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Feature.list(nil)
+results = client.Feature.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -235,33 +235,33 @@ monster = client.Monster
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alignment` | ``$STRING`` | No |  |
-| `armor_class` | ``$ARRAY`` | No |  |
-| `challenge_rating` | ``$NUMBER`` | No |  |
-| `charisma` | ``$INTEGER`` | No |  |
-| `constitution` | ``$INTEGER`` | No |  |
-| `dexterity` | ``$INTEGER`` | No |  |
-| `hit_dice` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `intelligence` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `size` | ``$STRING`` | No |  |
-| `speed` | ``$OBJECT`` | No |  |
-| `strength` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `wisdom` | ``$INTEGER`` | No |  |
-| `xp` | ``$INTEGER`` | No |  |
+| `alignment` | `String` | No |  |
+| `armor_class` | `Array` | No |  |
+| `challenge_rating` | `Float` | No |  |
+| `charisma` | `Integer` | No |  |
+| `constitution` | `Integer` | No |  |
+| `dexterity` | `Integer` | No |  |
+| `hit_dice` | `String` | No |  |
+| `hit_point` | `Integer` | No |  |
+| `index` | `String` | No |  |
+| `intelligence` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `size` | `String` | No |  |
+| `speed` | `Hash` | No |  |
+| `strength` | `Integer` | No |  |
+| `type` | `String` | No |  |
+| `url` | `String` | No |  |
+| `wisdom` | `Integer` | No |  |
+| `xp` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Monster.list(nil)
+results = client.Monster.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -312,26 +312,26 @@ spell = client.Spell
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casting_time` | ``$STRING`` | No |  |
-| `class` | ``$ARRAY`` | No |  |
-| `component` | ``$ARRAY`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `duration` | ``$STRING`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `range` | ``$STRING`` | No |  |
-| `school` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `casting_time` | `String` | No |  |
+| `class` | `Array` | No |  |
+| `component` | `Array` | No |  |
+| `desc` | `Array` | No |  |
+| `duration` | `String` | No |  |
+| `index` | `String` | No |  |
+| `level` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `range` | `String` | No |  |
+| `school` | `Hash` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Spell.list(nil)
+results = client.Spell.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

@@ -8,7 +8,7 @@ Complete API reference for the DungeonsAndDragonsTwo PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/dungeons-and-dragons-two_sdk.php';
+require_once __DIR__ . '/dungeonsanddragonstwo_sdk.php';
 
 $client = new DungeonsAndDragonsTwoSDK($options);
 ```
@@ -57,11 +57,11 @@ Create a new `MonsterEntity` instance. Pass `null` for no initial data.
 
 Create a new `SpellEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): DungeonsAndDragonsTwoUtility`
 
 Return a copy of the SDK utility object.
 
@@ -104,21 +104,21 @@ $class = $client->Class();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `hit_die` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `proficiency` | ``$ARRAY`` | No |  |
-| `saving_throw` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `hit_die` | `int` | No |  |
+| `index` | `string` | No |  |
+| `name` | `string` | No |  |
+| `proficiency` | `array` | No |  |
+| `saving_throw` | `array` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Class()->list([]);
+$results = $client->Class()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -131,19 +131,19 @@ $result = $client->Class()->load(["id" => "class_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -152,7 +152,7 @@ Set the entity match criteria.
 Create a new `ClassEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -169,21 +169,21 @@ $feature = $client->Feature();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$OBJECT`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `class` | `array` | No |  |
+| `desc` | `array` | No |  |
+| `index` | `string` | No |  |
+| `level` | `int` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Feature()->list([]);
+$results = $client->Feature()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -196,19 +196,19 @@ $result = $client->Feature()->load(["id" => "feature_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -217,7 +217,7 @@ Set the entity match criteria.
 Create a new `FeatureEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -234,33 +234,33 @@ $monster = $client->Monster();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alignment` | ``$STRING`` | No |  |
-| `armor_class` | ``$ARRAY`` | No |  |
-| `challenge_rating` | ``$NUMBER`` | No |  |
-| `charisma` | ``$INTEGER`` | No |  |
-| `constitution` | ``$INTEGER`` | No |  |
-| `dexterity` | ``$INTEGER`` | No |  |
-| `hit_dice` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `intelligence` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `size` | ``$STRING`` | No |  |
-| `speed` | ``$OBJECT`` | No |  |
-| `strength` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `wisdom` | ``$INTEGER`` | No |  |
-| `xp` | ``$INTEGER`` | No |  |
+| `alignment` | `string` | No |  |
+| `armor_class` | `array` | No |  |
+| `challenge_rating` | `float` | No |  |
+| `charisma` | `int` | No |  |
+| `constitution` | `int` | No |  |
+| `dexterity` | `int` | No |  |
+| `hit_dice` | `string` | No |  |
+| `hit_point` | `int` | No |  |
+| `index` | `string` | No |  |
+| `intelligence` | `int` | No |  |
+| `name` | `string` | No |  |
+| `size` | `string` | No |  |
+| `speed` | `array` | No |  |
+| `strength` | `int` | No |  |
+| `type` | `string` | No |  |
+| `url` | `string` | No |  |
+| `wisdom` | `int` | No |  |
+| `xp` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Monster()->list([]);
+$results = $client->Monster()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -273,19 +273,19 @@ $result = $client->Monster()->load(["id" => "monster_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -294,7 +294,7 @@ Set the entity match criteria.
 Create a new `MonsterEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -311,26 +311,26 @@ $spell = $client->Spell();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casting_time` | ``$STRING`` | No |  |
-| `class` | ``$ARRAY`` | No |  |
-| `component` | ``$ARRAY`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `duration` | ``$STRING`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `range` | ``$STRING`` | No |  |
-| `school` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `casting_time` | `string` | No |  |
+| `class` | `array` | No |  |
+| `component` | `array` | No |  |
+| `desc` | `array` | No |  |
+| `duration` | `string` | No |  |
+| `index` | `string` | No |  |
+| `level` | `int` | No |  |
+| `name` | `string` | No |  |
+| `range` | `string` | No |  |
+| `school` | `array` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Spell()->list([]);
+$results = $client->Spell()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -343,19 +343,19 @@ $result = $client->Spell()->load(["id" => "spell_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -364,7 +364,7 @@ Set the entity match criteria.
 Create a new `SpellEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

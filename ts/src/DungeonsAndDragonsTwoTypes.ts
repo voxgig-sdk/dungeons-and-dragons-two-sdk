@@ -18,7 +18,14 @@ export interface ClassLoadMatch {
   id: string
 }
 
-export type ClassListMatch = Partial<Class>
+export interface ClassListMatch {
+  hit_die?: number
+  index?: string
+  name?: string
+  proficiency?: any[]
+  saving_throw?: any[]
+  url?: string
+}
 
 export interface Feature {
   class?: Record<string, any>
@@ -33,7 +40,14 @@ export interface FeatureLoadMatch {
   id: string
 }
 
-export type FeatureListMatch = Partial<Feature>
+export interface FeatureListMatch {
+  class?: Record<string, any>
+  desc?: any[]
+  index?: string
+  level?: number
+  name?: string
+  url?: string
+}
 
 export interface Monster {
   alignment?: string
@@ -60,7 +74,26 @@ export interface MonsterLoadMatch {
   id: string
 }
 
-export type MonsterListMatch = Partial<Monster>
+export interface MonsterListMatch {
+  alignment?: string
+  armor_class?: any[]
+  challenge_rating?: number
+  charisma?: number
+  constitution?: number
+  dexterity?: number
+  hit_dice?: string
+  hit_point?: number
+  index?: string
+  intelligence?: number
+  name?: string
+  size?: string
+  speed?: Record<string, any>
+  strength?: number
+  type?: string
+  url?: string
+  wisdom?: number
+  xp?: number
+}
 
 export interface Spell {
   casting_time?: string
@@ -80,5 +113,17 @@ export interface SpellLoadMatch {
   id: string
 }
 
-export type SpellListMatch = Partial<Spell>
+export interface SpellListMatch {
+  casting_time?: string
+  class?: any[]
+  component?: any[]
+  desc?: any[]
+  duration?: string
+  index?: string
+  level?: number
+  name?: string
+  range?: string
+  school?: Record<string, any>
+  url?: string
+}
 

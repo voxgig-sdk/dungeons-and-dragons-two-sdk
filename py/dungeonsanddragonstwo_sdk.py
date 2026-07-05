@@ -221,25 +221,25 @@ class DungeonsAndDragonsTwoSDK:
 
 
     def Class(self, data=None) -> "ClassEntity":
-        """Entity factory: client.Class().list({}) / client.Class().load({"id": ...})."""
+        """Entity factory: client.Class().list() / client.Class().load({"id": ...})."""
         from entity.class_entity import ClassEntity
         return ClassEntity(self, data)
 
 
     def Feature(self, data=None) -> "FeatureEntity":
-        """Entity factory: client.Feature().list({}) / client.Feature().load({"id": ...})."""
+        """Entity factory: client.Feature().list() / client.Feature().load({"id": ...})."""
         from entity.feature_entity import FeatureEntity
         return FeatureEntity(self, data)
 
 
     def Monster(self, data=None) -> "MonsterEntity":
-        """Entity factory: client.Monster().list({}) / client.Monster().load({"id": ...})."""
+        """Entity factory: client.Monster().list() / client.Monster().load({"id": ...})."""
         from entity.monster_entity import MonsterEntity
         return MonsterEntity(self, data)
 
 
     def Spell(self, data=None) -> "SpellEntity":
-        """Entity factory: client.Spell().list({}) / client.Spell().load({"id": ...})."""
+        """Entity factory: client.Spell().list() / client.Spell().load({"id": ...})."""
         from entity.spell_entity import SpellEntity
         return SpellEntity(self, data)
 

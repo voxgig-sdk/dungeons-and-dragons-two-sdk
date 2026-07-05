@@ -109,12 +109,12 @@ class := client.Class(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `hit_die` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `proficiency` | ``$ARRAY`` | No |  |
-| `saving_throw` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `hit_die` | `int` | No |  |
+| `index` | `string` | No |  |
+| `name` | `string` | No |  |
+| `proficiency` | `[]any` | No |  |
+| `saving_throw` | `[]any` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -168,12 +168,12 @@ feature := client.Feature(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$OBJECT`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `class` | `map[string]any` | No |  |
+| `desc` | `[]any` | No |  |
+| `index` | `string` | No |  |
+| `level` | `int` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -227,24 +227,24 @@ monster := client.Monster(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alignment` | ``$STRING`` | No |  |
-| `armor_class` | ``$ARRAY`` | No |  |
-| `challenge_rating` | ``$NUMBER`` | No |  |
-| `charisma` | ``$INTEGER`` | No |  |
-| `constitution` | ``$INTEGER`` | No |  |
-| `dexterity` | ``$INTEGER`` | No |  |
-| `hit_dice` | ``$STRING`` | No |  |
-| `hit_point` | ``$INTEGER`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `intelligence` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `size` | ``$STRING`` | No |  |
-| `speed` | ``$OBJECT`` | No |  |
-| `strength` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `wisdom` | ``$INTEGER`` | No |  |
-| `xp` | ``$INTEGER`` | No |  |
+| `alignment` | `string` | No |  |
+| `armor_class` | `[]any` | No |  |
+| `challenge_rating` | `float64` | No |  |
+| `charisma` | `int` | No |  |
+| `constitution` | `int` | No |  |
+| `dexterity` | `int` | No |  |
+| `hit_dice` | `string` | No |  |
+| `hit_point` | `int` | No |  |
+| `index` | `string` | No |  |
+| `intelligence` | `int` | No |  |
+| `name` | `string` | No |  |
+| `size` | `string` | No |  |
+| `speed` | `map[string]any` | No |  |
+| `strength` | `int` | No |  |
+| `type` | `string` | No |  |
+| `url` | `string` | No |  |
+| `wisdom` | `int` | No |  |
+| `xp` | `int` | No |  |
 
 ### Operations
 
@@ -298,17 +298,17 @@ spell := client.Spell(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casting_time` | ``$STRING`` | No |  |
-| `class` | ``$ARRAY`` | No |  |
-| `component` | ``$ARRAY`` | No |  |
-| `desc` | ``$ARRAY`` | No |  |
-| `duration` | ``$STRING`` | No |  |
-| `index` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `range` | ``$STRING`` | No |  |
-| `school` | ``$OBJECT`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `casting_time` | `string` | No |  |
+| `class` | `[]any` | No |  |
+| `component` | `[]any` | No |  |
+| `desc` | `[]any` | No |  |
+| `duration` | `string` | No |  |
+| `index` | `string` | No |  |
+| `level` | `int` | No |  |
+| `name` | `string` | No |  |
+| `range` | `string` | No |  |
+| `school` | `map[string]any` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 

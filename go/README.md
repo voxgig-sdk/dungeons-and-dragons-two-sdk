@@ -4,6 +4,8 @@
 
 The Golang SDK for the DungeonsAndDragonsTwo API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Class(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single class — the value is the loaded record.
-    class, err := client.Class(nil).Load(map[string]any{"id": "example_id"}, nil)
+    class, err := client.Class(nil).Load(map[string]any{"id": "example"}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(class)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+classs, err := client.Class(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = classs
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-class, err := client.Class(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+class, err := client.Class(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(class) // the loaded mock data
+fmt.Println(class) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -209,9 +240,6 @@ All entities implement the `DungeonsAndDragonsTwoEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -224,16 +252,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    class, err := client.Class(nil).Load(map[string]any{"id": "example_id"}, nil)
+    class, err := client.Class(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // class is the loaded record
+    // class is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -337,12 +365,12 @@ Create an instance: `class := client.Class(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `hit_die` | ``$INTEGER`` |  |
-| `index` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `proficiency` | ``$ARRAY`` |  |
-| `saving_throw` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
+| `hit_die` | `int` |  |
+| `index` | `string` |  |
+| `name` | `string` |  |
+| `proficiency` | `[]any` |  |
+| `saving_throw` | `[]any` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -380,12 +408,12 @@ Create an instance: `feature := client.Feature(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `class` | ``$OBJECT`` |  |
-| `desc` | ``$ARRAY`` |  |
-| `index` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `class` | `map[string]any` |  |
+| `desc` | `[]any` |  |
+| `index` | `string` |  |
+| `level` | `int` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -423,24 +451,24 @@ Create an instance: `monster := client.Monster(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `alignment` | ``$STRING`` |  |
-| `armor_class` | ``$ARRAY`` |  |
-| `challenge_rating` | ``$NUMBER`` |  |
-| `charisma` | ``$INTEGER`` |  |
-| `constitution` | ``$INTEGER`` |  |
-| `dexterity` | ``$INTEGER`` |  |
-| `hit_dice` | ``$STRING`` |  |
-| `hit_point` | ``$INTEGER`` |  |
-| `index` | ``$STRING`` |  |
-| `intelligence` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `size` | ``$STRING`` |  |
-| `speed` | ``$OBJECT`` |  |
-| `strength` | ``$INTEGER`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `wisdom` | ``$INTEGER`` |  |
-| `xp` | ``$INTEGER`` |  |
+| `alignment` | `string` |  |
+| `armor_class` | `[]any` |  |
+| `challenge_rating` | `float64` |  |
+| `charisma` | `int` |  |
+| `constitution` | `int` |  |
+| `dexterity` | `int` |  |
+| `hit_dice` | `string` |  |
+| `hit_point` | `int` |  |
+| `index` | `string` |  |
+| `intelligence` | `int` |  |
+| `name` | `string` |  |
+| `size` | `string` |  |
+| `speed` | `map[string]any` |  |
+| `strength` | `int` |  |
+| `type` | `string` |  |
+| `url` | `string` |  |
+| `wisdom` | `int` |  |
+| `xp` | `int` |  |
 
 #### Example: Load
 
@@ -478,17 +506,17 @@ Create an instance: `spell := client.Spell(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casting_time` | ``$STRING`` |  |
-| `class` | ``$ARRAY`` |  |
-| `component` | ``$ARRAY`` |  |
-| `desc` | ``$ARRAY`` |  |
-| `duration` | ``$STRING`` |  |
-| `index` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `range` | ``$STRING`` |  |
-| `school` | ``$OBJECT`` |  |
-| `url` | ``$STRING`` |  |
+| `casting_time` | `string` |  |
+| `class` | `[]any` |  |
+| `component` | `[]any` |  |
+| `desc` | `[]any` |  |
+| `duration` | `string` |  |
+| `index` | `string` |  |
+| `level` | `int` |  |
+| `name` | `string` |  |
+| `range` | `string` |  |
+| `school` | `map[string]any` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -511,12 +539,16 @@ fmt.Println(spells) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -533,9 +565,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -576,14 +608,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 class := client.Class(nil)
-class.Load(map[string]any{"id": "example_id"}, nil)
+class.List(nil, nil)
 
-// class.Data() now returns the loaded class data
+// class.Data() now returns the class data from the last list
 // class.Match() returns the last match criteria
 ```
 

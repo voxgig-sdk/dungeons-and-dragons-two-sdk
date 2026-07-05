@@ -29,7 +29,7 @@ class ClassLoadMatch
     public string $id;
 }
 
-/** Match filter for Class#list (any subset of Class fields). */
+/** Request payload for Class#list. */
 class ClassListMatch
 {
     public ?int $hit_die = null;
@@ -57,7 +57,7 @@ class FeatureLoadMatch
     public string $id;
 }
 
-/** Match filter for Feature#list (any subset of Feature fields). */
+/** Request payload for Feature#list. */
 class FeatureListMatch
 {
     public ?array $class = null;
@@ -97,7 +97,7 @@ class MonsterLoadMatch
     public string $id;
 }
 
-/** Match filter for Monster#list (any subset of Monster fields). */
+/** Request payload for Monster#list. */
 class MonsterListMatch
 {
     public ?string $alignment = null;
@@ -142,7 +142,7 @@ class SpellLoadMatch
     public string $id;
 }
 
-/** Match filter for Spell#list (any subset of Spell fields). */
+/** Request payload for Spell#list. */
 class SpellListMatch
 {
     public ?string $casting_time = null;
