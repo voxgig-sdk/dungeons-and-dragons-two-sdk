@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ClassEntity
 
 ```python
-class = client.Class()
+class_ = client.Class()
 ```
 
 ### Fields
@@ -114,8 +114,8 @@ List entities matching the given criteria. The match is optional — call `list(
 
 ```python
 results = client.Class().list()
-for class in results:
-    print(class)
+for class_ in results:
+    print(class_)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`

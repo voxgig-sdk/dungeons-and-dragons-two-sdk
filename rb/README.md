@@ -35,8 +35,8 @@ client = DungeonsAndDragonsTwoSDK.new
 ```ruby
 begin
   # list returns an Array of Class records — iterate directly.
-  classs = client.Class.list
-  classs.each do |item|
+  class_s = client.Class.list
+  class_s.each do |item|
     puts "#{item["hit_die"]}"
   end
 rescue => err
@@ -49,8 +49,8 @@ end
 ```ruby
 begin
   # load returns the bare Class record (raises on error).
-  class = client.Class.load({ "id" => "example_id" })
-  puts class
+  class_ = client.Class.load({ "id" => "example_id" })
+  puts class_
 rescue => err
   warn "load failed: #{err}"
 end
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  classs = client.Class.list()
+  class_s = client.Class.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -135,8 +135,8 @@ client = DungeonsAndDragonsTwoSDK.test({
 })
 
 # Entity ops return the bare mock record (raises on error).
-class = client.Class.list()
-puts class
+class_ = client.Class.list()
+puts class_
 ```
 
 ### Use a custom fetch function
@@ -335,7 +335,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `class = client.Class`
+Create an instance: `class_ = client.Class`
 
 #### Operations
 
@@ -359,14 +359,14 @@ Create an instance: `class = client.Class`
 
 ```ruby
 # load returns the bare Class record (raises on error).
-class = client.Class.load({ "id" => "class_id" })
+class_ = client.Class.load({ "id" => "class_id" })
 ```
 
 #### Example: List
 
 ```ruby
 # list returns an Array of Class records (raises on error).
-classs = client.Class.list
+class_s = client.Class.list
 ```
 
 
@@ -574,11 +574,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-class = client.Class
-class.list()
+class_ = client.Class
+class_.list()
 
-# class.data_get now returns the class data from the last list
-# class.match_get returns the last match criteria
+# class_.data_get now returns the class_ data from the last list
+# class_.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

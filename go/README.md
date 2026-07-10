@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single class — the value is the loaded record.
-    class, err := client.Class(nil).Load(map[string]any{"id": "example"}, nil)
+    class, err := client.Class(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

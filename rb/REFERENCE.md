@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## ClassEntity
 
 ```ruby
-class = client.Class
+class_ = client.Class
 ```
 
 ### Fields

@@ -15,8 +15,10 @@ main: {
           url: "https://www.dnd5eapi.co/api"
         }
       ]
+      summary: "This API provides access to the 5th Edition Dungeons and Dragons System Reference Document (SRD)."
       title: "Dungeons and Dragons API"
       version: "1.0.0"
+      website: "https://dnd5eapi.co"
     }
   }
 }

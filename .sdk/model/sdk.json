@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -879,14 +876,17 @@
           "url": "https://www.dnd5eapi.co/"
         },
         "description": "This API provides access to the 5th Edition Dungeons and Dragons System Reference Document (SRD). It allows developers to retrieve information about spells, classes, monsters, and other game elements through a modern RESTful interface.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://www.dnd5eapi.co/api"
           }
         ],
+        "summary": "This API provides access to the 5th Edition Dungeons and Dragons System Reference Document (SRD).",
         "title": "Dungeons and Dragons API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://dnd5eapi.co"
       },
       "option": {},
       "target": {
@@ -939,6 +939,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -989,6 +992,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

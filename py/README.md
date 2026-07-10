@@ -43,9 +43,9 @@ error — iterate it directly.
 
 ```python
 try:
-    classs = client.Class().list()
-    for class in classs:
-        print(class)
+    class_s = client.Class().list()
+    for class_ in class_s:
+        print(class_)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -56,8 +56,8 @@ except Exception as err:
 
 ```python
 try:
-    class = client.Class().load({"id": "example_id"})
-    print(class)
+    class_ = client.Class().load({"id": "example_id"})
+    print(class_)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    classs = client.Class().list()
-    print(classs)
+    class_s = client.Class().list()
+    print(class_s)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -137,8 +137,8 @@ Create a mock client for unit testing — no server required:
 client = DungeonsAndDragonsTwoSDK.test()
 
 # Entity ops return the bare record and raise on error.
-class = client.Class().list()
-# class contains the mock response record
+class_ = client.Class().list()
+# class_ contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -338,7 +338,7 @@ API path: `/spells`
 
 ### Class
 
-Create an instance: `class = client.Class()`
+Create an instance: `class_ = client.Class()`
 
 #### Operations
 
@@ -361,13 +361,13 @@ Create an instance: `class = client.Class()`
 #### Example: Load
 
 ```python
-class = client.Class().load({"id": "class_id"})
+class_ = client.Class().load({"id": "class_id"})
 ```
 
 #### Example: List
 
 ```python
-classs = client.Class().list()
+class_s = client.Class().list()
 ```
 
 
@@ -568,11 +568,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-class = client.Class()
-class.list()
+class_ = client.Class()
+class_.list()
 
-# class.data_get() now returns the class data from the last list
-# class.match_get() returns the last match criteria
+# class_.data_get() now returns the class_ data from the last list
+# class_.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

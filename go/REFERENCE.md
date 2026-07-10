@@ -103,6 +103,7 @@ same parameters as `Direct()`.
 
 ```go
 class := client.Class(nil)
+fmt.Println(class.GetName()) // "class"
 ```
 
 ### Fields
@@ -124,6 +125,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Class(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -132,6 +137,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Class(nil).Load(map[string]any{"id": "class_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -162,6 +171,7 @@ Return the entity name.
 
 ```go
 feature := client.Feature(nil)
+fmt.Println(feature.GetName()) // "feature"
 ```
 
 ### Fields
@@ -183,6 +193,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Feature(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -191,6 +205,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Feature(nil).Load(map[string]any{"id": "feature_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -221,6 +239,7 @@ Return the entity name.
 
 ```go
 monster := client.Monster(nil)
+fmt.Println(monster.GetName()) // "monster"
 ```
 
 ### Fields
@@ -254,6 +273,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Monster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -262,6 +285,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -292,6 +319,7 @@ Return the entity name.
 
 ```go
 spell := client.Spell(nil)
+fmt.Println(spell.GetName()) // "spell"
 ```
 
 ### Fields
@@ -318,6 +346,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Spell(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -326,6 +358,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Spell(nil).Load(map[string]any{"id": "spell_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
