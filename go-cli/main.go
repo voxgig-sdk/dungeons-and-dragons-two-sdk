@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewDungeonsAndDragonsTwoSDK(nil)
+	// Configure from the environment: DUNGEONS_AND_DRAGONS_TWO_APIKEY carries the API key and
+	// DUNGEONS_AND_DRAGONS_TWO_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("DUNGEONS_AND_DRAGONS_TWO_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("DUNGEONS_AND_DRAGONS_TWO_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewDungeonsAndDragonsTwoSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
