@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- DungeonsAndDragonsTwo SDK exists test
 
 local sdk = require("dungeons-and-dragons-two_sdk")
 
