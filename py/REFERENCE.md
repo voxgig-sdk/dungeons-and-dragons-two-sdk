@@ -102,8 +102,8 @@ class_ = client.Class()
 | `hit_die` | `int` | No |  |
 | `index` | `str` | No |  |
 | `name` | `str` | No |  |
-| `proficiency` | `list` | No |  |
-| `saving_throw` | `list` | No |  |
+| `proficiencies` | `list` | No |  |
+| `saving_throws` | `list` | No |  |
 | `url` | `str` | No |  |
 
 ### Operations
@@ -238,7 +238,7 @@ monster = client.Monster()
 | `constitution` | `int` | No |  |
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `str` | No |  |
-| `hit_point` | `int` | No |  |
+| `hit_points` | `int` | No |  |
 | `index` | `str` | No |  |
 | `intelligence` | `int` | No |  |
 | `name` | `str` | No |  |
@@ -310,8 +310,8 @@ spell = client.Spell()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `casting_time` | `str` | No |  |
-| `class` | `list` | No |  |
-| `component` | `list` | No |  |
+| `classes` | `list` | No |  |
+| `components` | `list` | No |  |
 | `desc` | `list` | No |  |
 | `duration` | `str` | No |  |
 | `index` | `str` | No |  |

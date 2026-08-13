@@ -5,8 +5,8 @@
         "hit_die": "s3c",
         "index": "s3d",
         "name": "s3e",
-        "proficiency": [],
-        "saving_throw": [],
+        "proficiencies": [],
+        "saving_throws": [],
         "url": "s41",
         "id": "CLASS00"
       },
@@ -14,8 +14,8 @@
         "hit_die": "s78",
         "index": "s79",
         "name": "s7a",
-        "proficiency": [],
-        "saving_throw": [],
+        "proficiencies": [],
+        "saving_throws": [],
         "url": "s7d",
         "id": "CLASS01"
       },
@@ -23,8 +23,8 @@
         "hit_die": "sb4",
         "index": "sb5",
         "name": "sb6",
-        "proficiency": [],
-        "saving_throw": [],
+        "proficiencies": [],
+        "saving_throws": [],
         "url": "sb9",
         "id": "CLASS02"
       }
@@ -36,8 +36,8 @@
         "hit_die": "sf0",
         "index": "sf1",
         "name": "sf2",
-        "proficiency": [],
-        "saving_throw": [],
+        "proficiencies": [],
+        "saving_throws": [],
         "url": "sf5"
       }
     }

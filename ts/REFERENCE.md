@@ -155,8 +155,8 @@ const class_ = client.Class()
 | `hit_die` | `number` | No |  |
 | `index` | `string` | No |  |
 | `name` | `string` | No |  |
-| `proficiency` | `any[]` | No |  |
-| `saving_throw` | `any[]` | No |  |
+| `proficiencies` | `any[]` | No |  |
+| `saving_throws` | `any[]` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -285,7 +285,7 @@ const monster = client.Monster()
 | `constitution` | `number` | No |  |
 | `dexterity` | `number` | No |  |
 | `hit_dice` | `string` | No |  |
-| `hit_point` | `number` | No |  |
+| `hit_points` | `number` | No |  |
 | `index` | `string` | No |  |
 | `intelligence` | `number` | No |  |
 | `name` | `string` | No |  |
@@ -354,8 +354,8 @@ const spell = client.Spell()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `casting_time` | `string` | No |  |
-| `class` | `any[]` | No |  |
-| `component` | `any[]` | No |  |
+| `classes` | `any[]` | No |  |
+| `components` | `any[]` | No |  |
 | `desc` | `any[]` | No |  |
 | `duration` | `string` | No |  |
 | `index` | `string` | No |  |

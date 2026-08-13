@@ -113,8 +113,8 @@ fmt.Println(class.GetName()) // "class"
 | `hit_die` | `int` | No |  |
 | `index` | `string` | No |  |
 | `name` | `string` | No |  |
-| `proficiency` | `[]any` | No |  |
-| `saving_throw` | `[]any` | No |  |
+| `proficiencies` | `[]any` | No |  |
+| `saving_throws` | `[]any` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -253,7 +253,7 @@ fmt.Println(monster.GetName()) // "monster"
 | `constitution` | `int` | No |  |
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `string` | No |  |
-| `hit_point` | `int` | No |  |
+| `hit_points` | `int` | No |  |
 | `index` | `string` | No |  |
 | `intelligence` | `int` | No |  |
 | `name` | `string` | No |  |
@@ -327,8 +327,8 @@ fmt.Println(spell.GetName()) // "spell"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `casting_time` | `string` | No |  |
-| `class` | `[]any` | No |  |
-| `component` | `[]any` | No |  |
+| `classes` | `[]any` | No |  |
+| `components` | `[]any` | No |  |
 | `desc` | `[]any` | No |  |
 | `duration` | `string` | No |  |
 | `index` | `string` | No |  |

@@ -113,11 +113,11 @@ function monster_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["DUNGEONSANDDRAGONSTWO_TEST_MONSTER_ENTID"] = {},
-    ["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] = "FALSE",
+    ["DUNGEONS_AND_DRAGONS_TWO_TEST_MONSTER_ENTID"] = {},
+    ["DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
+  local live = env["DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

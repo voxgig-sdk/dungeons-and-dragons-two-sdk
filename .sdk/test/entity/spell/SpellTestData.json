@@ -3,8 +3,8 @@
     "spell": {
       "SPELL00": {
         "casting_time": "s6e",
-        "class": [],
-        "component": [],
+        "classes": [],
+        "components": [],
         "desc": [],
         "duration": "s72",
         "index": "s73",
@@ -17,8 +17,8 @@
       },
       "SPELL01": {
         "casting_time": "sdc",
-        "class": [],
-        "component": [],
+        "classes": [],
+        "components": [],
         "desc": [],
         "duration": "se0",
         "index": "se1",
@@ -31,8 +31,8 @@
       },
       "SPELL02": {
         "casting_time": "s14a",
-        "class": [],
-        "component": [],
+        "classes": [],
+        "components": [],
         "desc": [],
         "duration": "s14e",
         "index": "s14f",
@@ -49,8 +49,8 @@
     "spell": {
       "spell_ref01": {
         "casting_time": "s1b8",
-        "class": [],
-        "component": [],
+        "classes": [],
+        "components": [],
         "desc": [],
         "duration": "s1bc",
         "index": "s1bd",

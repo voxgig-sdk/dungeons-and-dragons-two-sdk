@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Class record (raises on error).
+  # load returns the ENTITY — call data_get for the Class record (raises on error).
   class_ = client.Class.load({ "id" => "example_id" })
   puts class_
 rescue => err
@@ -134,7 +134,8 @@ client = DungeonsAndDragonsTwoSDK.test({
   "entity" => { "class" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 class_ = client.Class.list()
 puts class_
 ```
@@ -258,8 +259,8 @@ returns a result `Hash` with these keys:
 | `hit_die` |  |
 | `index` |  |
 | `name` |  |
-| `proficiency` |  |
-| `saving_throw` |  |
+| `proficiencies` |  |
+| `saving_throws` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -292,7 +293,7 @@ API path: `/features`
 | `constitution` |  |
 | `dexterity` |  |
 | `hit_dice` |  |
-| `hit_point` |  |
+| `hit_points` |  |
 | `index` |  |
 | `intelligence` |  |
 | `name` |  |
@@ -313,8 +314,8 @@ API path: `/monsters`
 | Field | Description |
 | --- | --- |
 | `casting_time` |  |
-| `class` |  |
-| `component` |  |
+| `classes` |  |
+| `components` |  |
 | `desc` |  |
 | `duration` |  |
 | `index` |  |
@@ -351,14 +352,14 @@ Create an instance: `class_ = client.Class`
 | `hit_die` | `Integer` |  |
 | `index` | `String` |  |
 | `name` | `String` |  |
-| `proficiency` | `Array` |  |
-| `saving_throw` | `Array` |  |
+| `proficiencies` | `Array` |  |
+| `saving_throws` | `Array` |  |
 | `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Class record (raises on error).
+# load returns the ENTITY — call data_get for the Class record (raises on error).
 class_ = client.Class.load({ "id" => "class_id" })
 ```
 
@@ -395,7 +396,7 @@ Create an instance: `feature = client.Feature`
 #### Example: Load
 
 ```ruby
-# load returns the bare Feature record (raises on error).
+# load returns the ENTITY — call data_get for the Feature record (raises on error).
 feature = client.Feature.load({ "id" => "feature_id" })
 ```
 
@@ -429,7 +430,7 @@ Create an instance: `monster = client.Monster`
 | `constitution` | `Integer` |  |
 | `dexterity` | `Integer` |  |
 | `hit_dice` | `String` |  |
-| `hit_point` | `Integer` |  |
+| `hit_points` | `Integer` |  |
 | `index` | `String` |  |
 | `intelligence` | `Integer` |  |
 | `name` | `String` |  |
@@ -444,7 +445,7 @@ Create an instance: `monster = client.Monster`
 #### Example: Load
 
 ```ruby
-# load returns the bare Monster record (raises on error).
+# load returns the ENTITY — call data_get for the Monster record (raises on error).
 monster = client.Monster.load({ "id" => "monster_id" })
 ```
 
@@ -472,8 +473,8 @@ Create an instance: `spell = client.Spell`
 | Field | Type | Description |
 | --- | --- | --- |
 | `casting_time` | `String` |  |
-| `class` | `Array` |  |
-| `component` | `Array` |  |
+| `classes` | `Array` |  |
+| `components` | `Array` |  |
 | `desc` | `Array` |  |
 | `duration` | `String` |  |
 | `index` | `String` |  |
@@ -486,7 +487,7 @@ Create an instance: `spell = client.Spell`
 #### Example: Load
 
 ```ruby
-# load returns the bare Spell record (raises on error).
+# load returns the ENTITY — call data_get for the Spell record (raises on error).
 spell = client.Spell.load({ "id" => "spell_id" })
 ```
 

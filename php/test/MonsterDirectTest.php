@@ -119,11 +119,11 @@ function monster_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "DUNGEONSANDDRAGONSTWO_TEST_MONSTER_ENTID" => [],
-        "DUNGEONSANDDRAGONSTWO_TEST_LIVE" => "FALSE",
+        "DUNGEONS_AND_DRAGONS_TWO_TEST_MONSTER_ENTID" => [],
+        "DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] === "TRUE";
+    $live = $env["DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Class record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Class record (throws on error).
     $class = $client->Class()->load(["id" => "example_id"]);
     print_r($class);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = DungeonsAndDragonsTwoSDK::test([
     "entity" => ["class" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $class = $client->Class()->list();
 print_r($class);
 ```
@@ -243,7 +244,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -268,8 +269,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `hit_die` |  |
 | `index` |  |
 | `name` |  |
-| `proficiency` |  |
-| `saving_throw` |  |
+| `proficiencies` |  |
+| `saving_throws` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -302,7 +303,7 @@ API path: `/features`
 | `constitution` |  |
 | `dexterity` |  |
 | `hit_dice` |  |
-| `hit_point` |  |
+| `hit_points` |  |
 | `index` |  |
 | `intelligence` |  |
 | `name` |  |
@@ -323,8 +324,8 @@ API path: `/monsters`
 | Field | Description |
 | --- | --- |
 | `casting_time` |  |
-| `class` |  |
-| `component` |  |
+| `classes` |  |
+| `components` |  |
 | `desc` |  |
 | `duration` |  |
 | `index` |  |
@@ -361,14 +362,14 @@ Create an instance: `$class = $client->Class();`
 | `hit_die` | `int` |  |
 | `index` | `string` |  |
 | `name` | `string` |  |
-| `proficiency` | `array` |  |
-| `saving_throw` | `array` |  |
+| `proficiencies` | `array` |  |
+| `saving_throws` | `array` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Class record (throws on error).
+// load() returns the ENTITY — call data_get() for the Class record (throws on error).
 $class = $client->Class()->load(["id" => "class_id"]);
 ```
 
@@ -405,7 +406,7 @@ Create an instance: `$feature = $client->Feature();`
 #### Example: Load
 
 ```php
-// load() returns the bare Feature record (throws on error).
+// load() returns the ENTITY — call data_get() for the Feature record (throws on error).
 $feature = $client->Feature()->load(["id" => "feature_id"]);
 ```
 
@@ -439,7 +440,7 @@ Create an instance: `$monster = $client->Monster();`
 | `constitution` | `int` |  |
 | `dexterity` | `int` |  |
 | `hit_dice` | `string` |  |
-| `hit_point` | `int` |  |
+| `hit_points` | `int` |  |
 | `index` | `string` |  |
 | `intelligence` | `int` |  |
 | `name` | `string` |  |
@@ -454,7 +455,7 @@ Create an instance: `$monster = $client->Monster();`
 #### Example: Load
 
 ```php
-// load() returns the bare Monster record (throws on error).
+// load() returns the ENTITY — call data_get() for the Monster record (throws on error).
 $monster = $client->Monster()->load(["id" => "monster_id"]);
 ```
 
@@ -482,8 +483,8 @@ Create an instance: `$spell = $client->Spell();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `casting_time` | `string` |  |
-| `class` | `array` |  |
-| `component` | `array` |  |
+| `classes` | `array` |  |
+| `components` | `array` |  |
 | `desc` | `array` |  |
 | `duration` | `string` |  |
 | `index` | `string` |  |
@@ -496,7 +497,7 @@ Create an instance: `$spell = $client->Spell();`
 #### Example: Load
 
 ```php
-// load() returns the bare Spell record (throws on error).
+// load() returns the ENTITY — call data_get() for the Spell record (throws on error).
 $spell = $client->Spell()->load(["id" => "spell_id"]);
 ```
 

@@ -105,8 +105,8 @@ local class = client:Class(nil)
 | `hit_die` | `number` | No |  |
 | `index` | `string` | No |  |
 | `name` | `string` | No |  |
-| `proficiency` | `table` | No |  |
-| `saving_throw` | `table` | No |  |
+| `proficiencies` | `table` | No |  |
+| `saving_throws` | `table` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -239,7 +239,7 @@ local monster = client:Monster(nil)
 | `constitution` | `number` | No |  |
 | `dexterity` | `number` | No |  |
 | `hit_dice` | `string` | No |  |
-| `hit_point` | `number` | No |  |
+| `hit_points` | `number` | No |  |
 | `index` | `string` | No |  |
 | `intelligence` | `number` | No |  |
 | `name` | `string` | No |  |
@@ -310,8 +310,8 @@ local spell = client:Spell(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `casting_time` | `string` | No |  |
-| `class` | `table` | No |  |
-| `component` | `table` | No |  |
+| `classes` | `table` | No |  |
+| `components` | `table` | No |  |
 | `desc` | `table` | No |  |
 | `duration` | `string` | No |  |
 | `index` | `string` | No |  |

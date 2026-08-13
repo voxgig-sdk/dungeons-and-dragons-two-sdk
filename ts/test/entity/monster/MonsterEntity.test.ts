@@ -26,8 +26,8 @@ import {
 describe('MonsterEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when DUNGEONSANDDRAGONSTWO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('DUNGEONSANDDRAGONSTWO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = DungeonsAndDragonsTwoSDK.test()
@@ -63,7 +63,7 @@ describe('MonsterEntity', async () => {
     const monster_ref01_ent = client.Monster()
     const monster_ref01_match: any = {}
 
-    const monster_ref01_list = await monster_ref01_ent.list(monster_ref01_match)
+    const monster_ref01_list = (await monster_ref01_ent.list(monster_ref01_match)).map((e: any) => e.data())
 
 
 

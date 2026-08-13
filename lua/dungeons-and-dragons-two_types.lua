@@ -10,8 +10,8 @@
 ---@field hit_die? number
 ---@field index? string
 ---@field name? string
----@field proficiency? table
----@field saving_throw? table
+---@field proficiencies? table
+---@field saving_throws? table
 ---@field url? string
 
 ---@class ClassLoadMatch
@@ -21,8 +21,8 @@
 ---@field hit_die? number
 ---@field index? string
 ---@field name? string
----@field proficiency? table
----@field saving_throw? table
+---@field proficiencies? table
+---@field saving_throws? table
 ---@field url? string
 
 ---@class Feature
@@ -52,7 +52,7 @@
 ---@field constitution? number
 ---@field dexterity? number
 ---@field hit_dice? string
----@field hit_point? number
+---@field hit_points? number
 ---@field index? string
 ---@field intelligence? number
 ---@field name? string
@@ -75,7 +75,7 @@
 ---@field constitution? number
 ---@field dexterity? number
 ---@field hit_dice? string
----@field hit_point? number
+---@field hit_points? number
 ---@field index? string
 ---@field intelligence? number
 ---@field name? string
@@ -89,8 +89,8 @@
 
 ---@class Spell
 ---@field casting_time? string
----@field class? table
----@field component? table
+---@field classes? table
+---@field components? table
 ---@field desc? table
 ---@field duration? string
 ---@field index? string
@@ -105,8 +105,8 @@
 
 ---@class SpellListMatch
 ---@field casting_time? string
----@field class? table
----@field component? table
+---@field classes? table
+---@field components? table
 ---@field desc? table
 ---@field duration? string
 ---@field index? string

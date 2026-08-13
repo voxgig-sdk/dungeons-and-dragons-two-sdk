@@ -19,20 +19,20 @@
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] proficiency
+# @!attribute [rw] proficiencies
 #   @return [Array, nil]
 #
-# @!attribute [rw] saving_throw
+# @!attribute [rw] saving_throws
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
-Class = Struct.new(
+ClassType = Struct.new(
   :hit_die,
   :index,
   :name,
-  :proficiency,
-  :saving_throw,
+  :proficiencies,
+  :saving_throws,
   :url,
   keyword_init: true
 )
@@ -57,10 +57,10 @@ ClassLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] proficiency
+# @!attribute [rw] proficiencies
 #   @return [Array, nil]
 #
-# @!attribute [rw] saving_throw
+# @!attribute [rw] saving_throws
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
@@ -69,8 +69,8 @@ ClassListMatch = Struct.new(
   :hit_die,
   :index,
   :name,
-  :proficiency,
-  :saving_throw,
+  :proficiencies,
+  :saving_throws,
   :url,
   keyword_init: true
 )
@@ -165,7 +165,7 @@ FeatureListMatch = Struct.new(
 # @!attribute [rw] hit_dice
 #   @return [String, nil]
 #
-# @!attribute [rw] hit_point
+# @!attribute [rw] hit_points
 #   @return [Integer, nil]
 #
 # @!attribute [rw] index
@@ -205,7 +205,7 @@ Monster = Struct.new(
   :constitution,
   :dexterity,
   :hit_dice,
-  :hit_point,
+  :hit_points,
   :index,
   :intelligence,
   :name,
@@ -251,7 +251,7 @@ MonsterLoadMatch = Struct.new(
 # @!attribute [rw] hit_dice
 #   @return [String, nil]
 #
-# @!attribute [rw] hit_point
+# @!attribute [rw] hit_points
 #   @return [Integer, nil]
 #
 # @!attribute [rw] index
@@ -291,7 +291,7 @@ MonsterListMatch = Struct.new(
   :constitution,
   :dexterity,
   :hit_dice,
-  :hit_point,
+  :hit_points,
   :index,
   :intelligence,
   :name,
@@ -310,10 +310,10 @@ MonsterListMatch = Struct.new(
 # @!attribute [rw] casting_time
 #   @return [String, nil]
 #
-# @!attribute [rw] class
+# @!attribute [rw] classes
 #   @return [Array, nil]
 #
-# @!attribute [rw] component
+# @!attribute [rw] components
 #   @return [Array, nil]
 #
 # @!attribute [rw] desc
@@ -341,8 +341,8 @@ MonsterListMatch = Struct.new(
 #   @return [String, nil]
 Spell = Struct.new(
   :casting_time,
-  :class,
-  :component,
+  :classes,
+  :components,
   :desc,
   :duration,
   :index,
@@ -368,10 +368,10 @@ SpellLoadMatch = Struct.new(
 # @!attribute [rw] casting_time
 #   @return [String, nil]
 #
-# @!attribute [rw] class
+# @!attribute [rw] classes
 #   @return [Array, nil]
 #
-# @!attribute [rw] component
+# @!attribute [rw] components
 #   @return [Array, nil]
 #
 # @!attribute [rw] desc
@@ -399,8 +399,8 @@ SpellLoadMatch = Struct.new(
 #   @return [String, nil]
 SpellListMatch = Struct.new(
   :casting_time,
-  :class,
-  :component,
+  :classes,
+  :components,
   :desc,
   :duration,
   :index,

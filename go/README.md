@@ -275,8 +275,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"hit_die"` |  |
 | `"index"` |  |
 | `"name"` |  |
-| `"proficiency"` |  |
-| `"saving_throw"` |  |
+| `"proficiencies"` |  |
+| `"saving_throws"` |  |
 | `"url"` |  |
 
 Operations: List, Load.
@@ -309,7 +309,7 @@ API path: `/features`
 | `"constitution"` |  |
 | `"dexterity"` |  |
 | `"hit_dice"` |  |
-| `"hit_point"` |  |
+| `"hit_points"` |  |
 | `"index"` |  |
 | `"intelligence"` |  |
 | `"name"` |  |
@@ -330,8 +330,8 @@ API path: `/monsters`
 | Field | Description |
 | --- | --- |
 | `"casting_time"` |  |
-| `"class"` |  |
-| `"component"` |  |
+| `"classes"` |  |
+| `"components"` |  |
 | `"desc"` |  |
 | `"duration"` |  |
 | `"index"` |  |
@@ -368,8 +368,8 @@ Create an instance: `class := client.Class(nil)`
 | `hit_die` | `int` |  |
 | `index` | `string` |  |
 | `name` | `string` |  |
-| `proficiency` | `[]any` |  |
-| `saving_throw` | `[]any` |  |
+| `proficiencies` | `[]any` |  |
+| `saving_throws` | `[]any` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -458,7 +458,7 @@ Create an instance: `monster := client.Monster(nil)`
 | `constitution` | `int` |  |
 | `dexterity` | `int` |  |
 | `hit_dice` | `string` |  |
-| `hit_point` | `int` |  |
+| `hit_points` | `int` |  |
 | `index` | `string` |  |
 | `intelligence` | `int` |  |
 | `name` | `string` |  |
@@ -507,8 +507,8 @@ Create an instance: `spell := client.Spell(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `casting_time` | `string` |  |
-| `class` | `[]any` |  |
-| `component` | `[]any` |  |
+| `classes` | `[]any` |  |
+| `components` | `[]any` |  |
 | `desc` | `[]any` |  |
 | `duration` | `string` |  |
 | `index` | `string` |  |

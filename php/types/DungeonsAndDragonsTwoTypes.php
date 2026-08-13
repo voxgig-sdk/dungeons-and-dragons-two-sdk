@@ -18,8 +18,8 @@ class Class
     public ?int $hit_die = null;
     public ?string $index = null;
     public ?string $name = null;
-    public ?array $proficiency = null;
-    public ?array $saving_throw = null;
+    public ?array $proficiencies = null;
+    public ?array $saving_throws = null;
     public ?string $url = null;
 }
 
@@ -35,8 +35,8 @@ class ClassListMatch
     public ?int $hit_die = null;
     public ?string $index = null;
     public ?string $name = null;
-    public ?array $proficiency = null;
-    public ?array $saving_throw = null;
+    public ?array $proficiencies = null;
+    public ?array $saving_throws = null;
     public ?string $url = null;
 }
 
@@ -78,7 +78,7 @@ class Monster
     public ?int $constitution = null;
     public ?int $dexterity = null;
     public ?string $hit_dice = null;
-    public ?int $hit_point = null;
+    public ?int $hit_points = null;
     public ?string $index = null;
     public ?int $intelligence = null;
     public ?string $name = null;
@@ -107,7 +107,7 @@ class MonsterListMatch
     public ?int $constitution = null;
     public ?int $dexterity = null;
     public ?string $hit_dice = null;
-    public ?int $hit_point = null;
+    public ?int $hit_points = null;
     public ?string $index = null;
     public ?int $intelligence = null;
     public ?string $name = null;
@@ -124,8 +124,8 @@ class MonsterListMatch
 class Spell
 {
     public ?string $casting_time = null;
-    public ?array $class = null;
-    public ?array $component = null;
+    public ?array $classes = null;
+    public ?array $components = null;
     public ?array $desc = null;
     public ?string $duration = null;
     public ?string $index = null;
@@ -146,8 +146,8 @@ class SpellLoadMatch
 class SpellListMatch
 {
     public ?string $casting_time = null;
-    public ?array $class = null;
-    public ?array $component = null;
+    public ?array $classes = null;
+    public ?array $components = null;
     public ?array $desc = null;
     public ?string $duration = null;
     public ?string $index = null;

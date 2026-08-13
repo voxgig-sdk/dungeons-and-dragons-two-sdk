@@ -19,11 +19,15 @@ import {
 describe('ClassDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when DUNGEONSANDDRAGONSTWO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('DUNGEONSANDDRAGONSTWO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new DungeonsAndDragonsTwoSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,17 +138,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'DUNGEONSANDDRAGONSTWO_TEST_CLASS_ENTID': {},
-    'DUNGEONSANDDRAGONSTWO_TEST_LIVE': 'FALSE',
+    'DUNGEONS_AND_DRAGONS_TWO_TEST_CLASS_ENTID': {},
+    'DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.DUNGEONSANDDRAGONSTWO_TEST_LIVE
+  const live = 'TRUE' === env.DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE
 
   if (live) {
     const client = new DungeonsAndDragonsTwoSDK({
     })
 
-    let idmap: any = env['DUNGEONSANDDRAGONSTWO_TEST_CLASS_ENTID']
+    let idmap: any = env['DUNGEONS_AND_DRAGONS_TWO_TEST_CLASS_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

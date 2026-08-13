@@ -114,11 +114,11 @@ def class_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "DUNGEONSANDDRAGONSTWO_TEST_CLASS_ENTID" => {},
-    "DUNGEONSANDDRAGONSTWO_TEST_LIVE" => "FALSE",
+    "DUNGEONS_AND_DRAGONS_TWO_TEST_CLASS_ENTID" => {},
+    "DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE" => "FALSE",
   })
 
-  live = env["DUNGEONSANDDRAGONSTWO_TEST_LIVE"] == "TRUE"
+  live = env["DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

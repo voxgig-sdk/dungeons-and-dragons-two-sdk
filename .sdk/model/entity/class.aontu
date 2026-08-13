@@ -21,12 +21,12 @@ main: kit: entity: class: {
       type: "`$STRING`"
     }
     {
-      name: "proficiency"
+      name: "proficiencies"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "saving_throw"
+      name: "saving_throws"
       req: false
       type: "`$ARRAY`"
     }
@@ -50,7 +50,7 @@ main: kit: entity: class: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

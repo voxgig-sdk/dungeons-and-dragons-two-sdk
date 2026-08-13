@@ -56,14 +56,14 @@ class DungeonsAndDragonsTwoConfig
             ],
             [
               'active' => true,
-              'name' => 'proficiency',
+              'name' => 'proficiencies',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 3,
             ],
             [
               'active' => true,
-              'name' => 'saving_throw',
+              'name' => 'saving_throws',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 4,
@@ -85,6 +85,7 @@ class DungeonsAndDragonsTwoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/classes',
                   'parts' => [
@@ -93,7 +94,7 @@ class DungeonsAndDragonsTwoConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -119,6 +120,7 @@ class DungeonsAndDragonsTwoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/classes/{index}',
                   'parts' => [
@@ -203,6 +205,7 @@ class DungeonsAndDragonsTwoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/features',
                   'parts' => [
@@ -211,7 +214,7 @@ class DungeonsAndDragonsTwoConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -237,6 +240,7 @@ class DungeonsAndDragonsTwoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/features/{index}',
                   'parts' => [
@@ -320,7 +324,7 @@ class DungeonsAndDragonsTwoConfig
             ],
             [
               'active' => true,
-              'name' => 'hit_point',
+              'name' => 'hit_points',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 7,
@@ -405,6 +409,7 @@ class DungeonsAndDragonsTwoConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/monsters',
                   'parts' => [
@@ -413,7 +418,7 @@ class DungeonsAndDragonsTwoConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -440,6 +445,7 @@ class DungeonsAndDragonsTwoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/monsters/{index}',
                   'parts' => [
@@ -481,14 +487,14 @@ class DungeonsAndDragonsTwoConfig
             ],
             [
               'active' => true,
-              'name' => 'class',
+              'name' => 'classes',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'component',
+              'name' => 'components',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 2,
@@ -571,6 +577,7 @@ class DungeonsAndDragonsTwoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/spells',
                   'parts' => [
@@ -583,7 +590,7 @@ class DungeonsAndDragonsTwoConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -609,6 +616,7 @@ class DungeonsAndDragonsTwoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/spells/{index}',
                   'parts' => [

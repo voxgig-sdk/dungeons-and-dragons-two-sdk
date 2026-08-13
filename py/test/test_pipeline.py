@@ -16,11 +16,11 @@
 import pytest
 
 from dungeonsanddragonstwo_sdk import DungeonsAndDragonsTwoSDK
-from core.error import DungeonsAndDragonsTwoError
-from core.result import DungeonsAndDragonsTwoResult
-from core.response import DungeonsAndDragonsTwoResponse
-from core.spec import DungeonsAndDragonsTwoSpec
-from feature.base_feature import DungeonsAndDragonsTwoBaseFeature
+from dungeonsanddragonstwo_sdk.core.error import DungeonsAndDragonsTwoError
+from dungeonsanddragonstwo_sdk.core.result import DungeonsAndDragonsTwoResult
+from dungeonsanddragonstwo_sdk.core.response import DungeonsAndDragonsTwoResponse
+from dungeonsanddragonstwo_sdk.core.spec import DungeonsAndDragonsTwoSpec
+from dungeonsanddragonstwo_sdk.feature.base_feature import DungeonsAndDragonsTwoBaseFeature
 
 
 def _client():

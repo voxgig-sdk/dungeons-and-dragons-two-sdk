@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a class
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DungeonsAndDragonsTwoSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 class_ = client.Class().list()
 # class_ contains the mock response record
 ```
@@ -236,7 +237,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -261,8 +262,8 @@ On error, `ok` is `False` and `err` contains the error value.
 | `hit_die` |  |
 | `index` |  |
 | `name` |  |
-| `proficiency` |  |
-| `saving_throw` |  |
+| `proficiencies` |  |
+| `saving_throws` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -295,7 +296,7 @@ API path: `/features`
 | `constitution` |  |
 | `dexterity` |  |
 | `hit_dice` |  |
-| `hit_point` |  |
+| `hit_points` |  |
 | `index` |  |
 | `intelligence` |  |
 | `name` |  |
@@ -316,8 +317,8 @@ API path: `/monsters`
 | Field | Description |
 | --- | --- |
 | `casting_time` |  |
-| `class` |  |
-| `component` |  |
+| `classes` |  |
+| `components` |  |
 | `desc` |  |
 | `duration` |  |
 | `index` |  |
@@ -354,8 +355,8 @@ Create an instance: `class_ = client.Class()`
 | `hit_die` | `int` |  |
 | `index` | `str` |  |
 | `name` | `str` |  |
-| `proficiency` | `list` |  |
-| `saving_throw` | `list` |  |
+| `proficiencies` | `list` |  |
+| `saving_throws` | `list` |  |
 | `url` | `str` |  |
 
 #### Example: Load
@@ -428,7 +429,7 @@ Create an instance: `monster = client.Monster()`
 | `constitution` | `int` |  |
 | `dexterity` | `int` |  |
 | `hit_dice` | `str` |  |
-| `hit_point` | `int` |  |
+| `hit_points` | `int` |  |
 | `index` | `str` |  |
 | `intelligence` | `int` |  |
 | `name` | `str` |  |
@@ -469,8 +470,8 @@ Create an instance: `spell = client.Spell()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `casting_time` | `str` |  |
-| `class` | `list` |  |
-| `component` | `list` |  |
+| `classes` | `list` |  |
+| `components` | `list` |  |
 | `desc` | `list` |  |
 | `duration` | `str` |  |
 | `index` | `str` |  |

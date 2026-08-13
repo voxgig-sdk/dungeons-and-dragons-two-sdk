@@ -107,8 +107,8 @@ $class = $client->Class();
 | `hit_die` | `int` | No |  |
 | `index` | `string` | No |  |
 | `name` | `string` | No |  |
-| `proficiency` | `array` | No |  |
-| `saving_throw` | `array` | No |  |
+| `proficiencies` | `array` | No |  |
+| `saving_throws` | `array` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -241,7 +241,7 @@ $monster = $client->Monster();
 | `constitution` | `int` | No |  |
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `string` | No |  |
-| `hit_point` | `int` | No |  |
+| `hit_points` | `int` | No |  |
 | `index` | `string` | No |  |
 | `intelligence` | `int` | No |  |
 | `name` | `string` | No |  |
@@ -312,8 +312,8 @@ $spell = $client->Spell();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `casting_time` | `string` | No |  |
-| `class` | `array` | No |  |
-| `component` | `array` | No |  |
+| `classes` | `array` | No |  |
+| `components` | `array` | No |  |
 | `desc` | `array` | No |  |
 | `duration` | `string` | No |  |
 | `index` | `string` | No |  |

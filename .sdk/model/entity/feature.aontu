@@ -50,7 +50,7 @@ main: kit: entity: feature: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

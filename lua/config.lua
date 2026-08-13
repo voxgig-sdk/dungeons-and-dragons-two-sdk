@@ -50,14 +50,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "proficiency",
+            ["name"] = "proficiencies",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "saving_throw",
+            ["name"] = "saving_throws",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -79,6 +79,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/classes",
                 ["parts"] = {
@@ -87,7 +88,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -113,6 +114,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/classes/{index}",
                 ["parts"] = {
@@ -197,6 +199,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/features",
                 ["parts"] = {
@@ -205,7 +208,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -231,6 +234,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/features/{index}",
                 ["parts"] = {
@@ -314,7 +318,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "hit_point",
+            ["name"] = "hit_points",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -399,6 +403,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monsters",
                 ["parts"] = {
@@ -407,7 +412,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -434,6 +439,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monsters/{index}",
                 ["parts"] = {
@@ -475,14 +481,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "class",
+            ["name"] = "classes",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "component",
+            ["name"] = "components",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -565,6 +571,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/spells",
                 ["parts"] = {
@@ -577,7 +584,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -603,6 +610,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/spells/{index}",
                 ["parts"] = {

@@ -26,8 +26,8 @@ import {
 describe('FeatureEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when DUNGEONSANDDRAGONSTWO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('DUNGEONSANDDRAGONSTWO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = DungeonsAndDragonsTwoSDK.test()
@@ -63,7 +63,7 @@ describe('FeatureEntity', async () => {
     const feature_ref01_ent = client.Feature()
     const feature_ref01_match: any = {}
 
-    const feature_ref01_list = await feature_ref01_ent.list(feature_ref01_match)
+    const feature_ref01_list = (await feature_ref01_ent.list(feature_ref01_match)).map((e: any) => e.data())
 
 
 

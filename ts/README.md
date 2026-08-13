@@ -35,7 +35,9 @@ const client = new DungeonsAndDragonsTwoSDK()
 
 ### 2. List class records
 
-`list()` resolves to an array of Class objects — iterate it directly:
+`list()` resolves to an array of Class ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const class_s = await client.Class().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = DungeonsAndDragonsTwoSDK.test()
 
 const class_ = await client.Class().list()
-// class_ is a bare entity populated with mock response data
+// class_ is the entity, populated with mock response data
+// — call class_.data() for the record itself
 console.log(class_)
 ```
 
@@ -305,8 +308,8 @@ The `prepare()` method returns:
 | `hit_die` |  |
 | `index` |  |
 | `name` |  |
-| `proficiency` |  |
-| `saving_throw` |  |
+| `proficiencies` |  |
+| `saving_throws` |  |
 | `url` |  |
 
 Operations: list, load.
@@ -339,7 +342,7 @@ API path: `/features`
 | `constitution` |  |
 | `dexterity` |  |
 | `hit_dice` |  |
-| `hit_point` |  |
+| `hit_points` |  |
 | `index` |  |
 | `intelligence` |  |
 | `name` |  |
@@ -360,8 +363,8 @@ API path: `/monsters`
 | Field | Description |
 | --- | --- |
 | `casting_time` |  |
-| `class` |  |
-| `component` |  |
+| `classes` |  |
+| `components` |  |
 | `desc` |  |
 | `duration` |  |
 | `index` |  |
@@ -398,8 +401,8 @@ Create an instance: `const class_ = client.Class()`
 | `hit_die` | `number` |  |
 | `index` | `string` |  |
 | `name` | `string` |  |
-| `proficiency` | `any[]` |  |
-| `saving_throw` | `any[]` |  |
+| `proficiencies` | `any[]` |  |
+| `saving_throws` | `any[]` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -472,7 +475,7 @@ Create an instance: `const monster = client.Monster()`
 | `constitution` | `number` |  |
 | `dexterity` | `number` |  |
 | `hit_dice` | `string` |  |
-| `hit_point` | `number` |  |
+| `hit_points` | `number` |  |
 | `index` | `string` |  |
 | `intelligence` | `number` |  |
 | `name` | `string` |  |
@@ -513,8 +516,8 @@ Create an instance: `const spell = client.Spell()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `casting_time` | `string` |  |
-| `class` | `any[]` |  |
-| `component` | `any[]` |  |
+| `classes` | `any[]` |  |
+| `components` | `any[]` |  |
 | `desc` | `any[]` |  |
 | `duration` | `string` |  |
 | `index` | `string` |  |

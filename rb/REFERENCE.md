@@ -108,8 +108,8 @@ class_ = client.Class
 | `hit_die` | `Integer` | No |  |
 | `index` | `String` | No |  |
 | `name` | `String` | No |  |
-| `proficiency` | `Array` | No |  |
-| `saving_throw` | `Array` | No |  |
+| `proficiencies` | `Array` | No |  |
+| `saving_throws` | `Array` | No |  |
 | `url` | `String` | No |  |
 
 ### Operations
@@ -242,7 +242,7 @@ monster = client.Monster
 | `constitution` | `Integer` | No |  |
 | `dexterity` | `Integer` | No |  |
 | `hit_dice` | `String` | No |  |
-| `hit_point` | `Integer` | No |  |
+| `hit_points` | `Integer` | No |  |
 | `index` | `String` | No |  |
 | `intelligence` | `Integer` | No |  |
 | `name` | `String` | No |  |
@@ -313,8 +313,8 @@ spell = client.Spell
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `casting_time` | `String` | No |  |
-| `class` | `Array` | No |  |
-| `component` | `Array` | No |  |
+| `classes` | `Array` | No |  |
+| `components` | `Array` | No |  |
 | `desc` | `Array` | No |  |
 | `duration` | `String` | No |  |
 | `index` | `String` | No |  |

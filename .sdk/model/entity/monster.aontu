@@ -41,7 +41,7 @@ main: kit: entity: monster: {
       type: "`$STRING`"
     }
     {
-      name: "hit_point"
+      name: "hit_points"
       req: false
       type: "`$INTEGER`"
     }
@@ -110,7 +110,7 @@ main: kit: entity: monster: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

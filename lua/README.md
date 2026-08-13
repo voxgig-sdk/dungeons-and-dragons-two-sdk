@@ -247,8 +247,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `hit_die` |  |
 | `index` |  |
 | `name` |  |
-| `proficiency` |  |
-| `saving_throw` |  |
+| `proficiencies` |  |
+| `saving_throws` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -281,7 +281,7 @@ API path: `/features`
 | `constitution` |  |
 | `dexterity` |  |
 | `hit_dice` |  |
-| `hit_point` |  |
+| `hit_points` |  |
 | `index` |  |
 | `intelligence` |  |
 | `name` |  |
@@ -302,8 +302,8 @@ API path: `/monsters`
 | Field | Description |
 | --- | --- |
 | `casting_time` |  |
-| `class` |  |
-| `component` |  |
+| `classes` |  |
+| `components` |  |
 | `desc` |  |
 | `duration` |  |
 | `index` |  |
@@ -340,8 +340,8 @@ Create an instance: `local class = client:Class(nil)`
 | `hit_die` | `number` |  |
 | `index` | `string` |  |
 | `name` | `string` |  |
-| `proficiency` | `table` |  |
-| `saving_throw` | `table` |  |
+| `proficiencies` | `table` |  |
+| `saving_throws` | `table` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -414,7 +414,7 @@ Create an instance: `local monster = client:Monster(nil)`
 | `constitution` | `number` |  |
 | `dexterity` | `number` |  |
 | `hit_dice` | `string` |  |
-| `hit_point` | `number` |  |
+| `hit_points` | `number` |  |
 | `index` | `string` |  |
 | `intelligence` | `number` |  |
 | `name` | `string` |  |
@@ -455,8 +455,8 @@ Create an instance: `local spell = client:Spell(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `casting_time` | `string` |  |
-| `class` | `table` |  |
-| `component` | `table` |  |
+| `classes` | `table` |  |
+| `components` | `table` |  |
 | `desc` | `table` |  |
 | `duration` | `string` |  |
 | `index` | `string` |  |

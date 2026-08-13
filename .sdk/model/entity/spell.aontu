@@ -11,12 +11,12 @@ main: kit: entity: spell: {
       type: "`$STRING`"
     }
     {
-      name: "class"
+      name: "classes"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "component"
+      name: "components"
       req: false
       type: "`$ARRAY`"
     }
@@ -92,7 +92,7 @@ main: kit: entity: spell: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

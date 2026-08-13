@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = DungeonsAndDragonsTwoSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = DungeonsAndDragonsTwoSDK.test({
+  entity: {
+    class: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const class_s = await client.Class().list()
-// class_s is an array of bare Class records populated with mock data
+// class_s is an array of Class entities, populated with mock data
+// — call class_s[0].data() for the record itself
 console.log(class_s)
 ```
 
@@ -110,7 +119,7 @@ import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two'
 
 const client = new DungeonsAndDragonsTwoSDK()
 
-// List all classs (returns Class[])
+// List all classs (returns ClassEntity[] — .data() for the record)
 const class_s = await client.Class().list()
 for (const class_ of class_s) {
   console.log(class_)
@@ -194,7 +203,7 @@ $client = new DungeonsAndDragonsTwoSDK();
 $classs = $client->Class()->list();
 print_r($classs);
 
-// Load a specific class (returns the bare record; throws on error)
+// Load a specific class (returns the ENTITY; call data_get() for the record; throws on error)
 $class = $client->Class()->load(["id" => "example_id"]);
 print_r($class);
 ```
@@ -225,7 +234,7 @@ client = DungeonsAndDragonsTwoSDK.new
 class_s = client.Class.list
 puts class_s
 
-# Load a specific class (returns the bare record; raises on error)
+# Load a specific class (returns the ENTITY; call data_get for the record)
 class_ = client.Class.load({ "id" => "example_id" })
 puts class_
 ```
@@ -362,6 +371,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.dnd5eapi.co/](https://www.dnd5eapi.co/)
 

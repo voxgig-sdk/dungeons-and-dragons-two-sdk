@@ -8,6 +8,7 @@ guide: {
   entity: class: {
     path: "/classes": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/classes/{index}": {
       rename: param: "index": *"id"
@@ -18,6 +19,7 @@ guide: {
   entity: feature: {
     path: "/features": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/features/{index}": {
       rename: param: "index": *"id"
@@ -28,6 +30,7 @@ guide: {
   entity: monster: {
     path: "/monsters": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/monsters/{index}": {
       rename: param: "index": *"id"
@@ -38,6 +41,7 @@ guide: {
   entity: spell: {
     path: "/spells": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/spells/{index}": {
       rename: param: "index": *"id"

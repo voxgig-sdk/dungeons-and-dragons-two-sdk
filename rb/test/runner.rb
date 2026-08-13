@@ -23,8 +23,8 @@ module DungeonsAndDragonsTwoTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("DUNGEONSANDDRAGONSTWO_TEST_LIVE")
-    override = getenv("DUNGEONSANDDRAGONSTWO_TEST_OVERRIDE")
+    live = getenv("DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE")
+    override = getenv("DUNGEONS_AND_DRAGONS_TWO_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module DungeonsAndDragonsTwoTestRunner
       end
     end
 
-    explain = getenv("DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN")
-    m["DUNGEONSANDDRAGONSTWO_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("DUNGEONS_AND_DRAGONS_TWO_TEST_EXPLAIN")
+    m["DUNGEONS_AND_DRAGONS_TWO_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

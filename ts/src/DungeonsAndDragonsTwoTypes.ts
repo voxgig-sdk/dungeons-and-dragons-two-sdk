@@ -9,8 +9,8 @@ export interface Class {
   hit_die?: number
   index?: string
   name?: string
-  proficiency?: any[]
-  saving_throw?: any[]
+  proficiencies?: any[]
+  saving_throws?: any[]
   url?: string
 }
 
@@ -22,8 +22,8 @@ export interface ClassListMatch {
   hit_die?: number
   index?: string
   name?: string
-  proficiency?: any[]
-  saving_throw?: any[]
+  proficiencies?: any[]
+  saving_throws?: any[]
   url?: string
 }
 
@@ -57,7 +57,7 @@ export interface Monster {
   constitution?: number
   dexterity?: number
   hit_dice?: string
-  hit_point?: number
+  hit_points?: number
   index?: string
   intelligence?: number
   name?: string
@@ -82,7 +82,7 @@ export interface MonsterListMatch {
   constitution?: number
   dexterity?: number
   hit_dice?: string
-  hit_point?: number
+  hit_points?: number
   index?: string
   intelligence?: number
   name?: string
@@ -97,8 +97,8 @@ export interface MonsterListMatch {
 
 export interface Spell {
   casting_time?: string
-  class?: any[]
-  component?: any[]
+  classes?: any[]
+  components?: any[]
   desc?: any[]
   duration?: string
   index?: string
@@ -115,8 +115,8 @@ export interface SpellLoadMatch {
 
 export interface SpellListMatch {
   casting_time?: string
-  class?: any[]
-  component?: any[]
+  classes?: any[]
+  components?: any[]
   desc?: any[]
   duration?: string
   index?: string
