@@ -257,11 +257,11 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
-| `index` |  |
-| `name` |  |
+| `index` | Resource index for the class |
+| `name` | Name of the class |
 | `proficiencies` |  |
 | `saving_throws` |  |
-| `url` |  |
+| `url` | URL to the class resource |
 
 Operations: List, Load.
 
@@ -273,10 +273,10 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
-| `index` |  |
+| `index` | Resource index for the feature |
 | `level` |  |
-| `name` |  |
-| `url` |  |
+| `name` | Name of the feature |
+| `url` | URL to the feature resource |
 
 Operations: List, Load.
 
@@ -294,14 +294,14 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
-| `index` |  |
+| `index` | Resource index for the monster |
 | `intelligence` |  |
-| `name` |  |
+| `name` | Name of the monster |
 | `size` |  |
 | `speed` |  |
 | `strength` |  |
 | `type` |  |
-| `url` |  |
+| `url` | URL to the monster resource |
 | `wisdom` |  |
 | `xp` |  |
 
@@ -318,12 +318,12 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
-| `index` |  |
+| `index` | Resource index for the spell |
 | `level` |  |
-| `name` |  |
+| `name` | Name of the spell |
 | `range` |  |
 | `school` |  |
-| `url` |  |
+| `url` | URL to the spell resource |
 
 Operations: List, Load.
 
@@ -350,11 +350,11 @@ Create an instance: `class_ = client.Class`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `Integer` |  |
-| `index` | `String` |  |
-| `name` | `String` |  |
+| `index` | `String` | Resource index for the class |
+| `name` | `String` | Name of the class |
 | `proficiencies` | `Array` |  |
 | `saving_throws` | `Array` |  |
-| `url` | `String` |  |
+| `url` | `String` | URL to the class resource |
 
 #### Example: Load
 
@@ -388,10 +388,10 @@ Create an instance: `feature = client.Feature`
 | --- | --- | --- |
 | `class` | `Hash` |  |
 | `desc` | `Array` |  |
-| `index` | `String` |  |
+| `index` | `String` | Resource index for the feature |
 | `level` | `Integer` |  |
-| `name` | `String` |  |
-| `url` | `String` |  |
+| `name` | `String` | Name of the feature |
+| `url` | `String` | URL to the feature resource |
 
 #### Example: Load
 
@@ -431,14 +431,14 @@ Create an instance: `monster = client.Monster`
 | `dexterity` | `Integer` |  |
 | `hit_dice` | `String` |  |
 | `hit_points` | `Integer` |  |
-| `index` | `String` |  |
+| `index` | `String` | Resource index for the monster |
 | `intelligence` | `Integer` |  |
-| `name` | `String` |  |
+| `name` | `String` | Name of the monster |
 | `size` | `String` |  |
 | `speed` | `Hash` |  |
 | `strength` | `Integer` |  |
 | `type` | `String` |  |
-| `url` | `String` |  |
+| `url` | `String` | URL to the monster resource |
 | `wisdom` | `Integer` |  |
 | `xp` | `Integer` |  |
 
@@ -477,12 +477,12 @@ Create an instance: `spell = client.Spell`
 | `components` | `Array` |  |
 | `desc` | `Array` |  |
 | `duration` | `String` |  |
-| `index` | `String` |  |
+| `index` | `String` | Resource index for the spell |
 | `level` | `Integer` |  |
-| `name` | `String` |  |
+| `name` | `String` | Name of the spell |
 | `range` | `String` |  |
 | `school` | `Hash` |  |
-| `url` | `String` |  |
+| `url` | `String` | URL to the spell resource |
 
 #### Example: Load
 

@@ -111,11 +111,11 @@ fmt.Println(class.GetName()) // "class"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `int` | No |  |
-| `index` | `string` | No |  |
-| `name` | `string` | No |  |
+| `index` | `string` | No | Resource index for the class |
+| `name` | `string` | No | Name of the class |
 | `proficiencies` | `[]any` | No |  |
 | `saving_throws` | `[]any` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the class resource |
 
 ### Operations
 
@@ -180,10 +180,10 @@ fmt.Println(feature.GetName()) // "feature"
 | --- | --- | --- | --- |
 | `class` | `map[string]any` | No |  |
 | `desc` | `[]any` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the feature |
 | `level` | `int` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `name` | `string` | No | Name of the feature |
+| `url` | `string` | No | URL to the feature resource |
 
 ### Operations
 
@@ -254,14 +254,14 @@ fmt.Println(monster.GetName()) // "monster"
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `int` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `int` | No |  |
-| `name` | `string` | No |  |
+| `name` | `string` | No | Name of the monster |
 | `size` | `string` | No |  |
 | `speed` | `map[string]any` | No |  |
 | `strength` | `int` | No |  |
 | `type` | `string` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the monster resource |
 | `wisdom` | `int` | No |  |
 | `xp` | `int` | No |  |
 
@@ -331,12 +331,12 @@ fmt.Println(spell.GetName()) // "spell"
 | `components` | `[]any` | No |  |
 | `desc` | `[]any` | No |  |
 | `duration` | `string` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the spell |
 | `level` | `int` | No |  |
-| `name` | `string` | No |  |
+| `name` | `string` | No | Name of the spell |
 | `range` | `string` | No |  |
 | `school` | `map[string]any` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the spell resource |
 
 ### Operations
 

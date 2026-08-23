@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "DungeonsAndDragonsTwo",
+      slug = "dungeons-and-dragons-two",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -36,10 +39,12 @@ local function make_config()
           },
           {
             ["name"] = "index",
+            ["short"] = "Resource index for the class",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the class",
             ["type"] = "`$STRING`",
           },
           {
@@ -52,6 +57,7 @@ local function make_config()
           },
           {
             ["name"] = "url",
+            ["short"] = "URL to the class resource",
             ["type"] = "`$STRING`",
           },
         },
@@ -134,6 +140,7 @@ local function make_config()
           },
           {
             ["name"] = "index",
+            ["short"] = "Resource index for the feature",
             ["type"] = "`$STRING`",
           },
           {
@@ -142,10 +149,12 @@ local function make_config()
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the feature",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "url",
+            ["short"] = "URL to the feature resource",
             ["type"] = "`$STRING`",
           },
         },
@@ -252,6 +261,7 @@ local function make_config()
           },
           {
             ["name"] = "index",
+            ["short"] = "Resource index for the monster",
             ["type"] = "`$STRING`",
           },
           {
@@ -260,6 +270,7 @@ local function make_config()
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the monster",
             ["type"] = "`$STRING`",
           },
           {
@@ -280,6 +291,7 @@ local function make_config()
           },
           {
             ["name"] = "url",
+            ["short"] = "URL to the monster resource",
             ["type"] = "`$STRING`",
           },
           {
@@ -383,6 +395,7 @@ local function make_config()
           },
           {
             ["name"] = "index",
+            ["short"] = "Resource index for the spell",
             ["type"] = "`$STRING`",
           },
           {
@@ -391,6 +404,7 @@ local function make_config()
           },
           {
             ["name"] = "name",
+            ["short"] = "Name of the spell",
             ["type"] = "`$STRING`",
           },
           {
@@ -403,6 +417,7 @@ local function make_config()
           },
           {
             ["name"] = "url",
+            ["short"] = "URL to the spell resource",
             ["type"] = "`$STRING`",
           },
         },

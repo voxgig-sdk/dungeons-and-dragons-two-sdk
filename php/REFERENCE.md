@@ -105,11 +105,11 @@ $class = $client->Class();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `int` | No |  |
-| `index` | `string` | No |  |
-| `name` | `string` | No |  |
+| `index` | `string` | No | Resource index for the class |
+| `name` | `string` | No | Name of the class |
 | `proficiencies` | `array` | No |  |
 | `saving_throws` | `array` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the class resource |
 
 ### Operations
 
@@ -171,10 +171,10 @@ $feature = $client->Feature();
 | --- | --- | --- | --- |
 | `class` | `array` | No |  |
 | `desc` | `array` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the feature |
 | `level` | `int` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `name` | `string` | No | Name of the feature |
+| `url` | `string` | No | URL to the feature resource |
 
 ### Operations
 
@@ -242,14 +242,14 @@ $monster = $client->Monster();
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `int` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `int` | No |  |
-| `name` | `string` | No |  |
+| `name` | `string` | No | Name of the monster |
 | `size` | `string` | No |  |
 | `speed` | `array` | No |  |
 | `strength` | `int` | No |  |
 | `type` | `string` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the monster resource |
 | `wisdom` | `int` | No |  |
 | `xp` | `int` | No |  |
 
@@ -316,12 +316,12 @@ $spell = $client->Spell();
 | `components` | `array` | No |  |
 | `desc` | `array` | No |  |
 | `duration` | `string` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the spell |
 | `level` | `int` | No |  |
-| `name` | `string` | No |  |
+| `name` | `string` | No | Name of the spell |
 | `range` | `string` | No |  |
 | `school` | `array` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the spell resource |
 
 ### Operations
 

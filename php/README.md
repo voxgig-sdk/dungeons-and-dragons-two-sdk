@@ -267,11 +267,11 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
-| `index` |  |
-| `name` |  |
+| `index` | Resource index for the class |
+| `name` | Name of the class |
 | `proficiencies` |  |
 | `saving_throws` |  |
-| `url` |  |
+| `url` | URL to the class resource |
 
 Operations: List, Load.
 
@@ -283,10 +283,10 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
-| `index` |  |
+| `index` | Resource index for the feature |
 | `level` |  |
-| `name` |  |
-| `url` |  |
+| `name` | Name of the feature |
+| `url` | URL to the feature resource |
 
 Operations: List, Load.
 
@@ -304,14 +304,14 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
-| `index` |  |
+| `index` | Resource index for the monster |
 | `intelligence` |  |
-| `name` |  |
+| `name` | Name of the monster |
 | `size` |  |
 | `speed` |  |
 | `strength` |  |
 | `type` |  |
-| `url` |  |
+| `url` | URL to the monster resource |
 | `wisdom` |  |
 | `xp` |  |
 
@@ -328,12 +328,12 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
-| `index` |  |
+| `index` | Resource index for the spell |
 | `level` |  |
-| `name` |  |
+| `name` | Name of the spell |
 | `range` |  |
 | `school` |  |
-| `url` |  |
+| `url` | URL to the spell resource |
 
 Operations: List, Load.
 
@@ -360,11 +360,11 @@ Create an instance: `$class = $client->Class();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `int` |  |
-| `index` | `string` |  |
-| `name` | `string` |  |
+| `index` | `string` | Resource index for the class |
+| `name` | `string` | Name of the class |
 | `proficiencies` | `array` |  |
 | `saving_throws` | `array` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the class resource |
 
 #### Example: Load
 
@@ -398,10 +398,10 @@ Create an instance: `$feature = $client->Feature();`
 | --- | --- | --- |
 | `class` | `array` |  |
 | `desc` | `array` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the feature |
 | `level` | `int` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `name` | `string` | Name of the feature |
+| `url` | `string` | URL to the feature resource |
 
 #### Example: Load
 
@@ -441,14 +441,14 @@ Create an instance: `$monster = $client->Monster();`
 | `dexterity` | `int` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `int` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the monster |
 | `intelligence` | `int` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the monster |
 | `size` | `string` |  |
 | `speed` | `array` |  |
 | `strength` | `int` |  |
 | `type` | `string` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the monster resource |
 | `wisdom` | `int` |  |
 | `xp` | `int` |  |
 
@@ -487,12 +487,12 @@ Create an instance: `$spell = $client->Spell();`
 | `components` | `array` |  |
 | `desc` | `array` |  |
 | `duration` | `string` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the spell |
 | `level` | `int` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the spell |
 | `range` | `string` |  |
 | `school` | `array` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the spell resource |
 
 #### Example: Load
 

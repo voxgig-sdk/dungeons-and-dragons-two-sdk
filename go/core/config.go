@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "DungeonsAndDragonsTwo",
+			"slug": "dungeons-and-dragons-two",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -40,10 +43,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "index",
+						"short": "Resource index for the class",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the class",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -56,6 +61,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the class resource",
 						"type": "`$STRING`",
 					},
 				},
@@ -138,6 +144,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "index",
+						"short": "Resource index for the feature",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -146,10 +153,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the feature",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the feature resource",
 						"type": "`$STRING`",
 					},
 				},
@@ -256,6 +265,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "index",
+						"short": "Resource index for the monster",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -264,6 +274,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the monster",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -284,6 +295,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the monster resource",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -387,6 +399,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "index",
+						"short": "Resource index for the spell",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -395,6 +408,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the spell",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -407,6 +421,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "url",
+						"short": "URL to the spell resource",
 						"type": "`$STRING`",
 					},
 				},

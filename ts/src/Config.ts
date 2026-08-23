@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'DungeonsAndDragonsTwo',
+        slug: "dungeons-and-dragons-two",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -69,10 +80,12 @@ class Config {
         },
         {
           "name": "index",
+          "short": "Resource index for the class",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Name of the class",
           "type": "`$STRING`"
         },
         {
@@ -85,6 +98,7 @@ class Config {
         },
         {
           "name": "url",
+          "short": "URL to the class resource",
           "type": "`$STRING`"
         }
       ],
@@ -167,6 +181,7 @@ class Config {
         },
         {
           "name": "index",
+          "short": "Resource index for the feature",
           "type": "`$STRING`"
         },
         {
@@ -175,10 +190,12 @@ class Config {
         },
         {
           "name": "name",
+          "short": "Name of the feature",
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "short": "URL to the feature resource",
           "type": "`$STRING`"
         }
       ],
@@ -285,6 +302,7 @@ class Config {
         },
         {
           "name": "index",
+          "short": "Resource index for the monster",
           "type": "`$STRING`"
         },
         {
@@ -293,6 +311,7 @@ class Config {
         },
         {
           "name": "name",
+          "short": "Name of the monster",
           "type": "`$STRING`"
         },
         {
@@ -313,6 +332,7 @@ class Config {
         },
         {
           "name": "url",
+          "short": "URL to the monster resource",
           "type": "`$STRING`"
         },
         {
@@ -416,6 +436,7 @@ class Config {
         },
         {
           "name": "index",
+          "short": "Resource index for the spell",
           "type": "`$STRING`"
         },
         {
@@ -424,6 +445,7 @@ class Config {
         },
         {
           "name": "name",
+          "short": "Name of the spell",
           "type": "`$STRING`"
         },
         {
@@ -436,6 +458,7 @@ class Config {
         },
         {
           "name": "url",
+          "short": "URL to the spell resource",
           "type": "`$STRING`"
         }
       ],

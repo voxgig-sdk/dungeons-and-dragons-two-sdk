@@ -245,11 +245,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
-| `index` |  |
-| `name` |  |
+| `index` | Resource index for the class |
+| `name` | Name of the class |
 | `proficiencies` |  |
 | `saving_throws` |  |
-| `url` |  |
+| `url` | URL to the class resource |
 
 Operations: List, Load.
 
@@ -261,10 +261,10 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
-| `index` |  |
+| `index` | Resource index for the feature |
 | `level` |  |
-| `name` |  |
-| `url` |  |
+| `name` | Name of the feature |
+| `url` | URL to the feature resource |
 
 Operations: List, Load.
 
@@ -282,14 +282,14 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
-| `index` |  |
+| `index` | Resource index for the monster |
 | `intelligence` |  |
-| `name` |  |
+| `name` | Name of the monster |
 | `size` |  |
 | `speed` |  |
 | `strength` |  |
 | `type` |  |
-| `url` |  |
+| `url` | URL to the monster resource |
 | `wisdom` |  |
 | `xp` |  |
 
@@ -306,12 +306,12 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
-| `index` |  |
+| `index` | Resource index for the spell |
 | `level` |  |
-| `name` |  |
+| `name` | Name of the spell |
 | `range` |  |
 | `school` |  |
-| `url` |  |
+| `url` | URL to the spell resource |
 
 Operations: List, Load.
 
@@ -338,11 +338,11 @@ Create an instance: `local class = client:Class(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `number` |  |
-| `index` | `string` |  |
-| `name` | `string` |  |
+| `index` | `string` | Resource index for the class |
+| `name` | `string` | Name of the class |
 | `proficiencies` | `table` |  |
 | `saving_throws` | `table` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the class resource |
 
 #### Example: Load
 
@@ -374,10 +374,10 @@ Create an instance: `local feature = client:Feature(nil)`
 | --- | --- | --- |
 | `class` | `table` |  |
 | `desc` | `table` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the feature |
 | `level` | `number` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `name` | `string` | Name of the feature |
+| `url` | `string` | URL to the feature resource |
 
 #### Example: Load
 
@@ -415,14 +415,14 @@ Create an instance: `local monster = client:Monster(nil)`
 | `dexterity` | `number` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `number` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the monster |
 | `intelligence` | `number` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the monster |
 | `size` | `string` |  |
 | `speed` | `table` |  |
 | `strength` | `number` |  |
 | `type` | `string` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the monster resource |
 | `wisdom` | `number` |  |
 | `xp` | `number` |  |
 
@@ -459,12 +459,12 @@ Create an instance: `local spell = client:Spell(nil)`
 | `components` | `table` |  |
 | `desc` | `table` |  |
 | `duration` | `string` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the spell |
 | `level` | `number` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the spell |
 | `range` | `string` |  |
 | `school` | `table` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the spell resource |
 
 #### Example: Load
 

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -306,11 +306,11 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
-| `index` |  |
-| `name` |  |
+| `index` | Resource index for the class |
+| `name` | Name of the class |
 | `proficiencies` |  |
 | `saving_throws` |  |
-| `url` |  |
+| `url` | URL to the class resource |
 
 Operations: list, load.
 
@@ -322,10 +322,10 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
-| `index` |  |
+| `index` | Resource index for the feature |
 | `level` |  |
-| `name` |  |
-| `url` |  |
+| `name` | Name of the feature |
+| `url` | URL to the feature resource |
 
 Operations: list, load.
 
@@ -343,14 +343,14 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
-| `index` |  |
+| `index` | Resource index for the monster |
 | `intelligence` |  |
-| `name` |  |
+| `name` | Name of the monster |
 | `size` |  |
 | `speed` |  |
 | `strength` |  |
 | `type` |  |
-| `url` |  |
+| `url` | URL to the monster resource |
 | `wisdom` |  |
 | `xp` |  |
 
@@ -367,12 +367,12 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
-| `index` |  |
+| `index` | Resource index for the spell |
 | `level` |  |
-| `name` |  |
+| `name` | Name of the spell |
 | `range` |  |
 | `school` |  |
-| `url` |  |
+| `url` | URL to the spell resource |
 
 Operations: list, load.
 
@@ -399,11 +399,11 @@ Create an instance: `const class_ = client.Class()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `number` |  |
-| `index` | `string` |  |
-| `name` | `string` |  |
+| `index` | `string` | Resource index for the class |
+| `name` | `string` | Name of the class |
 | `proficiencies` | `any[]` |  |
 | `saving_throws` | `any[]` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the class resource |
 
 #### Example: Load
 
@@ -435,10 +435,10 @@ Create an instance: `const feature = client.Feature()`
 | --- | --- | --- |
 | `class` | `Record<string, any>` |  |
 | `desc` | `any[]` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the feature |
 | `level` | `number` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `name` | `string` | Name of the feature |
+| `url` | `string` | URL to the feature resource |
 
 #### Example: Load
 
@@ -476,14 +476,14 @@ Create an instance: `const monster = client.Monster()`
 | `dexterity` | `number` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `number` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the monster |
 | `intelligence` | `number` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the monster |
 | `size` | `string` |  |
 | `speed` | `Record<string, any>` |  |
 | `strength` | `number` |  |
 | `type` | `string` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the monster resource |
 | `wisdom` | `number` |  |
 | `xp` | `number` |  |
 
@@ -520,12 +520,12 @@ Create an instance: `const spell = client.Spell()`
 | `components` | `any[]` |  |
 | `desc` | `any[]` |  |
 | `duration` | `string` |  |
-| `index` | `string` |  |
+| `index` | `string` | Resource index for the spell |
 | `level` | `number` |  |
-| `name` | `string` |  |
+| `name` | `string` | Name of the spell |
 | `range` | `string` |  |
 | `school` | `Record<string, any>` |  |
-| `url` | `string` |  |
+| `url` | `string` | URL to the spell resource |
 
 #### Example: Load
 

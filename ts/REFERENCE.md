@@ -153,11 +153,11 @@ const class_ = client.Class()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `number` | No |  |
-| `index` | `string` | No |  |
-| `name` | `string` | No |  |
+| `index` | `string` | No | Resource index for the class |
+| `name` | `string` | No | Name of the class |
 | `proficiencies` | `any[]` | No |  |
 | `saving_throws` | `any[]` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the class resource |
 
 ### Operations
 
@@ -217,10 +217,10 @@ const feature = client.Feature()
 | --- | --- | --- | --- |
 | `class` | `Record<string, any>` | No |  |
 | `desc` | `any[]` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the feature |
 | `level` | `number` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `name` | `string` | No | Name of the feature |
+| `url` | `string` | No | URL to the feature resource |
 
 ### Operations
 
@@ -286,14 +286,14 @@ const monster = client.Monster()
 | `dexterity` | `number` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `number` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `number` | No |  |
-| `name` | `string` | No |  |
+| `name` | `string` | No | Name of the monster |
 | `size` | `string` | No |  |
 | `speed` | `Record<string, any>` | No |  |
 | `strength` | `number` | No |  |
 | `type` | `string` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the monster resource |
 | `wisdom` | `number` | No |  |
 | `xp` | `number` | No |  |
 
@@ -358,12 +358,12 @@ const spell = client.Spell()
 | `components` | `any[]` | No |  |
 | `desc` | `any[]` | No |  |
 | `duration` | `string` | No |  |
-| `index` | `string` | No |  |
+| `index` | `string` | No | Resource index for the spell |
 | `level` | `number` | No |  |
-| `name` | `string` | No |  |
+| `name` | `string` | No | Name of the spell |
 | `range` | `string` | No |  |
 | `school` | `Record<string, any>` | No |  |
-| `url` | `string` | No |  |
+| `url` | `string` | No | URL to the spell resource |
 
 ### Operations
 

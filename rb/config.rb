@@ -19,6 +19,9 @@ module DungeonsAndDragonsTwoConfig
     {
       "main" => {
         "name" => "DungeonsAndDragonsTwo",
+        "slug" => "dungeons-and-dragons-two",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -48,10 +51,12 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "index",
+              "short" => "Resource index for the class",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Name of the class",
               "type" => "`$STRING`",
             },
             {
@@ -64,6 +69,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "url",
+              "short" => "URL to the class resource",
               "type" => "`$STRING`",
             },
           ],
@@ -146,6 +152,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "index",
+              "short" => "Resource index for the feature",
               "type" => "`$STRING`",
             },
             {
@@ -154,10 +161,12 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "name",
+              "short" => "Name of the feature",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "URL to the feature resource",
               "type" => "`$STRING`",
             },
           ],
@@ -264,6 +273,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "index",
+              "short" => "Resource index for the monster",
               "type" => "`$STRING`",
             },
             {
@@ -272,6 +282,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "name",
+              "short" => "Name of the monster",
               "type" => "`$STRING`",
             },
             {
@@ -292,6 +303,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "url",
+              "short" => "URL to the monster resource",
               "type" => "`$STRING`",
             },
             {
@@ -395,6 +407,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "index",
+              "short" => "Resource index for the spell",
               "type" => "`$STRING`",
             },
             {
@@ -403,6 +416,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "name",
+              "short" => "Name of the spell",
               "type" => "`$STRING`",
             },
             {
@@ -415,6 +429,7 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "url",
+              "short" => "URL to the spell resource",
               "type" => "`$STRING`",
             },
           ],

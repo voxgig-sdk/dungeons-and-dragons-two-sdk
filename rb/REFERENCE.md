@@ -106,11 +106,11 @@ class_ = client.Class
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `Integer` | No |  |
-| `index` | `String` | No |  |
-| `name` | `String` | No |  |
+| `index` | `String` | No | Resource index for the class |
+| `name` | `String` | No | Name of the class |
 | `proficiencies` | `Array` | No |  |
 | `saving_throws` | `Array` | No |  |
-| `url` | `String` | No |  |
+| `url` | `String` | No | URL to the class resource |
 
 ### Operations
 
@@ -172,10 +172,10 @@ feature = client.Feature
 | --- | --- | --- | --- |
 | `class` | `Hash` | No |  |
 | `desc` | `Array` | No |  |
-| `index` | `String` | No |  |
+| `index` | `String` | No | Resource index for the feature |
 | `level` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `url` | `String` | No |  |
+| `name` | `String` | No | Name of the feature |
+| `url` | `String` | No | URL to the feature resource |
 
 ### Operations
 
@@ -243,14 +243,14 @@ monster = client.Monster
 | `dexterity` | `Integer` | No |  |
 | `hit_dice` | `String` | No |  |
 | `hit_points` | `Integer` | No |  |
-| `index` | `String` | No |  |
+| `index` | `String` | No | Resource index for the monster |
 | `intelligence` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `name` | `String` | No | Name of the monster |
 | `size` | `String` | No |  |
 | `speed` | `Hash` | No |  |
 | `strength` | `Integer` | No |  |
 | `type` | `String` | No |  |
-| `url` | `String` | No |  |
+| `url` | `String` | No | URL to the monster resource |
 | `wisdom` | `Integer` | No |  |
 | `xp` | `Integer` | No |  |
 
@@ -317,12 +317,12 @@ spell = client.Spell
 | `components` | `Array` | No |  |
 | `desc` | `Array` | No |  |
 | `duration` | `String` | No |  |
-| `index` | `String` | No |  |
+| `index` | `String` | No | Resource index for the spell |
 | `level` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `name` | `String` | No | Name of the spell |
 | `range` | `String` | No |  |
 | `school` | `Hash` | No |  |
-| `url` | `String` | No |  |
+| `url` | `String` | No | URL to the spell resource |
 
 ### Operations
 
