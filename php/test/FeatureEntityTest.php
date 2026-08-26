@@ -93,9 +93,13 @@ class FeatureEntityTest extends TestCase
         $this->assertIsArray($feature_ref01_list_result);
 
         // LOAD
-        $feature_ref01_match_dt0 = [];
+        $feature_ref01_match_dt0 = [
+            "id" => $feature_ref01_data["id"],
+        ];
         $feature_ref01_data_dt0_loaded = $feature_ref01_ent->load($feature_ref01_match_dt0, null);
-        $this->assertNotNull($feature_ref01_data_dt0_loaded);
+        $feature_ref01_data_dt0_load_result = Helpers::to_map(is_object($feature_ref01_data_dt0_loaded) && method_exists($feature_ref01_data_dt0_loaded, 'data_get') ? $feature_ref01_data_dt0_loaded->data_get() : $feature_ref01_data_dt0_loaded);
+        $this->assertNotNull($feature_ref01_data_dt0_load_result);
+        $this->assertEquals($feature_ref01_data_dt0_load_result["id"], $feature_ref01_data["id"]);
 
     }
 }

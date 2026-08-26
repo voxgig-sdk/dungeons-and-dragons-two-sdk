@@ -103,6 +103,7 @@ local class = client:Class(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `number` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the class |
 | `name` | `string` | No | Name of the class |
 | `proficiencies` | `table` | No |  |
@@ -169,6 +170,7 @@ local feature = client:Feature(nil)
 | --- | --- | --- | --- |
 | `class` | `table` | No |  |
 | `desc` | `table` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the feature |
 | `level` | `number` | No |  |
 | `name` | `string` | No | Name of the feature |
@@ -240,6 +242,7 @@ local monster = client:Monster(nil)
 | `dexterity` | `number` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `number` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `number` | No |  |
 | `name` | `string` | No | Name of the monster |
@@ -314,6 +317,7 @@ local spell = client:Spell(nil)
 | `components` | `table` | No |  |
 | `desc` | `table` | No |  |
 | `duration` | `string` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the spell |
 | `level` | `number` | No |  |
 | `name` | `string` | No | Name of the spell |

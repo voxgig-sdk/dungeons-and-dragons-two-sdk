@@ -8,6 +8,7 @@
 
 ---@class Class
 ---@field hit_die? number
+---@field id? string
 ---@field index? string
 ---@field name? string
 ---@field proficiencies? table
@@ -19,6 +20,7 @@
 
 ---@class ClassListMatch
 ---@field hit_die? number
+---@field id? string
 ---@field index? string
 ---@field name? string
 ---@field proficiencies? table
@@ -28,6 +30,7 @@
 ---@class Feature
 ---@field class? table
 ---@field desc? table
+---@field id? string
 ---@field index? string
 ---@field level? number
 ---@field name? string
@@ -39,6 +42,7 @@
 ---@class FeatureListMatch
 ---@field class? table
 ---@field desc? table
+---@field id? string
 ---@field index? string
 ---@field level? number
 ---@field name? string
@@ -53,6 +57,7 @@
 ---@field dexterity? number
 ---@field hit_dice? string
 ---@field hit_points? number
+---@field id? string
 ---@field index? string
 ---@field intelligence? number
 ---@field name? string
@@ -76,6 +81,7 @@
 ---@field dexterity? number
 ---@field hit_dice? string
 ---@field hit_points? number
+---@field id? string
 ---@field index? string
 ---@field intelligence? number
 ---@field name? string
@@ -93,6 +99,7 @@
 ---@field components? table
 ---@field desc? table
 ---@field duration? string
+---@field id? string
 ---@field index? string
 ---@field level? number
 ---@field name? string
@@ -109,6 +116,7 @@
 ---@field components? table
 ---@field desc? table
 ---@field duration? string
+---@field id? string
 ---@field index? string
 ---@field level? number
 ---@field name? string

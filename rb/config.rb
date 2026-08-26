@@ -28,6 +28,7 @@ module DungeonsAndDragonsTwoConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -48,6 +49,10 @@ module DungeonsAndDragonsTwoConfig
             {
               "name" => "hit_die",
               "type" => "`$INTEGER`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "index",
@@ -149,6 +154,10 @@ module DungeonsAndDragonsTwoConfig
             {
               "name" => "desc",
               "type" => "`$ARRAY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "index",
@@ -270,6 +279,10 @@ module DungeonsAndDragonsTwoConfig
             {
               "name" => "hit_points",
               "type" => "`$INTEGER`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "index",
@@ -403,6 +416,10 @@ module DungeonsAndDragonsTwoConfig
             },
             {
               "name" => "duration",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

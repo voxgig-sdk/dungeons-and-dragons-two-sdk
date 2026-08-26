@@ -43,7 +43,7 @@ local classs, err = client:Class():list()
 if err then error(err) end
 
 for _, item in ipairs(classs) do
-  print(item["index"])
+  print(item["id"], item["index"])
 end
 ```
 
@@ -245,6 +245,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
+| `id` |  |
 | `index` | Resource index for the class |
 | `name` | Name of the class |
 | `proficiencies` |  |
@@ -261,6 +262,7 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
+| `id` |  |
 | `index` | Resource index for the feature |
 | `level` |  |
 | `name` | Name of the feature |
@@ -282,6 +284,7 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
+| `id` |  |
 | `index` | Resource index for the monster |
 | `intelligence` |  |
 | `name` | Name of the monster |
@@ -306,6 +309,7 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
+| `id` |  |
 | `index` | Resource index for the spell |
 | `level` |  |
 | `name` | Name of the spell |
@@ -338,6 +342,7 @@ Create an instance: `local class = client:Class(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `number` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the class |
 | `name` | `string` | Name of the class |
 | `proficiencies` | `table` |  |
@@ -374,6 +379,7 @@ Create an instance: `local feature = client:Feature(nil)`
 | --- | --- | --- |
 | `class` | `table` |  |
 | `desc` | `table` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the feature |
 | `level` | `number` |  |
 | `name` | `string` | Name of the feature |
@@ -415,6 +421,7 @@ Create an instance: `local monster = client:Monster(nil)`
 | `dexterity` | `number` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `number` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the monster |
 | `intelligence` | `number` |  |
 | `name` | `string` | Name of the monster |
@@ -459,6 +466,7 @@ Create an instance: `local spell = client:Spell(nil)`
 | `components` | `table` |  |
 | `desc` | `table` |  |
 | `duration` | `string` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the spell |
 | `level` | `number` |  |
 | `name` | `string` | Name of the spell |

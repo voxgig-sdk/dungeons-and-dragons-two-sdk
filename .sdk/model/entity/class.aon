@@ -11,6 +11,11 @@ main: kit: entity: class: {
       type: "`$INTEGER`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "index"
       req: false
       short: "Resource index for the class"
@@ -39,6 +44,11 @@ main: kit: entity: class: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "class"
   op: {

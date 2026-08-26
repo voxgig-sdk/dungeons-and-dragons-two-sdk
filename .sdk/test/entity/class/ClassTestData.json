@@ -2,43 +2,43 @@
   "existing": {
     "class": {
       "CLASS00": {
-        "hit_die": "s3c",
-        "index": "s3d",
-        "name": "s3e",
+        "hit_die": "s46",
+        "id": "CLASS00",
+        "index": "s48",
+        "name": "s49",
         "proficiencies": [],
         "saving_throws": [],
-        "url": "s41",
-        "id": "CLASS00"
+        "url": "s4c"
       },
       "CLASS01": {
-        "hit_die": "s78",
-        "index": "s79",
-        "name": "s7a",
+        "hit_die": "s8c",
+        "id": "CLASS01",
+        "index": "s8e",
+        "name": "s8f",
         "proficiencies": [],
         "saving_throws": [],
-        "url": "s7d",
-        "id": "CLASS01"
+        "url": "s92"
       },
       "CLASS02": {
-        "hit_die": "sb4",
-        "index": "sb5",
-        "name": "sb6",
+        "hit_die": "sd2",
+        "id": "CLASS02",
+        "index": "sd4",
+        "name": "sd5",
         "proficiencies": [],
         "saving_throws": [],
-        "url": "sb9",
-        "id": "CLASS02"
+        "url": "sd8"
       }
     }
   },
   "new": {
     "class": {
       "class_ref01": {
-        "hit_die": "sf0",
-        "index": "sf1",
-        "name": "sf2",
+        "hit_die": "s118",
+        "index": "s11a",
+        "name": "s11b",
         "proficiencies": [],
         "saving_throws": [],
-        "url": "sf5"
+        "url": "s11e"
       }
     }
   }

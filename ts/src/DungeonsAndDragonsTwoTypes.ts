@@ -7,6 +7,7 @@
 
 export interface Class {
   hit_die?: number
+  id?: string
   index?: string
   name?: string
   proficiencies?: any[]
@@ -20,6 +21,7 @@ export interface ClassLoadMatch {
 
 export interface ClassListMatch {
   hit_die?: number
+  id?: string
   index?: string
   name?: string
   proficiencies?: any[]
@@ -30,6 +32,7 @@ export interface ClassListMatch {
 export interface Feature {
   class?: Record<string, any>
   desc?: any[]
+  id?: string
   index?: string
   level?: number
   name?: string
@@ -43,6 +46,7 @@ export interface FeatureLoadMatch {
 export interface FeatureListMatch {
   class?: Record<string, any>
   desc?: any[]
+  id?: string
   index?: string
   level?: number
   name?: string
@@ -58,6 +62,7 @@ export interface Monster {
   dexterity?: number
   hit_dice?: string
   hit_points?: number
+  id?: string
   index?: string
   intelligence?: number
   name?: string
@@ -83,6 +88,7 @@ export interface MonsterListMatch {
   dexterity?: number
   hit_dice?: string
   hit_points?: number
+  id?: string
   index?: string
   intelligence?: number
   name?: string
@@ -101,6 +107,7 @@ export interface Spell {
   components?: any[]
   desc?: any[]
   duration?: string
+  id?: string
   index?: string
   level?: number
   name?: string
@@ -119,6 +126,7 @@ export interface SpellListMatch {
   components?: any[]
   desc?: any[]
   duration?: string
+  id?: string
   index?: string
   level?: number
   name?: string

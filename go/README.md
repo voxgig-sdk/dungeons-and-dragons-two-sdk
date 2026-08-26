@@ -273,6 +273,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"hit_die"` |  |
+| `"id"` |  |
 | `"index"` | Resource index for the class |
 | `"name"` | Name of the class |
 | `"proficiencies"` |  |
@@ -289,6 +290,7 @@ API path: `/classes`
 | --- | --- |
 | `"class"` |  |
 | `"desc"` |  |
+| `"id"` |  |
 | `"index"` | Resource index for the feature |
 | `"level"` |  |
 | `"name"` | Name of the feature |
@@ -310,6 +312,7 @@ API path: `/features`
 | `"dexterity"` |  |
 | `"hit_dice"` |  |
 | `"hit_points"` |  |
+| `"id"` |  |
 | `"index"` | Resource index for the monster |
 | `"intelligence"` |  |
 | `"name"` | Name of the monster |
@@ -334,6 +337,7 @@ API path: `/monsters`
 | `"components"` |  |
 | `"desc"` |  |
 | `"duration"` |  |
+| `"id"` |  |
 | `"index"` | Resource index for the spell |
 | `"level"` |  |
 | `"name"` | Name of the spell |
@@ -366,6 +370,7 @@ Create an instance: `class := client.Class(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `int` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the class |
 | `name` | `string` | Name of the class |
 | `proficiencies` | `[]any` |  |
@@ -410,6 +415,7 @@ Create an instance: `feature := client.Feature(nil)`
 | --- | --- | --- |
 | `class` | `map[string]any` |  |
 | `desc` | `[]any` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the feature |
 | `level` | `int` |  |
 | `name` | `string` | Name of the feature |
@@ -459,6 +465,7 @@ Create an instance: `monster := client.Monster(nil)`
 | `dexterity` | `int` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `int` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the monster |
 | `intelligence` | `int` |  |
 | `name` | `string` | Name of the monster |
@@ -511,6 +518,7 @@ Create an instance: `spell := client.Spell(nil)`
 | `components` | `[]any` |  |
 | `desc` | `[]any` |  |
 | `duration` | `string` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the spell |
 | `level` | `int` |  |
 | `name` | `string` | Name of the spell |

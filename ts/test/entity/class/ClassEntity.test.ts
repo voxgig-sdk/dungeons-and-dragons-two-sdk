@@ -66,6 +66,12 @@ describe('ClassEntity', async () => {
     const class_ref01_list = (await class_ref01_ent.list(class_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const class_ref01_match_dt0: any = {}
+    class_ref01_match_dt0.id = class_ref01_data.id
+    const class_ref01_data_dt0 = (await class_ref01_ent.load(class_ref01_match_dt0)).data()
+    assert(class_ref01_data_dt0.id === class_ref01_data.id)
+
 
   })
 })

@@ -42,6 +42,7 @@ class DungeonsAndDragonsTwoConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -62,6 +63,10 @@ class DungeonsAndDragonsTwoConfig
             [
               'name' => 'hit_die',
               'type' => '`$INTEGER`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'index',
@@ -163,6 +168,10 @@ class DungeonsAndDragonsTwoConfig
             [
               'name' => 'desc',
               'type' => '`$ARRAY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'index',
@@ -284,6 +293,10 @@ class DungeonsAndDragonsTwoConfig
             [
               'name' => 'hit_points',
               'type' => '`$INTEGER`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'index',
@@ -417,6 +430,10 @@ class DungeonsAndDragonsTwoConfig
             ],
             [
               'name' => 'duration',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

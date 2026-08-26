@@ -16,6 +16,7 @@ declare(strict_types=1);
 class ClassType
 {
     public ?int $hit_die = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?string $name = null;
     public ?array $proficiencies = null;
@@ -33,6 +34,7 @@ class ClassLoadMatch
 class ClassListMatch
 {
     public ?int $hit_die = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?string $name = null;
     public ?array $proficiencies = null;
@@ -45,6 +47,7 @@ class Feature
 {
     public ?array $class = null;
     public ?array $desc = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?int $level = null;
     public ?string $name = null;
@@ -62,6 +65,7 @@ class FeatureListMatch
 {
     public ?array $class = null;
     public ?array $desc = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?int $level = null;
     public ?string $name = null;
@@ -79,6 +83,7 @@ class Monster
     public ?int $dexterity = null;
     public ?string $hit_dice = null;
     public ?int $hit_points = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?int $intelligence = null;
     public ?string $name = null;
@@ -108,6 +113,7 @@ class MonsterListMatch
     public ?int $dexterity = null;
     public ?string $hit_dice = null;
     public ?int $hit_points = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?int $intelligence = null;
     public ?string $name = null;
@@ -128,6 +134,7 @@ class Spell
     public ?array $components = null;
     public ?array $desc = null;
     public ?string $duration = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?int $level = null;
     public ?string $name = null;
@@ -150,6 +157,7 @@ class SpellListMatch
     public ?array $components = null;
     public ?array $desc = null;
     public ?string $duration = null;
+    public ?string $id = null;
     public ?string $index = null;
     public ?int $level = null;
     public ?string $name = null;

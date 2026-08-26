@@ -37,7 +37,7 @@ begin
   # list returns an Array of Class records — iterate directly.
   class_s = client.Class.list
   class_s.each do |item|
-    puts "#{item["hit_die"]}"
+    puts "#{item["id"]} #{item["hit_die"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -257,6 +257,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
+| `id` |  |
 | `index` | Resource index for the class |
 | `name` | Name of the class |
 | `proficiencies` |  |
@@ -273,6 +274,7 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
+| `id` |  |
 | `index` | Resource index for the feature |
 | `level` |  |
 | `name` | Name of the feature |
@@ -294,6 +296,7 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
+| `id` |  |
 | `index` | Resource index for the monster |
 | `intelligence` |  |
 | `name` | Name of the monster |
@@ -318,6 +321,7 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
+| `id` |  |
 | `index` | Resource index for the spell |
 | `level` |  |
 | `name` | Name of the spell |
@@ -350,6 +354,7 @@ Create an instance: `class_ = client.Class`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `Integer` |  |
+| `id` | `String` |  |
 | `index` | `String` | Resource index for the class |
 | `name` | `String` | Name of the class |
 | `proficiencies` | `Array` |  |
@@ -388,6 +393,7 @@ Create an instance: `feature = client.Feature`
 | --- | --- | --- |
 | `class` | `Hash` |  |
 | `desc` | `Array` |  |
+| `id` | `String` |  |
 | `index` | `String` | Resource index for the feature |
 | `level` | `Integer` |  |
 | `name` | `String` | Name of the feature |
@@ -431,6 +437,7 @@ Create an instance: `monster = client.Monster`
 | `dexterity` | `Integer` |  |
 | `hit_dice` | `String` |  |
 | `hit_points` | `Integer` |  |
+| `id` | `String` |  |
 | `index` | `String` | Resource index for the monster |
 | `intelligence` | `Integer` |  |
 | `name` | `String` | Name of the monster |
@@ -477,6 +484,7 @@ Create an instance: `spell = client.Spell`
 | `components` | `Array` |  |
 | `desc` | `Array` |  |
 | `duration` | `String` |  |
+| `id` | `String` |  |
 | `index` | `String` | Resource index for the spell |
 | `level` | `Integer` |  |
 | `name` | `String` | Name of the spell |

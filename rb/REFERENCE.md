@@ -106,6 +106,7 @@ class_ = client.Class
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `Integer` | No |  |
+| `id` | `String` | No |  |
 | `index` | `String` | No | Resource index for the class |
 | `name` | `String` | No | Name of the class |
 | `proficiencies` | `Array` | No |  |
@@ -172,6 +173,7 @@ feature = client.Feature
 | --- | --- | --- | --- |
 | `class` | `Hash` | No |  |
 | `desc` | `Array` | No |  |
+| `id` | `String` | No |  |
 | `index` | `String` | No | Resource index for the feature |
 | `level` | `Integer` | No |  |
 | `name` | `String` | No | Name of the feature |
@@ -243,6 +245,7 @@ monster = client.Monster
 | `dexterity` | `Integer` | No |  |
 | `hit_dice` | `String` | No |  |
 | `hit_points` | `Integer` | No |  |
+| `id` | `String` | No |  |
 | `index` | `String` | No | Resource index for the monster |
 | `intelligence` | `Integer` | No |  |
 | `name` | `String` | No | Name of the monster |
@@ -317,6 +320,7 @@ spell = client.Spell
 | `components` | `Array` | No |  |
 | `desc` | `Array` | No |  |
 | `duration` | `String` | No |  |
+| `id` | `String` | No |  |
 | `index` | `String` | No | Resource index for the spell |
 | `level` | `Integer` | No |  |
 | `name` | `String` | No | Name of the spell |

@@ -93,9 +93,13 @@ class SpellEntityTest extends TestCase
         $this->assertIsArray($spell_ref01_list_result);
 
         // LOAD
-        $spell_ref01_match_dt0 = [];
+        $spell_ref01_match_dt0 = [
+            "id" => $spell_ref01_data["id"],
+        ];
         $spell_ref01_data_dt0_loaded = $spell_ref01_ent->load($spell_ref01_match_dt0, null);
-        $this->assertNotNull($spell_ref01_data_dt0_loaded);
+        $spell_ref01_data_dt0_load_result = Helpers::to_map(is_object($spell_ref01_data_dt0_loaded) && method_exists($spell_ref01_data_dt0_loaded, 'data_get') ? $spell_ref01_data_dt0_loaded->data_get() : $spell_ref01_data_dt0_loaded);
+        $this->assertNotNull($spell_ref01_data_dt0_load_result);
+        $this->assertEquals($spell_ref01_data_dt0_load_result["id"], $spell_ref01_data["id"]);
 
     }
 }

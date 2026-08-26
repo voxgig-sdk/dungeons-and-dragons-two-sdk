@@ -2,63 +2,63 @@
   "existing": {
     "spell": {
       "SPELL00": {
-        "casting_time": "s6e",
+        "casting_time": "s78",
         "classes": [],
         "components": [],
         "desc": [],
-        "duration": "s72",
-        "index": "s73",
-        "level": "s74",
-        "name": "s75",
-        "range": "s76",
+        "duration": "s7c",
+        "id": "SPELL00",
+        "index": "s7e",
+        "level": "s7f",
+        "name": "s80",
+        "range": "s81",
         "school": {},
-        "url": "s78",
-        "id": "SPELL00"
+        "url": "s83"
       },
       "SPELL01": {
-        "casting_time": "sdc",
+        "casting_time": "sf0",
         "classes": [],
         "components": [],
         "desc": [],
-        "duration": "se0",
-        "index": "se1",
-        "level": "se2",
-        "name": "se3",
-        "range": "se4",
+        "duration": "sf4",
+        "id": "SPELL01",
+        "index": "sf6",
+        "level": "sf7",
+        "name": "sf8",
+        "range": "sf9",
         "school": {},
-        "url": "se6",
-        "id": "SPELL01"
+        "url": "sfb"
       },
       "SPELL02": {
-        "casting_time": "s14a",
+        "casting_time": "s168",
         "classes": [],
         "components": [],
         "desc": [],
-        "duration": "s14e",
-        "index": "s14f",
-        "level": "s150",
-        "name": "s151",
-        "range": "s152",
+        "duration": "s16c",
+        "id": "SPELL02",
+        "index": "s16e",
+        "level": "s16f",
+        "name": "s170",
+        "range": "s171",
         "school": {},
-        "url": "s154",
-        "id": "SPELL02"
+        "url": "s173"
       }
     }
   },
   "new": {
     "spell": {
       "spell_ref01": {
-        "casting_time": "s1b8",
+        "casting_time": "s1e0",
         "classes": [],
         "components": [],
         "desc": [],
-        "duration": "s1bc",
-        "index": "s1bd",
-        "level": "s1be",
-        "name": "s1bf",
-        "range": "s1c0",
+        "duration": "s1e4",
+        "index": "s1e6",
+        "level": "s1e7",
+        "name": "s1e8",
+        "range": "s1e9",
         "school": {},
-        "url": "s1c2"
+        "url": "s1eb"
       }
     }
   }

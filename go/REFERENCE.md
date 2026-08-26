@@ -111,6 +111,7 @@ fmt.Println(class.GetName()) // "class"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `int` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the class |
 | `name` | `string` | No | Name of the class |
 | `proficiencies` | `[]any` | No |  |
@@ -180,6 +181,7 @@ fmt.Println(feature.GetName()) // "feature"
 | --- | --- | --- | --- |
 | `class` | `map[string]any` | No |  |
 | `desc` | `[]any` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the feature |
 | `level` | `int` | No |  |
 | `name` | `string` | No | Name of the feature |
@@ -254,6 +256,7 @@ fmt.Println(monster.GetName()) // "monster"
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `int` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `int` | No |  |
 | `name` | `string` | No | Name of the monster |
@@ -331,6 +334,7 @@ fmt.Println(spell.GetName()) // "spell"
 | `components` | `[]any` | No |  |
 | `desc` | `[]any` | No |  |
 | `duration` | `string` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the spell |
 | `level` | `int` | No |  |
 | `name` | `string` | No | Name of the spell |

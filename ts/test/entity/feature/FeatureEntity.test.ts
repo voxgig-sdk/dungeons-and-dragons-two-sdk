@@ -66,6 +66,12 @@ describe('FeatureEntity', async () => {
     const feature_ref01_list = (await feature_ref01_ent.list(feature_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const feature_ref01_match_dt0: any = {}
+    feature_ref01_match_dt0.id = feature_ref01_data.id
+    const feature_ref01_data_dt0 = (await feature_ref01_ent.load(feature_ref01_match_dt0)).data()
+    assert(feature_ref01_data_dt0.id === feature_ref01_data.id)
+
 
   })
 })

@@ -15,6 +15,7 @@ import (
 // Class is the typed data model for the class entity.
 type Class struct {
 	HitDie *int `json:"hit_die,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Proficiencies *[]any `json:"proficiencies,omitempty"`
@@ -30,6 +31,7 @@ type ClassLoadMatch struct {
 // ClassListMatch is the typed request payload for Class.ListTyped.
 type ClassListMatch struct {
 	HitDie *int `json:"hit_die,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Proficiencies *[]any `json:"proficiencies,omitempty"`
@@ -41,6 +43,7 @@ type ClassListMatch struct {
 type Feature struct {
 	Class *map[string]any `json:"class,omitempty"`
 	Desc *[]any `json:"desc,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Level *int `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -56,6 +59,7 @@ type FeatureLoadMatch struct {
 type FeatureListMatch struct {
 	Class *map[string]any `json:"class,omitempty"`
 	Desc *[]any `json:"desc,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Level *int `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -72,6 +76,7 @@ type Monster struct {
 	Dexterity *int `json:"dexterity,omitempty"`
 	HitDice *string `json:"hit_dice,omitempty"`
 	HitPoints *int `json:"hit_points,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Intelligence *int `json:"intelligence,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -99,6 +104,7 @@ type MonsterListMatch struct {
 	Dexterity *int `json:"dexterity,omitempty"`
 	HitDice *string `json:"hit_dice,omitempty"`
 	HitPoints *int `json:"hit_points,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Intelligence *int `json:"intelligence,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -118,6 +124,7 @@ type Spell struct {
 	Components *[]any `json:"components,omitempty"`
 	Desc *[]any `json:"desc,omitempty"`
 	Duration *string `json:"duration,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Level *int `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -138,6 +145,7 @@ type SpellListMatch struct {
 	Components *[]any `json:"components,omitempty"`
 	Desc *[]any `json:"desc,omitempty"`
 	Duration *string `json:"duration,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Index *string `json:"index,omitempty"`
 	Level *int `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`

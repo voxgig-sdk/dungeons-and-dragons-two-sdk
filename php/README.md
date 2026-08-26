@@ -38,7 +38,7 @@ try {
     // list() returns an array of Class records — iterate directly.
     $classs = $client->Class()->list();
     foreach ($classs as $item) {
-        echo $item["hit_die"] . "\n";
+        echo $item["id"] . " " . $item["hit_die"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -267,6 +267,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
+| `id` |  |
 | `index` | Resource index for the class |
 | `name` | Name of the class |
 | `proficiencies` |  |
@@ -283,6 +284,7 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
+| `id` |  |
 | `index` | Resource index for the feature |
 | `level` |  |
 | `name` | Name of the feature |
@@ -304,6 +306,7 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
+| `id` |  |
 | `index` | Resource index for the monster |
 | `intelligence` |  |
 | `name` | Name of the monster |
@@ -328,6 +331,7 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
+| `id` |  |
 | `index` | Resource index for the spell |
 | `level` |  |
 | `name` | Name of the spell |
@@ -360,6 +364,7 @@ Create an instance: `$class = $client->Class();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `int` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the class |
 | `name` | `string` | Name of the class |
 | `proficiencies` | `array` |  |
@@ -398,6 +403,7 @@ Create an instance: `$feature = $client->Feature();`
 | --- | --- | --- |
 | `class` | `array` |  |
 | `desc` | `array` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the feature |
 | `level` | `int` |  |
 | `name` | `string` | Name of the feature |
@@ -441,6 +447,7 @@ Create an instance: `$monster = $client->Monster();`
 | `dexterity` | `int` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `int` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the monster |
 | `intelligence` | `int` |  |
 | `name` | `string` | Name of the monster |
@@ -487,6 +494,7 @@ Create an instance: `$spell = $client->Spell();`
 | `components` | `array` |  |
 | `desc` | `array` |  |
 | `duration` | `string` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the spell |
 | `level` | `int` |  |
 | `name` | `string` | Name of the spell |

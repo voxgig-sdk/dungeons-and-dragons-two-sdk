@@ -153,6 +153,7 @@ const class_ = client.Class()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `number` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the class |
 | `name` | `string` | No | Name of the class |
 | `proficiencies` | `any[]` | No |  |
@@ -217,6 +218,7 @@ const feature = client.Feature()
 | --- | --- | --- | --- |
 | `class` | `Record<string, any>` | No |  |
 | `desc` | `any[]` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the feature |
 | `level` | `number` | No |  |
 | `name` | `string` | No | Name of the feature |
@@ -286,6 +288,7 @@ const monster = client.Monster()
 | `dexterity` | `number` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `number` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `number` | No |  |
 | `name` | `string` | No | Name of the monster |
@@ -358,6 +361,7 @@ const spell = client.Spell()
 | `components` | `any[]` | No |  |
 | `desc` | `any[]` | No |  |
 | `duration` | `string` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the spell |
 | `level` | `number` | No |  |
 | `name` | `string` | No | Name of the spell |

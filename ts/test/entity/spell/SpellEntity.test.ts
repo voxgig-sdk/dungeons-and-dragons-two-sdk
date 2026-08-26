@@ -66,6 +66,12 @@ describe('SpellEntity', async () => {
     const spell_ref01_list = (await spell_ref01_ent.list(spell_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const spell_ref01_match_dt0: any = {}
+    spell_ref01_match_dt0.id = spell_ref01_data.id
+    const spell_ref01_data_dt0 = (await spell_ref01_ent.load(spell_ref01_match_dt0)).data()
+    assert(spell_ref01_data_dt0.id === spell_ref01_data.id)
+
 
   })
 })

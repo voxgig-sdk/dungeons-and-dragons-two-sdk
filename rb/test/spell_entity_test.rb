@@ -83,9 +83,13 @@ class SpellEntityTest < Minitest::Test
     assert spell_ref01_list_result.is_a?(Array)
 
     # LOAD
-    spell_ref01_match_dt0 = {}
+    spell_ref01_match_dt0 = {
+      "id" => spell_ref01_data["id"],
+    }
     spell_ref01_data_dt0_loaded = spell_ref01_ent.load(spell_ref01_match_dt0, nil)
-    assert !spell_ref01_data_dt0_loaded.nil?
+    spell_ref01_data_dt0_load_result = Helpers.to_map(spell_ref01_data_dt0_loaded.respond_to?(:data_get) ? spell_ref01_data_dt0_loaded.data_get : spell_ref01_data_dt0_loaded)
+    assert !spell_ref01_data_dt0_load_result.nil?
+    assert_equal spell_ref01_data_dt0_load_result["id"], spell_ref01_data["id"]
 
   end
 end

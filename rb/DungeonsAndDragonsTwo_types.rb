@@ -13,6 +13,9 @@
 # @!attribute [rw] hit_die
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -29,6 +32,7 @@
 #   @return [String, nil]
 ClassType = Struct.new(
   :hit_die,
+  :id,
   :index,
   :name,
   :proficiencies,
@@ -51,6 +55,9 @@ ClassLoadMatch = Struct.new(
 # @!attribute [rw] hit_die
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -67,6 +74,7 @@ ClassLoadMatch = Struct.new(
 #   @return [String, nil]
 ClassListMatch = Struct.new(
   :hit_die,
+  :id,
   :index,
   :name,
   :proficiencies,
@@ -83,6 +91,9 @@ ClassListMatch = Struct.new(
 # @!attribute [rw] desc
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -97,6 +108,7 @@ ClassListMatch = Struct.new(
 Feature = Struct.new(
   :class,
   :desc,
+  :id,
   :index,
   :level,
   :name,
@@ -121,6 +133,9 @@ FeatureLoadMatch = Struct.new(
 # @!attribute [rw] desc
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -135,6 +150,7 @@ FeatureLoadMatch = Struct.new(
 FeatureListMatch = Struct.new(
   :class,
   :desc,
+  :id,
   :index,
   :level,
   :name,
@@ -167,6 +183,9 @@ FeatureListMatch = Struct.new(
 #
 # @!attribute [rw] hit_points
 #   @return [Integer, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 #
 # @!attribute [rw] index
 #   @return [String, nil]
@@ -206,6 +225,7 @@ Monster = Struct.new(
   :dexterity,
   :hit_dice,
   :hit_points,
+  :id,
   :index,
   :intelligence,
   :name,
@@ -254,6 +274,9 @@ MonsterLoadMatch = Struct.new(
 # @!attribute [rw] hit_points
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -292,6 +315,7 @@ MonsterListMatch = Struct.new(
   :dexterity,
   :hit_dice,
   :hit_points,
+  :id,
   :index,
   :intelligence,
   :name,
@@ -322,6 +346,9 @@ MonsterListMatch = Struct.new(
 # @!attribute [rw] duration
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -345,6 +372,7 @@ Spell = Struct.new(
   :components,
   :desc,
   :duration,
+  :id,
   :index,
   :level,
   :name,
@@ -380,6 +408,9 @@ SpellLoadMatch = Struct.new(
 # @!attribute [rw] duration
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] index
 #   @return [String, nil]
 #
@@ -403,6 +434,7 @@ SpellListMatch = Struct.new(
   :components,
   :desc,
   :duration,
+  :id,
   :index,
   :level,
   :name,

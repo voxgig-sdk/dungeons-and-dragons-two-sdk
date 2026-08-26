@@ -92,10 +92,14 @@ describe("FeatureEntity", function()
     assert.is_table(feature_ref01_list_result)
 
     -- LOAD
-    local feature_ref01_match_dt0 = {}
+    local feature_ref01_match_dt0 = {
+      id = feature_ref01_data["id"],
+    }
     local feature_ref01_data_dt0_loaded, err = feature_ref01_ent:load(feature_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(feature_ref01_data_dt0_loaded)
+    local feature_ref01_data_dt0_load_result = helpers.to_map(type(feature_ref01_data_dt0_loaded) == 'table' and feature_ref01_data_dt0_loaded.data_get and feature_ref01_data_dt0_loaded:data_get() or feature_ref01_data_dt0_loaded)
+    assert.is_not_nil(feature_ref01_data_dt0_load_result)
+    assert.are.equal(feature_ref01_data_dt0_load_result["id"], feature_ref01_data["id"])
 
   end)
 end)

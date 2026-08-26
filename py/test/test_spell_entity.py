@@ -88,9 +88,13 @@ class TestSpellEntity:
         assert isinstance(spell_ref01_list_result, list)
 
         # LOAD
-        spell_ref01_match_dt0 = {}
+        spell_ref01_match_dt0 = {
+            "id": spell_ref01_data["id"],
+        }
         spell_ref01_data_dt0_loaded = spell_ref01_ent.load(spell_ref01_match_dt0, None)
-        assert spell_ref01_data_dt0_loaded is not None
+        spell_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(spell_ref01_data_dt0_loaded))
+        assert spell_ref01_data_dt0_load_result is not None
+        assert spell_ref01_data_dt0_load_result["id"] == spell_ref01_data["id"]
 
 
 

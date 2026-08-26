@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -77,6 +78,10 @@ class Config {
         {
           "name": "hit_die",
           "type": "`$INTEGER`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "index",
@@ -178,6 +183,10 @@ class Config {
         {
           "name": "desc",
           "type": "`$ARRAY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "index",
@@ -299,6 +308,10 @@ class Config {
         {
           "name": "hit_points",
           "type": "`$INTEGER`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "index",
@@ -432,6 +445,10 @@ class Config {
         },
         {
           "name": "duration",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {

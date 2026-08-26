@@ -18,6 +18,7 @@ from typing import TypedDict, Any
 
 class Class(TypedDict, total=False):
     hit_die: int
+    id: str
     index: str
     name: str
     proficiencies: list
@@ -31,6 +32,7 @@ class ClassLoadMatch(TypedDict):
 
 class ClassListMatch(TypedDict, total=False):
     hit_die: int
+    id: str
     index: str
     name: str
     proficiencies: list
@@ -40,6 +42,7 @@ class ClassListMatch(TypedDict, total=False):
 
 class Feature(TypedDict, total=False):
     desc: list
+    id: str
     index: str
     level: int
     name: str
@@ -52,6 +55,7 @@ class FeatureLoadMatch(TypedDict):
 
 class FeatureListMatch(TypedDict, total=False):
     desc: list
+    id: str
     index: str
     level: int
     name: str
@@ -67,6 +71,7 @@ class Monster(TypedDict, total=False):
     dexterity: int
     hit_dice: str
     hit_points: int
+    id: str
     index: str
     intelligence: int
     name: str
@@ -92,6 +97,7 @@ class MonsterListMatch(TypedDict, total=False):
     dexterity: int
     hit_dice: str
     hit_points: int
+    id: str
     index: str
     intelligence: int
     name: str
@@ -110,6 +116,7 @@ class Spell(TypedDict, total=False):
     components: list
     desc: list
     duration: str
+    id: str
     index: str
     level: int
     name: str
@@ -128,6 +135,7 @@ class SpellListMatch(TypedDict, total=False):
     components: list
     desc: list
     duration: str
+    id: str
     index: str
     level: int
     name: str

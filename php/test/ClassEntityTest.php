@@ -93,9 +93,13 @@ class ClassEntityTest extends TestCase
         $this->assertIsArray($class_ref01_list_result);
 
         // LOAD
-        $class_ref01_match_dt0 = [];
+        $class_ref01_match_dt0 = [
+            "id" => $class_ref01_data["id"],
+        ];
         $class_ref01_data_dt0_loaded = $class_ref01_ent->load($class_ref01_match_dt0, null);
-        $this->assertNotNull($class_ref01_data_dt0_loaded);
+        $class_ref01_data_dt0_load_result = Helpers::to_map(is_object($class_ref01_data_dt0_loaded) && method_exists($class_ref01_data_dt0_loaded, 'data_get') ? $class_ref01_data_dt0_loaded->data_get() : $class_ref01_data_dt0_loaded);
+        $this->assertNotNull($class_ref01_data_dt0_load_result);
+        $this->assertEquals($class_ref01_data_dt0_load_result["id"], $class_ref01_data["id"]);
 
     }
 }

@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -36,6 +37,10 @@ local function make_config()
           {
             ["name"] = "hit_die",
             ["type"] = "`$INTEGER`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "index",
@@ -137,6 +142,10 @@ local function make_config()
           {
             ["name"] = "desc",
             ["type"] = "`$ARRAY`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "index",
@@ -258,6 +267,10 @@ local function make_config()
           {
             ["name"] = "hit_points",
             ["type"] = "`$INTEGER`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "index",
@@ -391,6 +404,10 @@ local function make_config()
           },
           {
             ["name"] = "duration",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

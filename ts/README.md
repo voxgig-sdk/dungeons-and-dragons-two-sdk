@@ -159,7 +159,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -306,6 +306,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `hit_die` |  |
+| `id` |  |
 | `index` | Resource index for the class |
 | `name` | Name of the class |
 | `proficiencies` |  |
@@ -322,6 +323,7 @@ API path: `/classes`
 | --- | --- |
 | `class` |  |
 | `desc` |  |
+| `id` |  |
 | `index` | Resource index for the feature |
 | `level` |  |
 | `name` | Name of the feature |
@@ -343,6 +345,7 @@ API path: `/features`
 | `dexterity` |  |
 | `hit_dice` |  |
 | `hit_points` |  |
+| `id` |  |
 | `index` | Resource index for the monster |
 | `intelligence` |  |
 | `name` | Name of the monster |
@@ -367,6 +370,7 @@ API path: `/monsters`
 | `components` |  |
 | `desc` |  |
 | `duration` |  |
+| `id` |  |
 | `index` | Resource index for the spell |
 | `level` |  |
 | `name` | Name of the spell |
@@ -399,6 +403,7 @@ Create an instance: `const class_ = client.Class()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `hit_die` | `number` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the class |
 | `name` | `string` | Name of the class |
 | `proficiencies` | `any[]` |  |
@@ -435,6 +440,7 @@ Create an instance: `const feature = client.Feature()`
 | --- | --- | --- |
 | `class` | `Record<string, any>` |  |
 | `desc` | `any[]` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the feature |
 | `level` | `number` |  |
 | `name` | `string` | Name of the feature |
@@ -476,6 +482,7 @@ Create an instance: `const monster = client.Monster()`
 | `dexterity` | `number` |  |
 | `hit_dice` | `string` |  |
 | `hit_points` | `number` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the monster |
 | `intelligence` | `number` |  |
 | `name` | `string` | Name of the monster |
@@ -520,6 +527,7 @@ Create an instance: `const spell = client.Spell()`
 | `components` | `any[]` |  |
 | `desc` | `any[]` |  |
 | `duration` | `string` |  |
+| `id` | `string` |  |
 | `index` | `string` | Resource index for the spell |
 | `level` | `number` |  |
 | `name` | `string` | Name of the spell |

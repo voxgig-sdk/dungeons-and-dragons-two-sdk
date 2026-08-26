@@ -121,13 +121,19 @@ func TestSpellEntity(t *testing.T) {
 		}
 
 		// LOAD
-		spellRef01MatchDt0 := map[string]any{}
+		spellRef01MatchDt0 := map[string]any{
+			"id": spellRef01Data["id"],
+		}
 		spellRef01DataDt0Loaded, err := spellRef01Ent.Load(spellRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if spellRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		spellRef01DataDt0LoadResult := core.ToMapAny(entityData(spellRef01DataDt0Loaded))
+		if spellRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if spellRef01DataDt0LoadResult["id"] != spellRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

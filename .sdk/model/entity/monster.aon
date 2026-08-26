@@ -46,6 +46,11 @@ main: kit: entity: monster: {
       type: "`$INTEGER`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "index"
       req: false
       short: "Resource index for the monster"
@@ -99,6 +104,11 @@ main: kit: entity: monster: {
       type: "`$INTEGER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "monster"
   op: {

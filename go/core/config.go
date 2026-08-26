@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -40,6 +41,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "hit_die",
 						"type": "`$INTEGER`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "index",
@@ -141,6 +146,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "desc",
 						"type": "`$ARRAY`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "index",
@@ -262,6 +271,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "hit_points",
 						"type": "`$INTEGER`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "index",
@@ -395,6 +408,10 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "duration",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{

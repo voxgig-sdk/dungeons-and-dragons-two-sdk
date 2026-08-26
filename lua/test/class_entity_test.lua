@@ -92,10 +92,14 @@ describe("ClassEntity", function()
     assert.is_table(class_ref01_list_result)
 
     -- LOAD
-    local class_ref01_match_dt0 = {}
+    local class_ref01_match_dt0 = {
+      id = class_ref01_data["id"],
+    }
     local class_ref01_data_dt0_loaded, err = class_ref01_ent:load(class_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(class_ref01_data_dt0_loaded)
+    local class_ref01_data_dt0_load_result = helpers.to_map(type(class_ref01_data_dt0_loaded) == 'table' and class_ref01_data_dt0_loaded.data_get and class_ref01_data_dt0_loaded:data_get() or class_ref01_data_dt0_loaded)
+    assert.is_not_nil(class_ref01_data_dt0_load_result)
+    assert.are.equal(class_ref01_data_dt0_load_result["id"], class_ref01_data["id"])
 
   end)
 end)

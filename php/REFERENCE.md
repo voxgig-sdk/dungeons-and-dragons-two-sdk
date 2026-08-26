@@ -105,6 +105,7 @@ $class = $client->Class();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `hit_die` | `int` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the class |
 | `name` | `string` | No | Name of the class |
 | `proficiencies` | `array` | No |  |
@@ -171,6 +172,7 @@ $feature = $client->Feature();
 | --- | --- | --- | --- |
 | `class` | `array` | No |  |
 | `desc` | `array` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the feature |
 | `level` | `int` | No |  |
 | `name` | `string` | No | Name of the feature |
@@ -242,6 +244,7 @@ $monster = $client->Monster();
 | `dexterity` | `int` | No |  |
 | `hit_dice` | `string` | No |  |
 | `hit_points` | `int` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the monster |
 | `intelligence` | `int` | No |  |
 | `name` | `string` | No | Name of the monster |
@@ -316,6 +319,7 @@ $spell = $client->Spell();
 | `components` | `array` | No |  |
 | `desc` | `array` | No |  |
 | `duration` | `string` | No |  |
+| `id` | `string` | No |  |
 | `index` | `string` | No | Resource index for the spell |
 | `level` | `int` | No |  |
 | `name` | `string` | No | Name of the spell |

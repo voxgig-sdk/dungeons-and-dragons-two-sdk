@@ -16,6 +16,11 @@ main: kit: entity: feature: {
       type: "`$ARRAY`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "index"
       req: false
       short: "Resource index for the feature"
@@ -39,6 +44,11 @@ main: kit: entity: feature: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "feature"
   op: {

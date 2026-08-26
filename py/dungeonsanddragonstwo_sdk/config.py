@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -57,6 +58,10 @@ def make_config():
           {
             "name": "hit_die",
             "type": "`$INTEGER`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "index",
@@ -158,6 +163,10 @@ def make_config():
           {
             "name": "desc",
             "type": "`$ARRAY`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "index",
@@ -279,6 +288,10 @@ def make_config():
           {
             "name": "hit_points",
             "type": "`$INTEGER`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "index",
@@ -412,6 +425,10 @@ def make_config():
           },
           {
             "name": "duration",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

@@ -83,9 +83,13 @@ class FeatureEntityTest < Minitest::Test
     assert feature_ref01_list_result.is_a?(Array)
 
     # LOAD
-    feature_ref01_match_dt0 = {}
+    feature_ref01_match_dt0 = {
+      "id" => feature_ref01_data["id"],
+    }
     feature_ref01_data_dt0_loaded = feature_ref01_ent.load(feature_ref01_match_dt0, nil)
-    assert !feature_ref01_data_dt0_loaded.nil?
+    feature_ref01_data_dt0_load_result = Helpers.to_map(feature_ref01_data_dt0_loaded.respond_to?(:data_get) ? feature_ref01_data_dt0_loaded.data_get : feature_ref01_data_dt0_loaded)
+    assert !feature_ref01_data_dt0_load_result.nil?
+    assert_equal feature_ref01_data_dt0_load_result["id"], feature_ref01_data["id"]
 
   end
 end
