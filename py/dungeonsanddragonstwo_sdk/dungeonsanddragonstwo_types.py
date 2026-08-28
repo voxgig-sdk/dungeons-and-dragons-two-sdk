@@ -130,15 +130,4 @@ class SpellLoadMatch(TypedDict):
 
 
 class SpellListMatch(TypedDict, total=False):
-    casting_time: str
-    classes: list
-    components: list
-    desc: list
-    duration: str
-    id: str
-    index: str
-    level: int
     name: str
-    range: str
-    school: dict
-    url: str

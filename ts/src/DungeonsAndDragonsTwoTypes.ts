@@ -121,17 +121,6 @@ export interface SpellLoadMatch {
 }
 
 export interface SpellListMatch {
-  casting_time?: string
-  classes?: any[]
-  components?: any[]
-  desc?: any[]
-  duration?: string
-  id?: string
-  index?: string
-  level?: number
   name?: string
-  range?: string
-  school?: Record<string, any>
-  url?: string
 }
 

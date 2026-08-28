@@ -393,54 +393,10 @@ SpellLoadMatch = Struct.new(
 
 # Request payload for Spell#list.
 #
-# @!attribute [rw] casting_time
-#   @return [String, nil]
-#
-# @!attribute [rw] classes
-#   @return [Array, nil]
-#
-# @!attribute [rw] components
-#   @return [Array, nil]
-#
-# @!attribute [rw] desc
-#   @return [Array, nil]
-#
-# @!attribute [rw] duration
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] index
-#   @return [String, nil]
-#
-# @!attribute [rw] level
-#   @return [Integer, nil]
-#
 # @!attribute [rw] name
 #   @return [String, nil]
-#
-# @!attribute [rw] range
-#   @return [String, nil]
-#
-# @!attribute [rw] school
-#   @return [Hash, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
 SpellListMatch = Struct.new(
-  :casting_time,
-  :classes,
-  :components,
-  :desc,
-  :duration,
-  :id,
-  :index,
-  :level,
   :name,
-  :range,
-  :school,
-  :url,
   keyword_init: true
 )
 

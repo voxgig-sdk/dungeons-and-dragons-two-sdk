@@ -140,18 +140,7 @@ type SpellLoadMatch struct {
 
 // SpellListMatch is the typed request payload for Spell.ListTyped.
 type SpellListMatch struct {
-	CastingTime *string `json:"casting_time,omitempty"`
-	Classes *[]any `json:"classes,omitempty"`
-	Components *[]any `json:"components,omitempty"`
-	Desc *[]any `json:"desc,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Index *string `json:"index,omitempty"`
-	Level *int `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Range *string `json:"range,omitempty"`
-	School *map[string]any `json:"school,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

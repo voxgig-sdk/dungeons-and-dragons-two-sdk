@@ -152,17 +152,6 @@ class SpellLoadMatch
 /** Request payload for Spell#list. */
 class SpellListMatch
 {
-    public ?string $casting_time = null;
-    public ?array $classes = null;
-    public ?array $components = null;
-    public ?array $desc = null;
-    public ?string $duration = null;
-    public ?string $id = null;
-    public ?string $index = null;
-    public ?int $level = null;
     public ?string $name = null;
-    public ?string $range = null;
-    public ?array $school = null;
-    public ?string $url = null;
 }
 

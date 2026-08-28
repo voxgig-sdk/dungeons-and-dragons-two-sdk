@@ -111,18 +111,7 @@
 ---@field id string
 
 ---@class SpellListMatch
----@field casting_time? string
----@field classes? table
----@field components? table
----@field desc? table
----@field duration? string
----@field id? string
----@field index? string
----@field level? number
 ---@field name? string
----@field range? string
----@field school? table
----@field url? string
 
 local M = {}
 
