@@ -1,6 +1,14 @@
 # DungeonsAndDragonsTwo SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -87,6 +95,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "class",
         "op": {
           "list": {
@@ -98,14 +110,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/classes",
-                "parts": [
-                  "classes",
+                "segments": [
+                  {
+                    "lit": "classes",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "classes",
+                ],
               },
             ],
           },
@@ -128,15 +145,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/classes/{index}",
-                "parts": [
-                  "classes",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "index": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "classes",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -146,6 +167,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "classes",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -188,6 +213,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "feature",
         "op": {
           "list": {
@@ -199,14 +228,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/features",
-                "parts": [
-                  "features",
+                "segments": [
+                  {
+                    "lit": "features",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "features",
+                ],
               },
             ],
           },
@@ -229,15 +263,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/features/{index}",
-                "parts": [
-                  "features",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "index": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "features",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -247,6 +285,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "features",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -337,6 +379,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "monster",
         "op": {
           "list": {
@@ -348,14 +394,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/monsters",
-                "parts": [
-                  "monsters",
+                "segments": [
+                  {
+                    "lit": "monsters",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "monsters",
+                ],
               },
             ],
           },
@@ -379,15 +430,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/monsters/{index}",
-                "parts": [
-                  "monsters",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "index": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "monsters",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -397,6 +452,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "monsters",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -459,6 +518,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "spell",
         "op": {
           "list": {
@@ -480,8 +543,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/spells",
-                "parts": [
-                  "spells",
+                "segments": [
+                  {
+                    "lit": "spells",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -492,6 +557,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "spells",
+                ],
               },
             ],
           },
@@ -514,15 +582,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/spells/{index}",
-                "parts": [
-                  "spells",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "index": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "spells",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -532,6 +604,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "spells",
+                  "{id}",
+                ],
               },
             ],
           },

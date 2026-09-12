@@ -58,8 +58,10 @@ main: kit: entity: class: {
         {
           method: "GET"
           orig: "/classes"
-          parts: [
-            "classes"
+          segments: [
+            {
+              lit: "classes"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -85,15 +87,19 @@ main: kit: entity: class: {
           }
           method: "GET"
           orig: "/classes/{index}"
-          parts: [
-            "classes"
-            "{id}"
-          ]
           rename: {
             param: {
               index: "id"
             }
           }
+          segments: [
+            {
+              lit: "classes"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

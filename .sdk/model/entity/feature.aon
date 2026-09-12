@@ -58,8 +58,10 @@ main: kit: entity: feature: {
         {
           method: "GET"
           orig: "/features"
-          parts: [
-            "features"
+          segments: [
+            {
+              lit: "features"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -85,15 +87,19 @@ main: kit: entity: feature: {
           }
           method: "GET"
           orig: "/features/{index}"
-          parts: [
-            "features"
-            "{id}"
-          ]
           rename: {
             param: {
               index: "id"
             }
           }
+          segments: [
+            {
+              lit: "features"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

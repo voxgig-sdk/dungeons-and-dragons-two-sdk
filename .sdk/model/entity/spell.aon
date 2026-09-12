@@ -95,8 +95,10 @@ main: kit: entity: spell: {
           }
           method: "GET"
           orig: "/spells"
-          parts: [
-            "spells"
+          segments: [
+            {
+              lit: "spells"
+            }
           ]
           select: {
             exist: [
@@ -127,15 +129,19 @@ main: kit: entity: spell: {
           }
           method: "GET"
           orig: "/spells/{index}"
-          parts: [
-            "spells"
-            "{id}"
-          ]
           rename: {
             param: {
               index: "id"
             }
           }
+          segments: [
+            {
+              lit: "spells"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

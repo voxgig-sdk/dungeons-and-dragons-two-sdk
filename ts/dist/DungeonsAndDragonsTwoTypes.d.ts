@@ -1,0 +1,107 @@
+export interface Class {
+    hit_die?: number;
+    id?: string;
+    index?: string;
+    name?: string;
+    proficiencies?: any[];
+    saving_throws?: any[];
+    url?: string;
+}
+export interface ClassLoadMatch {
+    id: string;
+}
+export interface ClassListMatch {
+    hit_die?: number;
+    id?: string;
+    index?: string;
+    name?: string;
+    proficiencies?: any[];
+    saving_throws?: any[];
+    url?: string;
+}
+export interface Feature {
+    class?: Record<string, any>;
+    desc?: any[];
+    id?: string;
+    index?: string;
+    level?: number;
+    name?: string;
+    url?: string;
+}
+export interface FeatureLoadMatch {
+    id: string;
+}
+export interface FeatureListMatch {
+    class?: Record<string, any>;
+    desc?: any[];
+    id?: string;
+    index?: string;
+    level?: number;
+    name?: string;
+    url?: string;
+}
+export interface Monster {
+    alignment?: string;
+    armor_class?: any[];
+    challenge_rating?: number;
+    charisma?: number;
+    constitution?: number;
+    dexterity?: number;
+    hit_dice?: string;
+    hit_points?: number;
+    id?: string;
+    index?: string;
+    intelligence?: number;
+    name?: string;
+    size?: string;
+    speed?: Record<string, any>;
+    strength?: number;
+    type?: string;
+    url?: string;
+    wisdom?: number;
+    xp?: number;
+}
+export interface MonsterLoadMatch {
+    id: string;
+}
+export interface MonsterListMatch {
+    alignment?: string;
+    armor_class?: any[];
+    challenge_rating?: number;
+    charisma?: number;
+    constitution?: number;
+    dexterity?: number;
+    hit_dice?: string;
+    hit_points?: number;
+    id?: string;
+    index?: string;
+    intelligence?: number;
+    name?: string;
+    size?: string;
+    speed?: Record<string, any>;
+    strength?: number;
+    type?: string;
+    url?: string;
+    wisdom?: number;
+    xp?: number;
+}
+export interface Spell {
+    casting_time?: string;
+    classes?: any[];
+    components?: any[];
+    desc?: any[];
+    duration?: string;
+    id?: string;
+    index?: string;
+    level?: number;
+    name?: string;
+    range?: string;
+    school?: Record<string, any>;
+    url?: string;
+}
+export interface SpellLoadMatch {
+    id: string;
+}
+export interface SpellListMatch {
+    name?: string;
+}
