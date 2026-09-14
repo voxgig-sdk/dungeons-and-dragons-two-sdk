@@ -105,7 +105,7 @@ local results, err = client:Class():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
+| TypeScript | `@voxgig-sdk/dungeons-and-dragons-two-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
 | Python | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
 | PHP | `voxgig-sdk/dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go` | `go get github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Class():list()
 ### TypeScript
 
 ```ts
-import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two'
+import { DungeonsAndDragonsTwoSDK } from '@voxgig-sdk/dungeons-and-dragons-two-sdk'
 
 const client = new DungeonsAndDragonsTwoSDK()
 
