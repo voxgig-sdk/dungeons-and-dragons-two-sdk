@@ -56,6 +56,12 @@ main: kit: entity: class: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /classes"
+            json: "{\"operationId\":\"getClasses\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of classes returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the class\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the class\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the class resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/classes"
           segments: [
@@ -84,6 +90,12 @@ main: kit: entity: class: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /classes/{index}"
+            json: "{\"operationId\":\"getClassByIndex\",\"parameters\":[{\"description\":\"The index of the class to retrieve\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"hit_die\":{\"type\":\"integer\"},\"index\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"proficiencies\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"saving_throws\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Class not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/classes/{index}"

@@ -93,6 +93,12 @@ main: kit: entity: spell: {
               }
             ]
           }
+          contract: {
+            id: "GET /spells"
+            json: "{\"operationId\":\"getSpells\",\"parameters\":[{\"description\":\"Filter spells by name (e.g., 'Acid Arrow')\",\"example\":\"Acid Arrow\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of spells returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the spell\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the spell\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the spell resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/spells"
           segments: [
@@ -126,6 +132,12 @@ main: kit: entity: spell: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /spells/{index}"
+            json: "{\"operationId\":\"getSpellByIndex\",\"parameters\":[{\"description\":\"The index of the spell to retrieve\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"casting_time\":{\"type\":\"string\"},\"classes\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"components\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"desc\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"duration\":{\"type\":\"string\"},\"index\":{\"type\":\"string\"},\"level\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"range\":{\"type\":\"string\"},\"school\":{\"type\":\"object\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Spell not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/spells/{index}"

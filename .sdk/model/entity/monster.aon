@@ -116,6 +116,12 @@ main: kit: entity: monster: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /monsters"
+            json: "{\"operationId\":\"getMonsters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of monsters returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the monster\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the monster\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the monster resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/monsters"
           segments: [
@@ -145,6 +151,12 @@ main: kit: entity: monster: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /monsters/{index}"
+            json: "{\"operationId\":\"getMonsterByIndex\",\"parameters\":[{\"description\":\"The index of the monster to retrieve (e.g., 'adult-black-dragon')\",\"example\":\"adult-black-dragon\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"alignment\":{\"type\":\"string\"},\"armor_class\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"challenge_rating\":{\"type\":\"number\"},\"charisma\":{\"type\":\"integer\"},\"constitution\":{\"type\":\"integer\"},\"dexterity\":{\"type\":\"integer\"},\"hit_dice\":{\"type\":\"string\"},\"hit_points\":{\"type\":\"integer\"},\"index\":{\"type\":\"string\"},\"intelligence\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"size\":{\"type\":\"string\"},\"speed\":{\"type\":\"object\"},\"strength\":{\"type\":\"integer\"},\"type\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"},\"wisdom\":{\"type\":\"integer\"},\"xp\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/monsters/{index}"

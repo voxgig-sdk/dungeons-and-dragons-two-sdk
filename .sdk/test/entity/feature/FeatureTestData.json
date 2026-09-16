@@ -6,7 +6,7 @@
         "desc": [],
         "id": "FEATURE00",
         "index": "s49",
-        "level": "s4a",
+        "level": 74,
         "name": "s4b",
         "url": "s4c"
       },
@@ -15,7 +15,7 @@
         "desc": [],
         "id": "FEATURE01",
         "index": "s8f",
-        "level": "s90",
+        "level": 144,
         "name": "s91",
         "url": "s92"
       },
@@ -24,7 +24,7 @@
         "desc": [],
         "id": "FEATURE02",
         "index": "sd5",
-        "level": "sd6",
+        "level": 214,
         "name": "sd7",
         "url": "sd8"
       }
@@ -36,9 +36,115 @@
         "class": {},
         "desc": [],
         "index": "s11b",
-        "level": "s11c",
+        "level": 284,
         "name": "s11d",
         "url": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /features": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getFeatures",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "Number of features returned",
+                      "type": "integer"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "index": {
+                            "description": "Resource index for the feature",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the feature",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "URL to the feature resource",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /features/{index}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getFeatureByIndex",
+        "parameters": [
+          {
+            "description": "The index of the feature to retrieve",
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "class": {
+                      "type": "object"
+                    },
+                    "desc": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "index": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Feature not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -5,64 +5,64 @@
         "alignment": "sbe",
         "armor_class": [],
         "challenge_rating": 192,
-        "charisma": "sc1",
-        "constitution": "sc2",
-        "dexterity": "sc3",
+        "charisma": 193,
+        "constitution": 194,
+        "dexterity": 195,
         "hit_dice": "sc4",
-        "hit_points": "sc5",
+        "hit_points": 197,
         "id": "MONSTER00",
         "index": "sc7",
-        "intelligence": "sc8",
+        "intelligence": 200,
         "name": "sc9",
         "size": "sca",
         "speed": {},
-        "strength": "scc",
+        "strength": 204,
         "type": "scd",
         "url": "sce",
-        "wisdom": "scf",
-        "xp": "sd0"
+        "wisdom": 207,
+        "xp": 208
       },
       "MONSTER01": {
         "alignment": "s17c",
         "armor_class": [],
         "challenge_rating": 382,
-        "charisma": "s17f",
-        "constitution": "s180",
-        "dexterity": "s181",
+        "charisma": 383,
+        "constitution": 384,
+        "dexterity": 385,
         "hit_dice": "s182",
-        "hit_points": "s183",
+        "hit_points": 387,
         "id": "MONSTER01",
         "index": "s185",
-        "intelligence": "s186",
+        "intelligence": 390,
         "name": "s187",
         "size": "s188",
         "speed": {},
-        "strength": "s18a",
+        "strength": 394,
         "type": "s18b",
         "url": "s18c",
-        "wisdom": "s18d",
-        "xp": "s18e"
+        "wisdom": 397,
+        "xp": 398
       },
       "MONSTER02": {
         "alignment": "s23a",
         "armor_class": [],
         "challenge_rating": 572,
-        "charisma": "s23d",
-        "constitution": "s23e",
-        "dexterity": "s23f",
+        "charisma": 573,
+        "constitution": 574,
+        "dexterity": 575,
         "hit_dice": "s240",
-        "hit_points": "s241",
+        "hit_points": 577,
         "id": "MONSTER02",
         "index": "s243",
-        "intelligence": "s244",
+        "intelligence": 580,
         "name": "s245",
         "size": "s246",
         "speed": {},
-        "strength": "s248",
+        "strength": 584,
         "type": "s249",
         "url": "s24a",
-        "wisdom": "s24b",
-        "xp": "s24c"
+        "wisdom": 587,
+        "xp": 588
       }
     }
   },
@@ -72,21 +72,164 @@
         "alignment": "s2f8",
         "armor_class": [],
         "challenge_rating": 762,
-        "charisma": "s2fb",
-        "constitution": "s2fc",
-        "dexterity": "s2fd",
+        "charisma": 763,
+        "constitution": 764,
+        "dexterity": 765,
         "hit_dice": "s2fe",
-        "hit_points": "s2ff",
+        "hit_points": 767,
         "index": "s301",
-        "intelligence": "s302",
+        "intelligence": 770,
         "name": "s303",
         "size": "s304",
         "speed": {},
-        "strength": "s306",
+        "strength": 774,
         "type": "s307",
         "url": "s308",
-        "wisdom": "s309",
-        "xp": "s30a"
+        "wisdom": 777,
+        "xp": 778
+      }
+    }
+  },
+  "requests": {
+    "GET /monsters": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMonsters",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "Number of monsters returned",
+                      "type": "integer"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "index": {
+                            "description": "Resource index for the monster",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the monster",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "URL to the monster resource",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /monsters/{index}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMonsterByIndex",
+        "parameters": [
+          {
+            "description": "The index of the monster to retrieve (e.g., 'adult-black-dragon')",
+            "example": "adult-black-dragon",
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "alignment": {
+                      "type": "string"
+                    },
+                    "armor_class": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "challenge_rating": {
+                      "type": "number"
+                    },
+                    "charisma": {
+                      "type": "integer"
+                    },
+                    "constitution": {
+                      "type": "integer"
+                    },
+                    "dexterity": {
+                      "type": "integer"
+                    },
+                    "hit_dice": {
+                      "type": "string"
+                    },
+                    "hit_points": {
+                      "type": "integer"
+                    },
+                    "index": {
+                      "type": "string"
+                    },
+                    "intelligence": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "string"
+                    },
+                    "speed": {
+                      "type": "object"
+                    },
+                    "strength": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "wisdom": {
+                      "type": "integer"
+                    },
+                    "xp": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Monster not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -2,7 +2,7 @@
   "existing": {
     "class": {
       "CLASS00": {
-        "hit_die": "s46",
+        "hit_die": 70,
         "id": "CLASS00",
         "index": "s48",
         "name": "s49",
@@ -11,7 +11,7 @@
         "url": "s4c"
       },
       "CLASS01": {
-        "hit_die": "s8c",
+        "hit_die": 140,
         "id": "CLASS01",
         "index": "s8e",
         "name": "s8f",
@@ -20,7 +20,7 @@
         "url": "s92"
       },
       "CLASS02": {
-        "hit_die": "sd2",
+        "hit_die": 210,
         "id": "CLASS02",
         "index": "sd4",
         "name": "sd5",
@@ -33,12 +33,121 @@
   "new": {
     "class": {
       "class_ref01": {
-        "hit_die": "s118",
+        "hit_die": 280,
         "index": "s11a",
         "name": "s11b",
         "proficiencies": [],
         "saving_throws": [],
         "url": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /classes": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getClasses",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "Number of classes returned",
+                      "type": "integer"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "index": {
+                            "description": "Resource index for the class",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the class",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "URL to the class resource",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /classes/{index}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getClassByIndex",
+        "parameters": [
+          {
+            "description": "The index of the class to retrieve",
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "hit_die": {
+                      "type": "integer"
+                    },
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "proficiencies": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "saving_throws": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Class not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

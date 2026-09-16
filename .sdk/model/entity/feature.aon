@@ -56,6 +56,12 @@ main: kit: entity: feature: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /features"
+            json: "{\"operationId\":\"getFeatures\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of features returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the feature\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the feature\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the feature resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/features"
           segments: [
@@ -84,6 +90,12 @@ main: kit: entity: feature: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /features/{index}"
+            json: "{\"operationId\":\"getFeatureByIndex\",\"parameters\":[{\"description\":\"The index of the feature to retrieve\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"class\":{\"type\":\"object\"},\"desc\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"index\":{\"type\":\"string\"},\"level\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Feature not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/features/{index}"
