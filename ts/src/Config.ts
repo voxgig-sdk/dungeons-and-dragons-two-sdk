@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      class: {
-      },
-
-      feature: {
-      },
-
-      monster: {
-      },
-
-      spell: {
-      },
-
+        class: {
+        },
+  
+        feature: {
+        },
+  
+        monster: {
+        },
+  
+        spell: {
+        },
+  
     }
   }
 

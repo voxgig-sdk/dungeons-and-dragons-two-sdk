@@ -1,6 +1,6 @@
 # Entity Models
 
-@"class.aon"
-@"feature.aon"
-@"monster.aon"
-@"spell.aon"
+@"./class.aon"
+@"./feature.aon"
+@"./monster.aon"
+@"./spell.aon"

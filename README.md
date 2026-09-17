@@ -105,12 +105,12 @@ local results, err = client:Class():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/dungeons-and-dragons-two-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
-| Python | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
-| PHP | `voxgig-sdk/dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
+| TypeScript | `@voxgig-sdk/dungeons-and-dragons-two-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/tags) |
+| Python | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/tags) |
+| PHP | `voxgig-sdk/dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go` | `go get github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go@latest` |
-| Ruby | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
-| Lua | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) |
+| Ruby | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/tags) |
+| Lua | `voxgig-sdk-dungeons-and-dragons-two` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go-cli` | `go install github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go-cli/cmd/dungeons-and-dragons-two@latest` |
 | Go MCP server | `github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go-mcp` | `go get github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go-mcp@latest` |
 

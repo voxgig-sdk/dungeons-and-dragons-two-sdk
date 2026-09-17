@@ -1,6 +1,6 @@
 # Flows
 
-@"BasicClassFlow.aon"
-@"BasicFeatureFlow.aon"
-@"BasicMonsterFlow.aon"
-@"BasicSpellFlow.aon"
+@"./BasicClassFlow.aon"
+@"./BasicFeatureFlow.aon"
+@"./BasicMonsterFlow.aon"
+@"./BasicSpellFlow.aon"
