@@ -1,0 +1,44 @@
+# BasicSpellFlow
+
+main: kit: flow: BasicSpellFlow:
+{
+  entity: "spell",
+  kind: "basic",
+  name: "BasicSpellFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spell_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spell_ref01",
+        srcdatavar: "spell_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "spell01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spell_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpellFlow"
+}

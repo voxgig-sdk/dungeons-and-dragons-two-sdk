@@ -1,0 +1,209 @@
+# Entity: monster
+
+main: kit: entity: monster: {
+
+  alias: field: {}
+
+  fields: {
+    alignment: {
+      h: "Alignment"
+      n: "alignment"
+      r: false
+      t: "`$STRING`"
+    }
+    armor_class: {
+      h: "Armor Class"
+      n: "armor_class"
+      r: false
+      t: "`$ARRAY`"
+    }
+    challenge_rating: {
+      h: "Challenge Rating"
+      n: "challenge_rating"
+      r: false
+      t: "`$NUMBER`"
+    }
+    charisma: {
+      h: "Charisma"
+      n: "charisma"
+      r: false
+      t: "`$INTEGER`"
+    }
+    constitution: {
+      h: "Constitution"
+      n: "constitution"
+      r: false
+      t: "`$INTEGER`"
+    }
+    dexterity: {
+      h: "Dexterity"
+      n: "dexterity"
+      r: false
+      t: "`$INTEGER`"
+    }
+    hit_dice: {
+      h: "Hit Dice"
+      n: "hit_dice"
+      r: false
+      t: "`$STRING`"
+    }
+    hit_points: {
+      h: "Hit Points"
+      n: "hit_points"
+      r: false
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    index: {
+      h: "Index"
+      n: "index"
+      r: false
+      sh: "Resource index for the monster"
+      t: "`$STRING`"
+    }
+    intelligence: {
+      h: "Intelligence"
+      n: "intelligence"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the monster"
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      t: "`$STRING`"
+    }
+    speed: {
+      h: "Speed"
+      n: "speed"
+      r: false
+      t: "`$OBJECT`"
+    }
+    strength: {
+      h: "Strength"
+      n: "strength"
+      r: false
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "URL to the monster resource"
+      t: "`$STRING`"
+    }
+    wisdom: {
+      h: "Wisdom"
+      n: "wisdom"
+      r: false
+      t: "`$INTEGER`"
+    }
+    xp: {
+      h: "Xp"
+      n: "xp"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "monster"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /monsters"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/monsters"
+          s: [
+            {
+              lit: "monsters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /monsters/{index}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "adult-black-dragon"
+                k: "param"
+                n: "id"
+                or: "index"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/monsters/{index}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              index: "id"
+            }
+          }
+          s: [
+            {
+              lit: "monsters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

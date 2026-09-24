@@ -1,0 +1,183 @@
+# Entity: spell
+
+main: kit: entity: spell: {
+
+  alias: field: {}
+
+  fields: {
+    casting_time: {
+      h: "Casting Time"
+      n: "casting_time"
+      r: false
+      t: "`$STRING`"
+    }
+    classes: {
+      h: "Classes"
+      n: "classes"
+      r: false
+      t: "`$ARRAY`"
+    }
+    components: {
+      h: "Components"
+      n: "components"
+      r: false
+      t: "`$ARRAY`"
+    }
+    desc: {
+      h: "Desc"
+      n: "desc"
+      r: false
+      t: "`$ARRAY`"
+    }
+    duration: {
+      h: "Duration"
+      n: "duration"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    index: {
+      h: "Index"
+      n: "index"
+      r: false
+      sh: "Resource index for the spell"
+      t: "`$STRING`"
+    }
+    level: {
+      h: "Level"
+      n: "level"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the spell"
+      t: "`$STRING`"
+    }
+    range: {
+      h: "Range"
+      n: "range"
+      r: false
+      t: "`$STRING`"
+    }
+    school: {
+      h: "School"
+      n: "school"
+      r: false
+      t: "`$OBJECT`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "URL to the spell resource"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "spell"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spells"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Acid Arrow"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spells"
+          q: {
+            exist: [
+              "name"
+            ]
+          }
+          s: [
+            {
+              lit: "spells"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /spells/{index}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "index"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spells/{index}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              index: "id"
+            }
+          }
+          s: [
+            {
+              lit: "spells"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

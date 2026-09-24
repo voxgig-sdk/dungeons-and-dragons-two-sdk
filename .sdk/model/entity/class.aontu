@@ -1,0 +1,136 @@
+# Entity: class
+
+main: kit: entity: class: {
+
+  alias: field: {}
+
+  fields: {
+    hit_die: {
+      h: "Hit Die"
+      n: "hit_die"
+      r: false
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    index: {
+      h: "Index"
+      n: "index"
+      r: false
+      sh: "Resource index for the class"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the class"
+      t: "`$STRING`"
+    }
+    proficiencies: {
+      h: "Proficiencies"
+      n: "proficiencies"
+      r: false
+      t: "`$ARRAY`"
+    }
+    saving_throws: {
+      h: "Saving Throws"
+      n: "saving_throws"
+      r: false
+      t: "`$ARRAY`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "URL to the class resource"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "class"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /classes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/classes"
+          s: [
+            {
+              lit: "classes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /classes/{index}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "index"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/classes/{index}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              index: "id"
+            }
+          }
+          s: [
+            {
+              lit: "classes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

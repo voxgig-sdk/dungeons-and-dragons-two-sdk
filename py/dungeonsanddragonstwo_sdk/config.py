@@ -119,34 +119,41 @@ def make_config():
         "fields": [
           {
             "name": "hit_die",
+            "title": "Hit Die",
             "type": "`$INTEGER`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "index",
-            "short": "Resource index for the class",
+            "title": "Index",
             "type": "`$STRING`",
+            "short": "Resource index for the class",
           },
           {
             "name": "name",
-            "short": "Name of the class",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the class",
           },
           {
             "name": "proficiencies",
+            "title": "Proficiencies",
             "type": "`$ARRAY`",
           },
           {
             "name": "saving_throws",
+            "title": "Saving Throws",
             "type": "`$ARRAY`",
           },
           {
             "name": "url",
-            "short": "URL to the class resource",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the class resource",
           },
         ],
         "id": {
@@ -160,7 +167,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/classes",
@@ -169,14 +175,16 @@ def make_config():
                     "lit": "classes",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "classes",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
-                "parts": [
-                  "classes",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -185,25 +193,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "index",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/classes/{index}",
-                "rename": {
-                  "param": {
-                    "index": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "classes",
@@ -212,19 +204,35 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
+                "parts": [
+                  "classes",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "index": "id",
+                  },
                 },
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "classes",
-                  "{id}",
-                ],
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "index",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -237,34 +245,41 @@ def make_config():
         "fields": [
           {
             "name": "class",
+            "title": "Class",
             "type": "`$OBJECT`",
           },
           {
             "name": "desc",
+            "title": "Desc",
             "type": "`$ARRAY`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "index",
-            "short": "Resource index for the feature",
+            "title": "Index",
             "type": "`$STRING`",
+            "short": "Resource index for the feature",
           },
           {
             "name": "level",
+            "title": "Level",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
-            "short": "Name of the feature",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the feature",
           },
           {
             "name": "url",
-            "short": "URL to the feature resource",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the feature resource",
           },
         ],
         "id": {
@@ -278,7 +293,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/features",
@@ -287,14 +301,16 @@ def make_config():
                     "lit": "features",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "features",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
-                "parts": [
-                  "features",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -303,25 +319,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "index",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/features/{index}",
-                "rename": {
-                  "param": {
-                    "index": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "features",
@@ -330,19 +330,35 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
+                "parts": [
+                  "features",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "index": "id",
+                  },
                 },
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "features",
-                  "{id}",
-                ],
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "index",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -355,81 +371,100 @@ def make_config():
         "fields": [
           {
             "name": "alignment",
+            "title": "Alignment",
             "type": "`$STRING`",
           },
           {
             "name": "armor_class",
+            "title": "Armor Class",
             "type": "`$ARRAY`",
           },
           {
             "name": "challenge_rating",
+            "title": "Challenge Rating",
             "type": "`$NUMBER`",
           },
           {
             "name": "charisma",
+            "title": "Charisma",
             "type": "`$INTEGER`",
           },
           {
             "name": "constitution",
+            "title": "Constitution",
             "type": "`$INTEGER`",
           },
           {
             "name": "dexterity",
+            "title": "Dexterity",
             "type": "`$INTEGER`",
           },
           {
             "name": "hit_dice",
+            "title": "Hit Dice",
             "type": "`$STRING`",
           },
           {
             "name": "hit_points",
+            "title": "Hit Points",
             "type": "`$INTEGER`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "index",
-            "short": "Resource index for the monster",
+            "title": "Index",
             "type": "`$STRING`",
+            "short": "Resource index for the monster",
           },
           {
             "name": "intelligence",
+            "title": "Intelligence",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
-            "short": "Name of the monster",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the monster",
           },
           {
             "name": "size",
+            "title": "Size",
             "type": "`$STRING`",
           },
           {
             "name": "speed",
+            "title": "Speed",
             "type": "`$OBJECT`",
           },
           {
             "name": "strength",
+            "title": "Strength",
             "type": "`$INTEGER`",
           },
           {
             "name": "type",
+            "title": "Type",
             "type": "`$STRING`",
           },
           {
             "name": "url",
-            "short": "URL to the monster resource",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the monster resource",
           },
           {
             "name": "wisdom",
+            "title": "Wisdom",
             "type": "`$INTEGER`",
           },
           {
             "name": "xp",
+            "title": "Xp",
             "type": "`$INTEGER`",
           },
         ],
@@ -444,7 +479,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/monsters",
@@ -453,14 +487,16 @@ def make_config():
                     "lit": "monsters",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "monsters",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
-                "parts": [
-                  "monsters",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -469,26 +505,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "adult-black-dragon",
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "index",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/monsters/{index}",
-                "rename": {
-                  "param": {
-                    "index": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "monsters",
@@ -497,19 +516,36 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
+                "parts": [
+                  "monsters",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "index": "id",
+                  },
                 },
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "monsters",
-                  "{id}",
-                ],
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "index",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "adult-black-dragon",
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -522,54 +558,66 @@ def make_config():
         "fields": [
           {
             "name": "casting_time",
+            "title": "Casting Time",
             "type": "`$STRING`",
           },
           {
             "name": "classes",
+            "title": "Classes",
             "type": "`$ARRAY`",
           },
           {
             "name": "components",
+            "title": "Components",
             "type": "`$ARRAY`",
           },
           {
             "name": "desc",
+            "title": "Desc",
             "type": "`$ARRAY`",
           },
           {
             "name": "duration",
+            "title": "Duration",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "index",
-            "short": "Resource index for the spell",
+            "title": "Index",
             "type": "`$STRING`",
+            "short": "Resource index for the spell",
           },
           {
             "name": "level",
+            "title": "Level",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
-            "short": "Name of the spell",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the spell",
           },
           {
             "name": "range",
+            "title": "Range",
             "type": "`$STRING`",
           },
           {
             "name": "school",
+            "title": "School",
             "type": "`$OBJECT`",
           },
           {
             "name": "url",
-            "short": "URL to the spell resource",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "URL to the spell resource",
           },
         ],
         "id": {
@@ -583,17 +631,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "Acid Arrow",
-                      "kind": "query",
-                      "name": "name",
-                      "orig": "name",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/spells",
@@ -602,18 +639,30 @@ def make_config():
                     "lit": "spells",
                   },
                 ],
+                "parts": [
+                  "spells",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.results`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "name",
+                      "orig": "name",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "Acid Arrow",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "name",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.results`",
-                },
-                "parts": [
-                  "spells",
-                ],
               },
             ],
           },
@@ -622,25 +671,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "index",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/spells/{index}",
-                "rename": {
-                  "param": {
-                    "index": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "spells",
@@ -649,19 +682,35 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
+                "parts": [
+                  "spells",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "index": "id",
+                  },
                 },
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "spells",
-                  "{id}",
-                ],
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "index",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },

@@ -45,107 +45,13 @@
   "requests": {
     "GET /features": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getFeatures",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "description": "Number of features returned",
-                      "type": "integer"
-                    },
-                    "results": {
-                      "items": {
-                        "properties": {
-                          "index": {
-                            "description": "Resource index for the feature",
-                            "type": "string"
-                          },
-                          "name": {
-                            "description": "Name of the feature",
-                            "type": "string"
-                          },
-                          "url": {
-                            "description": "URL to the feature resource",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     },
     "GET /features/{index}": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getFeatureByIndex",
-        "parameters": [
-          {
-            "description": "The index of the feature to retrieve",
-            "in": "path",
-            "name": "index",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "class": {
-                      "type": "object"
-                    },
-                    "desc": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "type": "array"
-                    },
-                    "index": {
-                      "type": "string"
-                    },
-                    "level": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "url": {
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response"
-          },
-          "404": {
-            "description": "Feature not found"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

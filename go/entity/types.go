@@ -1,7 +1,7 @@
 // Typed models for the DungeonsAndDragonsTwo SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,13 +14,6 @@ import (
 
 // Class is the typed data model for the class entity.
 type Class struct {
-	HitDie *int `json:"hit_die,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Index *string `json:"index,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Proficiencies *[]any `json:"proficiencies,omitempty"`
-	SavingThrows *[]any `json:"saving_throws,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // ClassLoadMatch is the typed request payload for Class.LoadTyped.
@@ -41,13 +34,6 @@ type ClassListMatch struct {
 
 // Feature is the typed data model for the feature entity.
 type Feature struct {
-	Class *map[string]any `json:"class,omitempty"`
-	Desc *[]any `json:"desc,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Index *string `json:"index,omitempty"`
-	Level *int `json:"level,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // FeatureLoadMatch is the typed request payload for Feature.LoadTyped.
@@ -68,25 +54,6 @@ type FeatureListMatch struct {
 
 // Monster is the typed data model for the monster entity.
 type Monster struct {
-	Alignment *string `json:"alignment,omitempty"`
-	ArmorClass *[]any `json:"armor_class,omitempty"`
-	ChallengeRating *float64 `json:"challenge_rating,omitempty"`
-	Charisma *int `json:"charisma,omitempty"`
-	Constitution *int `json:"constitution,omitempty"`
-	Dexterity *int `json:"dexterity,omitempty"`
-	HitDice *string `json:"hit_dice,omitempty"`
-	HitPoints *int `json:"hit_points,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Index *string `json:"index,omitempty"`
-	Intelligence *int `json:"intelligence,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Size *string `json:"size,omitempty"`
-	Speed *map[string]any `json:"speed,omitempty"`
-	Strength *int `json:"strength,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Wisdom *int `json:"wisdom,omitempty"`
-	Xp *int `json:"xp,omitempty"`
 }
 
 // MonsterLoadMatch is the typed request payload for Monster.LoadTyped.
@@ -119,18 +86,6 @@ type MonsterListMatch struct {
 
 // Spell is the typed data model for the spell entity.
 type Spell struct {
-	CastingTime *string `json:"casting_time,omitempty"`
-	Classes *[]any `json:"classes,omitempty"`
-	Components *[]any `json:"components,omitempty"`
-	Desc *[]any `json:"desc,omitempty"`
-	Duration *string `json:"duration,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Index *string `json:"index,omitempty"`
-	Level *int `json:"level,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Range *string `json:"range,omitempty"`
-	School *map[string]any `json:"school,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // SpellLoadMatch is the typed request payload for Spell.LoadTyped.

@@ -24,59 +24,132 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "class": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "hit_die",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "hit_die": {
+              "a": true,
+              "h": "Hit Die",
+              "n": "hit_die",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "index",
-              "req": false,
-              "short": "Resource index for the class",
-              "type": "`$STRING`"
+            "index": {
+              "a": true,
+              "h": "Index",
+              "n": "index",
+              "r": false,
+              "sh": "Resource index for the class",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the class",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the class",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "proficiencies",
-              "req": false,
-              "type": "`$ARRAY`"
+            "proficiencies": {
+              "a": true,
+              "h": "Proficiencies",
+              "n": "proficiencies",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "saving_throws",
-              "req": false,
-              "type": "`$ARRAY`"
+            "saving_throws": {
+              "a": true,
+              "h": "Saving Throws",
+              "n": "saving_throws",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "URL to the class resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "URL to the class resource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -88,24 +161,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /classes",
-                    "json": "{\"operationId\":\"getClasses\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of classes returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the class\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the class\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the class resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/classes",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/classes",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "classes"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -117,34 +190,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /classes/{index}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "index",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "index",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /classes/{index}",
-                    "json": "{\"operationId\":\"getClassByIndex\",\"parameters\":[{\"description\":\"The index of the class to retrieve\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"hit_die\":{\"type\":\"integer\"},\"index\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"proficiencies\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"saving_throws\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Class not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/classes/{index}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/classes/{index}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "index": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "classes"
                     },
@@ -152,12 +229,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -174,53 +246,60 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "class",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "class": {
+              "a": true,
+              "h": "Class",
+              "n": "class",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "desc",
-              "req": false,
-              "type": "`$ARRAY`"
+            "desc": {
+              "a": true,
+              "h": "Desc",
+              "n": "desc",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "index",
-              "req": false,
-              "short": "Resource index for the feature",
-              "type": "`$STRING`"
+            "index": {
+              "a": true,
+              "h": "Index",
+              "n": "index",
+              "r": false,
+              "sh": "Resource index for the feature",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "level",
-              "req": false,
-              "type": "`$INTEGER`"
+            "level": {
+              "a": true,
+              "h": "Level",
+              "n": "level",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the feature",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the feature",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "URL to the feature resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "URL to the feature resource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -232,24 +311,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /features",
-                    "json": "{\"operationId\":\"getFeatures\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of features returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the feature\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the feature\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the feature resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/features",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/features",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "features"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -261,34 +340,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /features/{index}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "index",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "index",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /features/{index}",
-                    "json": "{\"operationId\":\"getFeatureByIndex\",\"parameters\":[{\"description\":\"The index of the feature to retrieve\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"class\":{\"type\":\"object\"},\"desc\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"index\":{\"type\":\"string\"},\"level\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Feature not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/features/{index}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/features/{index}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "index": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "features"
                     },
@@ -296,12 +379,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -318,125 +396,144 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "alignment",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "alignment": {
+              "a": true,
+              "h": "Alignment",
+              "n": "alignment",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "armor_class",
-              "req": false,
-              "type": "`$ARRAY`"
+            "armor_class": {
+              "a": true,
+              "h": "Armor Class",
+              "n": "armor_class",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "challenge_rating",
-              "req": false,
-              "type": "`$NUMBER`"
+            "challenge_rating": {
+              "a": true,
+              "h": "Challenge Rating",
+              "n": "challenge_rating",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "charisma",
-              "req": false,
-              "type": "`$INTEGER`"
+            "charisma": {
+              "a": true,
+              "h": "Charisma",
+              "n": "charisma",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "constitution",
-              "req": false,
-              "type": "`$INTEGER`"
+            "constitution": {
+              "a": true,
+              "h": "Constitution",
+              "n": "constitution",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "dexterity",
-              "req": false,
-              "type": "`$INTEGER`"
+            "dexterity": {
+              "a": true,
+              "h": "Dexterity",
+              "n": "dexterity",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "hit_dice",
-              "req": false,
-              "type": "`$STRING`"
+            "hit_dice": {
+              "a": true,
+              "h": "Hit Dice",
+              "n": "hit_dice",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "hit_points",
-              "req": false,
-              "type": "`$INTEGER`"
+            "hit_points": {
+              "a": true,
+              "h": "Hit Points",
+              "n": "hit_points",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "index",
-              "req": false,
-              "short": "Resource index for the monster",
-              "type": "`$STRING`"
+            "index": {
+              "a": true,
+              "h": "Index",
+              "n": "index",
+              "r": false,
+              "sh": "Resource index for the monster",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "intelligence",
-              "req": false,
-              "type": "`$INTEGER`"
+            "intelligence": {
+              "a": true,
+              "h": "Intelligence",
+              "n": "intelligence",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the monster",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the monster",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "size",
-              "req": false,
-              "type": "`$STRING`"
+            "size": {
+              "a": true,
+              "h": "Size",
+              "n": "size",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "speed",
-              "req": false,
-              "type": "`$OBJECT`"
+            "speed": {
+              "a": true,
+              "h": "Speed",
+              "n": "speed",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "strength",
-              "req": false,
-              "type": "`$INTEGER`"
+            "strength": {
+              "a": true,
+              "h": "Strength",
+              "n": "strength",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "URL to the monster resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "URL to the monster resource",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "wisdom",
-              "req": false,
-              "type": "`$INTEGER`"
+            "wisdom": {
+              "a": true,
+              "h": "Wisdom",
+              "n": "wisdom",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "xp",
-              "req": false,
-              "type": "`$INTEGER`"
+            "xp": {
+              "a": true,
+              "h": "Xp",
+              "n": "xp",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -448,24 +545,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /monsters",
-                    "json": "{\"operationId\":\"getMonsters\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of monsters returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the monster\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the monster\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the monster resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/monsters",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/monsters",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "monsters"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -477,35 +574,39 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /monsters/{index}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "adult-black-dragon",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "index",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "adult-black-dragon",
+                        "k": "param",
+                        "n": "id",
+                        "or": "index",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /monsters/{index}",
-                    "json": "{\"operationId\":\"getMonsterByIndex\",\"parameters\":[{\"description\":\"The index of the monster to retrieve (e.g., 'adult-black-dragon')\",\"example\":\"adult-black-dragon\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"alignment\":{\"type\":\"string\"},\"armor_class\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"challenge_rating\":{\"type\":\"number\"},\"charisma\":{\"type\":\"integer\"},\"constitution\":{\"type\":\"integer\"},\"dexterity\":{\"type\":\"integer\"},\"hit_dice\":{\"type\":\"string\"},\"hit_points\":{\"type\":\"integer\"},\"index\":{\"type\":\"string\"},\"intelligence\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"size\":{\"type\":\"string\"},\"speed\":{\"type\":\"object\"},\"strength\":{\"type\":\"integer\"},\"type\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"},\"wisdom\":{\"type\":\"integer\"},\"xp\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/monsters/{index}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/monsters/{index}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "index": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "monsters"
                     },
@@ -513,12 +614,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -535,83 +631,95 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "casting_time",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "casting_time": {
+              "a": true,
+              "h": "Casting Time",
+              "n": "casting_time",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "classes",
-              "req": false,
-              "type": "`$ARRAY`"
+            "classes": {
+              "a": true,
+              "h": "Classes",
+              "n": "classes",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "components",
-              "req": false,
-              "type": "`$ARRAY`"
+            "components": {
+              "a": true,
+              "h": "Components",
+              "n": "components",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "desc",
-              "req": false,
-              "type": "`$ARRAY`"
+            "desc": {
+              "a": true,
+              "h": "Desc",
+              "n": "desc",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "duration",
-              "req": false,
-              "type": "`$STRING`"
+            "duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "duration",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "index",
-              "req": false,
-              "short": "Resource index for the spell",
-              "type": "`$STRING`"
+            "index": {
+              "a": true,
+              "h": "Index",
+              "n": "index",
+              "r": false,
+              "sh": "Resource index for the spell",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "level",
-              "req": false,
-              "type": "`$INTEGER`"
+            "level": {
+              "a": true,
+              "h": "Level",
+              "n": "level",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the spell",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the spell",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "range",
-              "req": false,
-              "type": "`$STRING`"
+            "range": {
+              "a": true,
+              "h": "Range",
+              "n": "range",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "school",
-              "req": false,
-              "type": "`$OBJECT`"
+            "school": {
+              "a": true,
+              "h": "School",
+              "n": "school",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "URL to the spell resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "URL to the spell resource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -623,40 +731,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /spells",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "Acid Arrow",
-                        "kind": "query",
-                        "name": "name",
-                        "orig": "name",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Acid Arrow",
+                        "k": "query",
+                        "n": "name",
+                        "or": "name",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /spells",
-                    "json": "{\"operationId\":\"getSpells\",\"parameters\":[{\"description\":\"Filter spells by name (e.g., 'Acid Arrow')\",\"example\":\"Acid Arrow\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of spells returned\",\"type\":\"integer\"},\"results\":{\"items\":{\"properties\":{\"index\":{\"description\":\"Resource index for the spell\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the spell\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the spell resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/spells",
-                  "segments": [
-                    {
-                      "lit": "spells"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/spells",
+                  "q": {
                     "exist": [
                       "name"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "spells"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -668,34 +776,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /spells/{index}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "index",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "index",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /spells/{index}",
-                    "json": "{\"operationId\":\"getSpellByIndex\",\"parameters\":[{\"description\":\"The index of the spell to retrieve\",\"in\":\"path\",\"name\":\"index\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"casting_time\":{\"type\":\"string\"},\"classes\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"components\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"desc\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"duration\":{\"type\":\"string\"},\"index\":{\"type\":\"string\"},\"level\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"range\":{\"type\":\"string\"},\"school\":{\"type\":\"object\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Spell not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/spells/{index}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/spells/{index}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "index": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "spells"
                     },
@@ -703,12 +815,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1137,13 +1244,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1153,19 +1260,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "class_ref01",
                 "srcdatavar": "class_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "class01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1185,13 +1292,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1201,19 +1308,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "feature_ref01",
                 "srcdatavar": "feature_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "feature01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1233,13 +1340,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1249,19 +1356,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "monster_ref01",
                 "srcdatavar": "monster_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "monster01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1281,13 +1388,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1297,19 +1404,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "spell_ref01",
                 "srcdatavar": "spell_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "spell01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

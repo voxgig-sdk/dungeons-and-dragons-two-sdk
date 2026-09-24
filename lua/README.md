@@ -43,7 +43,7 @@ local classs, err = client:Class():list()
 if err then error(err) end
 
 for _, item in ipairs(classs) do
-  print(item["id"], item["index"])
+  print(item["id"])
 end
 ```
 
