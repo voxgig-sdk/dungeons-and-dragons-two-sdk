@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 DungeonsAndDragonsTwoUtility::setRegistrar(function (DungeonsAndDragonsTwoUtility $u): void {
     $u->clean = [DungeonsAndDragonsTwoClean::class, 'call'];
+    $u->clean_add = [DungeonsAndDragonsTwoClean::class, 'add'];
+    $u->clean_explain = [DungeonsAndDragonsTwoDone::class, 'clean_explain'];
     $u->done = [DungeonsAndDragonsTwoDone::class, 'call'];
     $u->make_error = [DungeonsAndDragonsTwoMakeError::class, 'call'];
     $u->feature_add = [DungeonsAndDragonsTwoFeatureAdd::class, 'call'];

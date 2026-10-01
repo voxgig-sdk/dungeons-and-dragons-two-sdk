@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 DungeonsAndDragonsTwoUtility.registrar = ->(u) {
   u.clean = DungeonsAndDragonsTwoUtilities::Clean
+  u.clean_add = DungeonsAndDragonsTwoUtilities::CleanAdd
+  u.clean_explain = DungeonsAndDragonsTwoUtilities::CleanExplain
   u.done = DungeonsAndDragonsTwoUtilities::Done
   u.make_error = DungeonsAndDragonsTwoUtilities::MakeError
   u.feature_add = DungeonsAndDragonsTwoUtilities::FeatureAdd
