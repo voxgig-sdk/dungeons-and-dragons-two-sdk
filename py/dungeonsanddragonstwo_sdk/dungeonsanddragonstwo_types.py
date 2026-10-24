@@ -40,26 +40,30 @@ class ClassListMatch(TypedDict, total=False):
     url: str
 
 
-class Feature(TypedDict, total=False):
-    desc: list
-    id: str
-    index: str
-    level: int
-    name: str
-    url: str
+Feature = TypedDict('Feature', {
+    "class": dict,
+    "desc": list,
+    "id": str,
+    "index": str,
+    "level": int,
+    "name": str,
+    "url": str,
+}, total=False)
 
 
 class FeatureLoadMatch(TypedDict):
     id: str
 
 
-class FeatureListMatch(TypedDict, total=False):
-    desc: list
-    id: str
-    index: str
-    level: int
-    name: str
-    url: str
+FeatureListMatch = TypedDict('FeatureListMatch', {
+    "class": dict,
+    "desc": list,
+    "id": str,
+    "index": str,
+    "level": int,
+    "name": str,
+    "url": str,
+}, total=False)
 
 
 class Monster(TypedDict, total=False):

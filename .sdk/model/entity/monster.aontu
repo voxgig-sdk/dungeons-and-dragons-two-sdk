@@ -142,6 +142,10 @@ main: kit: entity: monster: {
           }
           m: "GET"
           o: "/monsters"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "monsters"
@@ -186,6 +190,10 @@ main: kit: entity: monster: {
             param: {
               index: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

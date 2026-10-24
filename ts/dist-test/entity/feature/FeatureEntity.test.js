@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Feature();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('feature hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.DungeonsAndDragonsTwoSDK.test(offline).Feature().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.DungeonsAndDragonsTwoSDK.test(offline).Feature()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.DungeonsAndDragonsTwoSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Feature().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.DungeonsAndDragonsTwoSDK.test().Feature().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.DungeonsAndDragonsTwoSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Feature().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Feature().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.DungeonsAndDragonsTwoSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Feature().list({ "id": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "class": { "a": true, "h": "Class", "n": "class", "r": false, "t": "`$OBJECT`", "key$": "class", "index$": 0 }, "desc": { "a": true, "h": "Desc", "n": "desc", "r": false, "t": "`$ARRAY`", "key$": "desc", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 2 }, "index": { "a": true, "h": "Index", "n": "index", "r": false, "sh": "Resource index for the feature", "t": "`$STRING`", "key$": "index", "index$": 3 }, "level": { "a": true, "h": "Level", "n": "level", "r": false, "t": "`$INTEGER`", "key$": "level", "index$": 4 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Name of the feature", "t": "`$STRING`", "key$": "name", "index$": 5 }, "url": { "a": true, "h": "Url", "n": "url", "r": false, "sh": "URL to the feature resource", "t": "`$STRING`", "key$": "url", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "feature", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /features", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/features", "q": {}, "r": {}, "s": [{ "lit": "features" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /features/{index}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "index", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/features/{index}", "q": { "exist": ["id"] }, "r": { "param": { "index": "id" } }, "s": [{ "lit": "features" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "feature", "name__orig": "feature", "Name": "Feature", "name_": "feature", "name-": "feature", "NAME": "FEATURE", "index$": 1 }, { "active": true, "entity": "feature", "key$": "BasicFeatureFlow", "kind": "basic", "name": "BasicFeatureFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "feature_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "feature_ref01", "srcdatavar": "feature_ref01_data", "suffix": "_dt0" }, "m": { "id": "feature01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-feature_ref01" } }], "index$": 1 }] }, 'Feature', { "GET /features": { "protocol": "http", "parameters": [] }, "GET /features/{index}": { "protocol": "http", "parameters": [{ "name": "index", "in": "path", "required": true, "description": "The index of the feature to retrieve", "schema": { "type": "string" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "class": { "a": true, "h": "Class", "n": "class", "r": false, "t": "`$OBJECT`", "key$": "class", "index$": 0 }, "desc": { "a": true, "h": "Desc", "n": "desc", "r": false, "t": "`$ARRAY`", "key$": "desc", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 2 }, "index": { "a": true, "h": "Index", "n": "index", "r": false, "sh": "Resource index for the feature", "t": "`$STRING`", "key$": "index", "index$": 3 }, "level": { "a": true, "h": "Level", "n": "level", "r": false, "t": "`$INTEGER`", "key$": "level", "index$": 4 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Name of the feature", "t": "`$STRING`", "key$": "name", "index$": 5 }, "url": { "a": true, "h": "Url", "n": "url", "r": false, "sh": "URL to the feature resource", "t": "`$STRING`", "key$": "url", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "feature", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /features", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/features", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "features" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /features/{index}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "index", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/features/{index}", "q": { "exist": ["id"] }, "r": { "param": { "index": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "features" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "feature", "name__orig": "feature", "Name": "Feature", "name_": "feature", "name-": "feature", "NAME": "FEATURE", "index$": 1 }, { "active": true, "entity": "feature", "key$": "BasicFeatureFlow", "kind": "basic", "name": "BasicFeatureFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "feature_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "feature_ref01", "srcdatavar": "feature_ref01_data", "suffix": "_dt0" }, "m": { "id": "feature01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-feature_ref01" } }], "index$": 1 }] }, 'Feature', { "GET /features": { "protocol": "http", "parameters": [] }, "GET /features/{index}": { "protocol": "http", "parameters": [{ "name": "index", "in": "path", "required": true, "description": "The index of the feature to retrieve", "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(feature_ref01_data_dt0.id === feature_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

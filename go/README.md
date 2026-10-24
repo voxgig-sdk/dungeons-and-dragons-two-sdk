@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/dungeons-and-dragons-two-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -50,21 +51,21 @@ import (
 func main() {
     client := sdk.New()
 
-    // List class records — the value is the array of records itself.
+    // List class records — the value is a []any of entities, one per record.
     classs, err := client.Class(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range classs.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 
-    // Load a single class — the value is the loaded record.
+    // Load a single class — the value is the entity; Data() reads its record.
     class, err := client.Class(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(class)
+    fmt.Println(class.(sdk.Entity).Data())
 }
 ```
 
@@ -144,13 +145,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-class, err := client.Class(nil).List(
+classs, err := client.Class(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(class) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range classs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -238,8 +242,8 @@ All entities implement the `DungeonsAndDragonsTwoEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -247,21 +251,21 @@ All entities implement the `DungeonsAndDragonsTwoEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    class, err := client.Class(nil).List(map[string]any{/* fields */}, nil)
+    class, err := client.Class(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // class is the returned record
+    // class is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -384,7 +388,7 @@ class, err := client.Class(nil).Load(map[string]any{"id": "class_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(class) // the loaded record
+fmt.Println(class.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -394,7 +398,10 @@ classs, err := client.Class(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(classs) // the array of records
+// A []any of entities, one per record.
+for _, item := range classs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -428,7 +435,7 @@ feature, err := client.Feature(nil).Load(map[string]any{"id": "feature_id"}, nil
 if err != nil {
     panic(err)
 }
-fmt.Println(feature) // the loaded record
+fmt.Println(feature.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -438,7 +445,10 @@ features, err := client.Feature(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(features) // the array of records
+// A []any of entities, one per record.
+for _, item := range features.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -484,7 +494,7 @@ monster, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil
 if err != nil {
     panic(err)
 }
-fmt.Println(monster) // the loaded record
+fmt.Println(monster.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -494,7 +504,10 @@ monsters, err := client.Monster(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(monsters) // the array of records
+// A []any of entities, one per record.
+for _, item := range monsters.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -533,7 +546,7 @@ spell, err := client.Spell(nil).Load(map[string]any{"id": "spell_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(spell) // the loaded record
+fmt.Println(spell.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -543,7 +556,10 @@ spells, err := client.Spell(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(spells) // the array of records
+// A []any of entities, one per record.
+for _, item := range spells.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ## Features
@@ -680,7 +696,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Monster();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('monster hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.DungeonsAndDragonsTwoSDK.test(offline).Monster().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.DungeonsAndDragonsTwoSDK.test(offline).Monster()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.DungeonsAndDragonsTwoSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Monster().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.DungeonsAndDragonsTwoSDK.test().Monster().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.DungeonsAndDragonsTwoSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Monster().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Monster().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.DungeonsAndDragonsTwoSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Monster().list({ "alignment": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "alignment": { "a": true, "h": "Alignment", "n": "alignment", "r": false, "t": "`$STRING`", "key$": "alignment", "index$": 0 }, "armor_class": { "a": true, "h": "Armor Class", "n": "armor_class", "r": false, "t": "`$ARRAY`", "key$": "armor_class", "index$": 1 }, "challenge_rating": { "a": true, "h": "Challenge Rating", "n": "challenge_rating", "r": false, "t": "`$NUMBER`", "key$": "challenge_rating", "index$": 2 }, "charisma": { "a": true, "h": "Charisma", "n": "charisma", "r": false, "t": "`$INTEGER`", "key$": "charisma", "index$": 3 }, "constitution": { "a": true, "h": "Constitution", "n": "constitution", "r": false, "t": "`$INTEGER`", "key$": "constitution", "index$": 4 }, "dexterity": { "a": true, "h": "Dexterity", "n": "dexterity", "r": false, "t": "`$INTEGER`", "key$": "dexterity", "index$": 5 }, "hit_dice": { "a": true, "h": "Hit Dice", "n": "hit_dice", "r": false, "t": "`$STRING`", "key$": "hit_dice", "index$": 6 }, "hit_points": { "a": true, "h": "Hit Points", "n": "hit_points", "r": false, "t": "`$INTEGER`", "key$": "hit_points", "index$": 7 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 8 }, "index": { "a": true, "h": "Index", "n": "index", "r": false, "sh": "Resource index for the monster", "t": "`$STRING`", "key$": "index", "index$": 9 }, "intelligence": { "a": true, "h": "Intelligence", "n": "intelligence", "r": false, "t": "`$INTEGER`", "key$": "intelligence", "index$": 10 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Name of the monster", "t": "`$STRING`", "key$": "name", "index$": 11 }, "size": { "a": true, "h": "Size", "n": "size", "r": false, "t": "`$STRING`", "key$": "size", "index$": 12 }, "speed": { "a": true, "h": "Speed", "n": "speed", "r": false, "t": "`$OBJECT`", "key$": "speed", "index$": 13 }, "strength": { "a": true, "h": "Strength", "n": "strength", "r": false, "t": "`$INTEGER`", "key$": "strength", "index$": 14 }, "type": { "a": true, "h": "Type", "n": "type", "r": false, "t": "`$STRING`", "key$": "type", "index$": 15 }, "url": { "a": true, "h": "Url", "n": "url", "r": false, "sh": "URL to the monster resource", "t": "`$STRING`", "key$": "url", "index$": 16 }, "wisdom": { "a": true, "h": "Wisdom", "n": "wisdom", "r": false, "t": "`$INTEGER`", "key$": "wisdom", "index$": 17 }, "xp": { "a": true, "h": "Xp", "n": "xp", "r": false, "t": "`$INTEGER`", "key$": "xp", "index$": 18 } }, "id": { "field": "id", "name": "id" }, "name": "monster", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /monsters", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/monsters", "q": {}, "r": {}, "s": [{ "lit": "monsters" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /monsters/{index}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": "adult-black-dragon", "k": "param", "n": "id", "or": "index", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/monsters/{index}", "q": { "exist": ["id"] }, "r": { "param": { "index": "id" } }, "s": [{ "lit": "monsters" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "monster", "name__orig": "monster", "Name": "Monster", "name_": "monster", "name-": "monster", "NAME": "MONSTER", "index$": 2 }, { "active": true, "entity": "monster", "key$": "BasicMonsterFlow", "kind": "basic", "name": "BasicMonsterFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "monster_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "monster_ref01", "srcdatavar": "monster_ref01_data", "suffix": "_dt0" }, "m": { "id": "monster01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-monster_ref01" } }], "index$": 1 }] }, 'Monster', { "GET /monsters": { "protocol": "http", "parameters": [] }, "GET /monsters/{index}": { "protocol": "http", "parameters": [{ "name": "index", "in": "path", "required": true, "description": "The index of the monster to retrieve (e.g., 'adult-black-dragon')", "schema": { "type": "string" }, "example": "adult-black-dragon", "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "alignment": { "a": true, "h": "Alignment", "n": "alignment", "r": false, "t": "`$STRING`", "key$": "alignment", "index$": 0 }, "armor_class": { "a": true, "h": "Armor Class", "n": "armor_class", "r": false, "t": "`$ARRAY`", "key$": "armor_class", "index$": 1 }, "challenge_rating": { "a": true, "h": "Challenge Rating", "n": "challenge_rating", "r": false, "t": "`$NUMBER`", "key$": "challenge_rating", "index$": 2 }, "charisma": { "a": true, "h": "Charisma", "n": "charisma", "r": false, "t": "`$INTEGER`", "key$": "charisma", "index$": 3 }, "constitution": { "a": true, "h": "Constitution", "n": "constitution", "r": false, "t": "`$INTEGER`", "key$": "constitution", "index$": 4 }, "dexterity": { "a": true, "h": "Dexterity", "n": "dexterity", "r": false, "t": "`$INTEGER`", "key$": "dexterity", "index$": 5 }, "hit_dice": { "a": true, "h": "Hit Dice", "n": "hit_dice", "r": false, "t": "`$STRING`", "key$": "hit_dice", "index$": 6 }, "hit_points": { "a": true, "h": "Hit Points", "n": "hit_points", "r": false, "t": "`$INTEGER`", "key$": "hit_points", "index$": 7 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 8 }, "index": { "a": true, "h": "Index", "n": "index", "r": false, "sh": "Resource index for the monster", "t": "`$STRING`", "key$": "index", "index$": 9 }, "intelligence": { "a": true, "h": "Intelligence", "n": "intelligence", "r": false, "t": "`$INTEGER`", "key$": "intelligence", "index$": 10 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Name of the monster", "t": "`$STRING`", "key$": "name", "index$": 11 }, "size": { "a": true, "h": "Size", "n": "size", "r": false, "t": "`$STRING`", "key$": "size", "index$": 12 }, "speed": { "a": true, "h": "Speed", "n": "speed", "r": false, "t": "`$OBJECT`", "key$": "speed", "index$": 13 }, "strength": { "a": true, "h": "Strength", "n": "strength", "r": false, "t": "`$INTEGER`", "key$": "strength", "index$": 14 }, "type": { "a": true, "h": "Type", "n": "type", "r": false, "t": "`$STRING`", "key$": "type", "index$": 15 }, "url": { "a": true, "h": "Url", "n": "url", "r": false, "sh": "URL to the monster resource", "t": "`$STRING`", "key$": "url", "index$": 16 }, "wisdom": { "a": true, "h": "Wisdom", "n": "wisdom", "r": false, "t": "`$INTEGER`", "key$": "wisdom", "index$": 17 }, "xp": { "a": true, "h": "Xp", "n": "xp", "r": false, "t": "`$INTEGER`", "key$": "xp", "index$": 18 } }, "id": { "field": "id", "name": "id" }, "name": "monster", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /monsters", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/monsters", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "monsters" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /monsters/{index}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": "adult-black-dragon", "k": "param", "n": "id", "or": "index", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/monsters/{index}", "q": { "exist": ["id"] }, "r": { "param": { "index": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "monsters" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "monster", "name__orig": "monster", "Name": "Monster", "name_": "monster", "name-": "monster", "NAME": "MONSTER", "index$": 2 }, { "active": true, "entity": "monster", "key$": "BasicMonsterFlow", "kind": "basic", "name": "BasicMonsterFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "monster_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "monster_ref01", "srcdatavar": "monster_ref01_data", "suffix": "_dt0" }, "m": { "id": "monster01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-monster_ref01" } }], "index$": 1 }] }, 'Monster', { "GET /monsters": { "protocol": "http", "parameters": [] }, "GET /monsters/{index}": { "protocol": "http", "parameters": [{ "name": "index", "in": "path", "required": true, "description": "The index of the monster to retrieve (e.g., 'adult-black-dragon')", "schema": { "type": "string" }, "example": "adult-black-dragon", "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(monster_ref01_data_dt0.id === monster_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

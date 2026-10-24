@@ -3,5 +3,24 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Name of the class",
+      "Name of the feature",
+      "Name of the monster",
+      "Name of the spell",
+      "Production server",
+      "Resource index for the class",
+      "Resource index for the feature",
+      "Resource index for the monster",
+      "Resource index for the spell",
+      "Successful response",
+      "This API provides access to the 5th Edition Dungeons and Dragons System Reference Document (SRD). It allows developers to retrieve information about spells, classes, monsters, and other game elements through a modern RESTful interface.",
+      "URL to the class resource",
+      "URL to the feature resource",
+      "URL to the monster resource",
+      "URL to the spell resource"
+    ]
+  }
 }

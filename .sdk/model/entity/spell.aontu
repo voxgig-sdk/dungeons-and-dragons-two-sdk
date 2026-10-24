@@ -112,10 +112,9 @@ main: kit: entity: spell: {
           }
           m: "GET"
           o: "/spells"
-          q: {
-            exist: [
-              "name"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -160,6 +159,10 @@ main: kit: entity: spell: {
             param: {
               index: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

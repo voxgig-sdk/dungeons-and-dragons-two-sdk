@@ -12,6 +12,8 @@ type DungeonsAndDragonsTwoError struct {
 	Ctx    *Context `json:"-"`
 	Result any
 	Spec   any
+	// The HTTP status, -1 when there was no response.
+	Status int
 }
 
 func NewDungeonsAndDragonsTwoError(code string, msg string, ctx *Context) *DungeonsAndDragonsTwoError {
@@ -21,7 +23,12 @@ func NewDungeonsAndDragonsTwoError(code string, msg string, ctx *Context) *Dunge
 		Code:               code,
 		Msg:                msg,
 		Ctx:                ctx,
+		Status:             -1,
 	}
+}
+
+func (e *DungeonsAndDragonsTwoError) NotFound() bool {
+	return 404 == e.Status
 }
 
 func (e *DungeonsAndDragonsTwoError) Error() string {
@@ -35,6 +42,7 @@ func (e *DungeonsAndDragonsTwoError) Record() map[string]any {
 		"sdk":     e.Sdk,
 		"code":    e.Code,
 		"message": e.Msg,
+		"status":  e.Status,
 		"result":  e.Result,
 		"spec":    e.Spec,
 	}

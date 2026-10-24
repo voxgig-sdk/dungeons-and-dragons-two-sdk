@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { DungeonsAndDragonsTwoSDK, BaseFeature, stdutil } from '../../..'
+import { DungeonsAndDragonsTwoSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('SpellEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('spell hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of DungeonsAndDragonsTwoSDK.test(offline).Spell().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of DungeonsAndDragonsTwoSDK.test(offline).Spell()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = DungeonsAndDragonsTwoSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Spell().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of DungeonsAndDragonsTwoSDK.test().Spell().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new DungeonsAndDragonsTwoSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Spell().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Spell().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = DungeonsAndDragonsTwoSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Spell().list({"name":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.DUNGEONS_AND_DRAGONS_TWO_TEST_LIVE
@@ -51,7 +109,7 @@ describe('SpellEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"casting_time":{"a":true,"h":"Casting Time","n":"casting_time","r":false,"t":"`$STRING`","key$":"casting_time","index$":0},"classes":{"a":true,"h":"Classes","n":"classes","r":false,"t":"`$ARRAY`","key$":"classes","index$":1},"components":{"a":true,"h":"Components","n":"components","r":false,"t":"`$ARRAY`","key$":"components","index$":2},"desc":{"a":true,"h":"Desc","n":"desc","r":false,"t":"`$ARRAY`","key$":"desc","index$":3},"duration":{"a":true,"h":"Duration","n":"duration","r":false,"t":"`$STRING`","key$":"duration","index$":4},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":5},"index":{"a":true,"h":"Index","n":"index","r":false,"sh":"Resource index for the spell","t":"`$STRING`","key$":"index","index$":6},"level":{"a":true,"h":"Level","n":"level","r":false,"t":"`$INTEGER`","key$":"level","index$":7},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the spell","t":"`$STRING`","key$":"name","index$":8},"range":{"a":true,"h":"Range","n":"range","r":false,"t":"`$STRING`","key$":"range","index$":9},"school":{"a":true,"h":"School","n":"school","r":false,"t":"`$OBJECT`","key$":"school","index$":10},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"URL to the spell resource","t":"`$STRING`","key$":"url","index$":11}},"id":{"field":"id","name":"id"},"name":"spell","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /spells","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"Acid Arrow","k":"query","n":"name","or":"name","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/spells","q":{"exist":["name"]},"r":{},"s":[{"lit":"spells"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /spells/{index}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"index","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/spells/{index}","q":{"exist":["id"]},"r":{"param":{"index":"id"}},"s":[{"lit":"spells"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"spell","name__orig":"spell","Name":"Spell","name_":"spell","name-":"spell","NAME":"SPELL","index$":3}, {"active":true,"entity":"spell","key$":"BasicSpellFlow","kind":"basic","name":"BasicSpellFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"spell_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"spell_ref01","srcdatavar":"spell_ref01_data","suffix":"_dt0"},"m":{"id":"spell01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-spell_ref01"}}],"index$":1}]}, 'Spell', {"GET /spells":{"protocol":"http","parameters":[{"name":"name","in":"query","required":false,"description":"Filter spells by name (e.g., 'Acid Arrow')","schema":{"type":"string"},"example":"Acid Arrow","index$":0}]},"GET /spells/{index}":{"protocol":"http","parameters":[{"name":"index","in":"path","required":true,"description":"The index of the spell to retrieve","schema":{"type":"string"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"casting_time":{"a":true,"h":"Casting Time","n":"casting_time","r":false,"t":"`$STRING`","key$":"casting_time","index$":0},"classes":{"a":true,"h":"Classes","n":"classes","r":false,"t":"`$ARRAY`","key$":"classes","index$":1},"components":{"a":true,"h":"Components","n":"components","r":false,"t":"`$ARRAY`","key$":"components","index$":2},"desc":{"a":true,"h":"Desc","n":"desc","r":false,"t":"`$ARRAY`","key$":"desc","index$":3},"duration":{"a":true,"h":"Duration","n":"duration","r":false,"t":"`$STRING`","key$":"duration","index$":4},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":5},"index":{"a":true,"h":"Index","n":"index","r":false,"sh":"Resource index for the spell","t":"`$STRING`","key$":"index","index$":6},"level":{"a":true,"h":"Level","n":"level","r":false,"t":"`$INTEGER`","key$":"level","index$":7},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the spell","t":"`$STRING`","key$":"name","index$":8},"range":{"a":true,"h":"Range","n":"range","r":false,"t":"`$STRING`","key$":"range","index$":9},"school":{"a":true,"h":"School","n":"school","r":false,"t":"`$OBJECT`","key$":"school","index$":10},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"URL to the spell resource","t":"`$STRING`","key$":"url","index$":11}},"id":{"field":"id","name":"id"},"name":"spell","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /spells","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"Acid Arrow","k":"query","n":"name","or":"name","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/spells","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"spells"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /spells/{index}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"index","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/spells/{index}","q":{"exist":["id"]},"r":{"param":{"index":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"spells"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"spell","name__orig":"spell","Name":"Spell","name_":"spell","name-":"spell","NAME":"SPELL","index$":3}, {"active":true,"entity":"spell","key$":"BasicSpellFlow","kind":"basic","name":"BasicSpellFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"spell_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"spell_ref01","srcdatavar":"spell_ref01_data","suffix":"_dt0"},"m":{"id":"spell01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-spell_ref01"}}],"index$":1}]}, 'Spell', {"GET /spells":{"protocol":"http","parameters":[{"name":"name","in":"query","required":false,"description":"Filter spells by name (e.g., 'Acid Arrow')","schema":{"type":"string"},"example":"Acid Arrow","index$":0}]},"GET /spells/{index}":{"protocol":"http","parameters":[{"name":"index","in":"path","required":true,"description":"The index of the spell to retrieve","schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('SpellEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options
